@@ -1,0 +1,242 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: inherit;
+    color: #444444;
+}
+
+
+/*
+*interface = parte superior onde fica os dados do usuario atual.
+*dados = espaco para inserir dados para efetuar qualquer acao.
+*varys = historico de acoes feitas e botoes para efetuar novas.
+*/
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+    grid-template-rows: 1fr .5fr 2fr 2.3fr;
+    grid-template-areas: " . colunaEsq colunaMeio colunaDir . " " . colunaEsq colunaMeio colunaDir . " " . varys varys varys  . " " . varys varys varys . ";
+    background-image: url("img/watermark.png");
+    background-repeat: repeat;
+    background-size: 16%;
+}
+
+#colunaEsq {
+    font-family: 'Nunito', sans-serif;
+    grid-area: colunaEsq;
+    border-radius: 0 0 0 16%;
+    background-color: lightgray;
+    /*27617f*/
+
+}
+
+#colunaEsq .foto {
+    padding: 16px 0px 0px 0px;
+    text-align: center;
+}
+
+#colunaEsq .nome {
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+}
+
+label {
+    color: white;
+}
+
+#colunaMeio {
+    text-shadow: 0 0 2px rgb(73, 69, 69);
+    font-family: 'Nunito', sans-serif;
+    grid-area: colunaMeio;
+    padding: 0px;
+    border-bottom: 1px solid #AEAEAE;
+    background-color: lightgray;
+    /*00771ad = micael ultimo screenshot*/
+    /*#f1f1f1*/
+}
+
+#colunaMeio .caixaGeral {
+    text-align: left;
+}
+
+#colunaMeio .caixaComida {
+    text-align: left;
+}
+
+#colunaMeio h3 {
+    text-align: center;
+}
+
+.caixaGeralDebitoValor {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 70%;
+    padding-left: 10px;
+    margin: 8px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: aliceblue;
+    vertical-align: top;
+    color: green;
+}
+
+.caixaComidaValor {
+    width: 70%;
+    padding-left: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    vertical-align: top;
+    background-color: aliceblue;
+    color: lightcoral;
+}
+
+#colunaDir {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    grid-area: colunaDir;
+    border-radius: 0 0 16% 0;
+
+    background-color: lightgray;
+
+}
+
+.botoesEspeciaisCima {
+    text-align: right;
+}
+
+.botoesEspeciaisBaixo {
+    text-align: center;
+    padding: 10px 30px;
+}
+
+.botaoInterface {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botaoEspeciais {
+    background-color: lightgray;
+    color: black;
+    border: 2px none #e7e7e7;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.botaoEspeciais:hover {
+    background-color: lightgray;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.botoes {
+    background-color: lightgray;
+    color: black;
+    border: 2px none #e7e7e7;
+    border-radius: 8px;
+}
+
+.botoes:hover {
+    background-color: lightgray;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.botoes:active {
+    background-color: #017CBD;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.dados {
+    grid-area: dados;
+    display: block;
+}
+
+.nome {
+    /*
+    text-shadow: 2px 0 0 lightblue, -2px 0 0 lightblue, 0 2px 0 lightblue, 0 -2px 0 lightblue, 1px 1px lightblue, -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue;
+    */
+    text-shadow: 0 0 2px black;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.varys {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    grid-area: varys;
+    background-color: #f1f1f1;
+    margin-top: 30px;
+}
+
+#varysTabelaHtml {
+    width: 100%;
+    border-radius: 16px 16px 0px 0px;
+    text-align: center;
+    background-color: lightgrey;
+    box-shadow: 0 8px 16px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-collapse: collapse;
+}
+
+table td {
+    color: #0190DB;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #CCC;
+}
+
+#varysPesquisar {
+    width: 80%;
+    border: 1px solid #ddd;
+    / border-radius: 50%;
+}
+
+td {
+    color: aliceblue;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.info {
+    color: gray;
+    background-color: #f1f1f1;
+}
+
+.varysLogo {
+    color: floralwhite;
+    font-family: serif;
+    font-size: 32px;
+    font-style: italic;
+}
+
+.bordaArredondada {
+    border-radius: 5px;
+}
+
+.fotoPerfil {
+    margin: 5px 0px;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.caixaImg {
+    width: 15%;
+    margin: 1px;
+}
+
+.depositoMensalTabela{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}

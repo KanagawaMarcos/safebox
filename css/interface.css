@@ -1,0 +1,154 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*
+*interface = parte superior onde fica os dados do usuario atual.
+*dados = espaco para inserir dados para efetuar qualquer acao.
+*varys = historico de acoes feitas e botoes para efetuar novas.
+*/
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+    grid-template-rows: 1fr 1fr 2fr 3fr;
+    grid-template-areas: 
+    " . colunaEsq colunaMeio colunaDir . "
+    " . colunaEsq colunaMeio colunaDir . "
+    " . dados dados dados  . "
+    " . varys varys varys . ";
+}
+
+#colunaEsq{
+    grid-area: colunaEsq;
+    background-color: antiquewhite;
+}
+
+#colunaEsq .foto{
+    text-align: center;
+}
+
+#colunaEsq .nome{
+    text-decoration: none;
+    text-align: center;
+    font-family: arial;
+}
+
+#colunaMeio{
+    grid-area: colunaMeio;
+    background-color: aquamarine;
+    padding: 10px;
+}
+
+#colunaMeio .caixaGeral{
+    height: 50%;
+    
+}
+
+#colunaMeio .caixaComida{
+    height: 50%;
+}
+
+#colunaMeio h4{
+    text-align: center;
+}
+
+
+
+.caixaGeralDebitoValor{
+    width: 40%;
+    padding-left: 10px;
+    margin: 8px 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: lightgreen;
+    vertical-align: top;
+}
+
+.caixaComidaValor{
+    width: 40%;
+    padding-left: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: red;
+    vertical-align: top;
+}
+
+#colunaDir{
+    grid-area: colunaDir;
+    background-color: red;
+}
+
+.botoesEspeciaisCima{
+    text-align: right;
+}
+
+.botaoInterface {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    
+}
+
+.botoes {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.botoes:hover 
+{
+    background-color: #e7e7e7;
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+
+
+.botoesEspeciaisBaixo{
+    text-align: right;
+    width: 100%;
+}
+
+.dados{
+    grid-area: dados;
+    display: block;
+    border: 1px solid #222;
+}
+
+.varys{
+    grid-area: varys;
+    display: block;
+    border: 1px solid red;
+}
+
+
+
+.fotoPerfil{
+    width: 50%;
+    border-radius: 50%;  
+}
+.caixaImg{
+    width: 15%;
+    margin: 0px;
+}
+
+/*Todas as divs dentro do grid*/
+.grid > div{
+    background: #eee;
+}
+/*Toda div dentro do grid que for de numero impar*/
+.grid > div:nth-child(odd){
+    background: #ddd;
+}
