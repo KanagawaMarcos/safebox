@@ -46,7 +46,7 @@ if(isset($_SESSION['u_uid'])){
     </html>
 
 
-
+<!---->
 <?php
 include_once 'footer.php';
 ?>
