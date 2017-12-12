@@ -3,84 +3,113 @@
 <html>
 
 <head>
+    <!-- Links para css -->
     <link href="css/interfacestyle.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    
     <meta charset="utf-8">
     <title>Petbox</title>
+
 </head>
 
 <body>
     <div class="grid">
         <!--====== Interface ======-->
+        
         <!--Area onde fica a foto e nome -->
         <div id="colunaEsq">
-           
             <div class="foto">
                 <img class="fotoPerfil" src="img/petlogo.png" >
             </div>
-            <div class="nome">
+            
+            <div>
                 <label>
                     <?php
-                    echo '<h3 style="color: aliceblue">'.$_SESSION['u_first'] .' '. $_SESSION['u_last'].'</h3>';
+                    echo '<h3 class="nome" >'.$_SESSION['u_first'] .' '. $_SESSION['u_last'].'</h3>';
                     ?>
                 </label>
                 <br>
+            
             </div>
         </div>
 
+        
+        
         <!--Area do debito em cada caixa e tipo usuario-->
         <div id="colunaMeio">
             <label>
-                <h3 style="color: aliceblue; margin: 20px 0px;">Saldo</h3>
+                <h3 class="titulos">Saldos</h3>
             </label>
+            
+            <!-- PetBox Geral -->
             <label>
-                <h4 style="color: aliceblue;text-align: center;">PetBox (Geral):</h4>
+                <h4 class="subtitulos">PetBox (Geral):</h4>
             </label>
-            <div class="caixaGeral" style="text-align: center;">
+            
+            
+            <div class="caixinhas">
                 <?php
                     include_once 'includes/dbh.inc.php';
                     $query="SELECT * FROM caixinhas WHERE caixinha_id=1";
                     $results = mysqli_query($conn,$query);
                     $row = mysqli_fetch_array($results);
-                    echo '<input type="text" style="color: black;text-align: center;" value="R$ '. $row['caixinha_value'].'" class="caixaGeralDebitoValor" readonly="readonly">';
+                    echo '<input type="text" value="R$ '. $row['caixinha_value'].'" class="caixasEspecs" readonly="readonly">';
                 ?>
             </div>
+            
+            <!-- PetShop Comida -->
             <label>
-                <h4 style="color: aliceblue;text-align: center;">PetShop (Comida):</h4>
+                <h4 class="subtitulos">PetShop (Comida):</h4>
             </label>
-            <div class="caixaComida" style="text-align: center;">
+            
+            <div class="caixinhas">
                 <?php
                     include_once 'includes/dbh.inc.php';
                     $query="SELECT * FROM caixinhas WHERE caixinha_id=2";
                     $results = mysqli_query($conn,$query);
                     $row = mysqli_fetch_array($results);
-                    echo '<input type="text" style="color: black;text-align: center;" value="R$ '. $row['caixinha_value'].'" class="caixaGeralDebitoValor" readonly="readonly">';
+                    echo '<input type="text" value="R$ '. $row['caixinha_value'].'" class="caixasEspecs" readonly="readonly">';
                 ?>
             </div>
+        
         </div>
 
+        
+        
+        
         <!--Area dos botoes especiais de usuario-->
         <div id="colunaDir">
-            <form action="includes/logout.inc.php" class="botoesEspeciaisCima" method="POST">
+            
+            <!-- Botão de sair -->
+            <form action="includes/logout.inc.php" class="botaoSair" method="POST">
                 
-                <button class="botaoInterface botaoEspeciais" type="submit" name="submit"><img src="img/icon.png" style="width: 20px;"/></button>
+                <button class=" botaoSairInterface" type="submit" name="submit">Sair
+                </button>
             </form>
             
+            <!-- Botões centrais para usuário selecionar -->
             <div class="botoesEspeciaisBaixo">
-                <br>
+               
+                
                 <div>
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoInterface botaoEspeciais">Cadastrar Petiano</button></div>
-                <div>    
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoInterface botaoEspeciais">Histórico Tutor</button></div>
+                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface">Cadastrar Petiano</button></div>
+                <div>
+                
+                
+                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface">Histórico Tutor</button>
+                </div>
+                
+                
                 <form action="includes/desfazeracao.php" method="POST">
                     <div>
-                        <input type="submit" name="submit" class="botaoInterface botaoEspeciais" value="Desfazer">
+                        <input type="submit" name="submit" class="botaoUsuarioInterface " value="Desfazer">
                     </div>
                 </form>
+            
             </div>
         </div>
 
@@ -108,7 +137,7 @@
                             <br>Mensal</button>
                     </th>
                     <th>
-                        <input class="bordaArredondada"type="text" id="varysPesquisar" onkeyup="varysPesquisar()" placeholder="    Pesquisar" size="10">
+                        <input class="bordaArredondada"type="text" id="varysPesquisar" onkeyup="varysPesquisar()" placeholder="Pesquisar" size="10">
                     </th>
                     <th>
                         <button onclick="document.getElementById('configuracaoForm').style.display='block'" class="botaoInterface botoes">
