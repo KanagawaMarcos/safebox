@@ -5,30 +5,24 @@
     color: #444444;
 }
 
-
-/*
-*interface = parte superior onde fica os dados do usuario atual.
-*dados = espaco para inserir dados para efetuar qualquer acao.
-*varys = historico de acoes feitas e botoes para efetuar novas.
-*/
+/* Contrução do CSS Grid */
 
 .grid {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
     grid-template-rows: 1fr .5fr 2fr 2.3fr;
     grid-template-areas: " . colunaEsq colunaMeio colunaDir . " " . colunaEsq colunaMeio colunaDir . " " . varys varys varys  . " " . varys varys varys . ";
-    background-image: url("img/watermark.png");
+    background-image: url(../img/watermark.png);
     background-repeat: repeat;
     background-size: 16%;
 }
 
+/* Grid Área da foto e nome */
+
 #colunaEsq {
-    font-family: 'Nunito', sans-serif;
     grid-area: colunaEsq;
     border-radius: 0 0 0 16%;
     background-color: lightgray;
-    /*27617f*/
-
 }
 
 #colunaEsq .foto {
@@ -36,97 +30,170 @@
     text-align: center;
 }
 
-#colunaEsq .nome {
-    text-decoration: none;
-    text-align: center;
-    font-family: inherit;
+.fotoPerfil {
+    margin: 5px 0px;
+    width: 50%;
+    border-radius: 50%;
 }
 
-label {
-    color: white;
+#colunaEsq .nome {
+    text-align: center;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: black;
+    font-weight: bold;
 }
+
+/* Fim da Área do foto e nome */
+
+
+/*Grid Área do meio com informações das PetBoxes */
 
 #colunaMeio {
-    text-shadow: 0 0 2px rgb(73, 69, 69);
-    font-family: 'Nunito', sans-serif;
     grid-area: colunaMeio;
     padding: 0px;
-    border-bottom: 1px solid #AEAEAE;
     background-color: lightgray;
-    /*00771ad = micael ultimo screenshot*/
-    /*#f1f1f1*/
 }
 
-#colunaMeio .caixaGeral {
-    text-align: left;
+#colunaMeio .titulos{
+    text-align: center;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: black;
+    margin: 22px 0px;
+    font-weight: bold;
 }
 
-#colunaMeio .caixaComida {
-    text-align: left;
+#colunaMeio .subtitulos{
+    text-align: center;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: black;
+    margin: 15px 0px;
+    font-weight: bold;
 }
 
-#colunaMeio h3 {
+#colunaMeio .caixinhas {
     text-align: center;
 }
 
-.caixaGeralDebitoValor {
-    background-image: url('/css/searchicon.png');
-    background-position: 10px 12px;
-    background-repeat: no-repeat;
+.caixasEspecs {
     width: 70%;
     padding-left: 10px;
-    margin: 8px 0px;
-    border: 1px solid #ccc;
+    margin: 6px 0px;
+    
+    border: 2px solid skyblue;
     border-radius: 4px;
+    
     box-sizing: border-box;
-    background-color: aliceblue;
+    background-color: #f1f1f1;
     vertical-align: top;
-    color: green;
+    
+    /* Propriedades do texto dentro das caixas */
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: grey;
 }
 
-.caixaComidaValor {
-    width: 70%;
-    padding-left: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    vertical-align: top;
-    background-color: aliceblue;
-    color: lightcoral;
-}
+
+/*Fim da Área das PetBoxes */
+
+
+/* Grid Área Esquerda com botões do usuário */
 
 #colunaDir {
-    font-family: 'Barlow Semi Condensed', sans-serif;
     grid-area: colunaDir;
     border-radius: 0 0 16% 0;
-
     background-color: lightgray;
-
 }
 
-.botoesEspeciaisCima {
+/* Estilizações botão sair */
+
+.botaoSair {
     text-align: right;
 }
 
-.botoesEspeciaisBaixo {
+.botaoSairInterface{
+    background-color: #f1f1f1;
+    border: 2px none #f1f1f1;
+    border-radius: 8px;
+    
+    font-family: 'Barlow Semi Condensed', sans-serif;
     text-align: center;
-    padding: 10px 30px;
+    font-weight: bold;
+    color: grey;
+    
+    padding: 4px 15px;
+    display: inline-block;
+    margin: 13px;
+   
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
-.botaoInterface {
-    background-color: #4CAF50;
-    /* Green */
-    border: none;
+.botaoSairInterface:hover{
     color: white;
-    padding: 8px 16px;
+    background-color: indianred;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*Fim das estilizações do botão Sair */
+
+
+/*Estilizações botões centrais do usuário */
+
+
+.botoesEspeciaisBaixo {
+    text-align: center;
+    padding: 0px 30px;
+}
+
+.botaoUsuarioInterface{
+    background-color: #f1f1f1;
+    border: 2px none black;
+    border-radius: 8px;
+    
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    color: grey;
+    
+    width: 120px;
+    
+    padding: 7px 13px;
+    
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.botaoUsuarioInterface:hover{
+    color: grey;
+    background-color: #f1f1f1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*Fim das estilizações dos botões centrais do usuário */
+
+/* Estilizações botões do VARYS */
+
+.botaoInterface {
+    background-color: orange;
+    border: 2px none orange;
+    border-radius: 8px;
+    
+    font-family: 'Barlow Semi Condensed', sans-serif;
     text-align: center;
     text-decoration: none;
+    padding: 9px 13px;
+    
     display: inline-block;
     font-size: 14px;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
-    /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
 }
@@ -162,25 +229,23 @@ label {
     transform: translateY(4px);
 }
 
-.dados {
-    grid-area: dados;
-    display: block;
-}
+/* Fim das estilizações dos botões do VARYS */
 
-.nome {
-    /*
-    text-shadow: 2px 0 0 lightblue, -2px 0 0 lightblue, 0 2px 0 lightblue, 0 -2px 0 lightblue, 1px 1px lightblue, -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue;
-    */
-    text-shadow: 0 0 2px black;
-    font-family: 'Josefin Sans', sans-serif;
-}
+
+/* ------------ Grid Área do VARYS -------------- */
 
 .varys {
     font-family: 'Barlow Semi Condensed', sans-serif;
     grid-area: varys;
-    background-color: #f1f1f1;
     margin-top: 30px;
 }
+
+dados {
+    grid-area: dados;
+    display: block;
+}
+
+/* Estilização área do Varys */
 
 #varysTabelaHtml {
     width: 100%;
@@ -191,23 +256,17 @@ label {
     border-collapse: collapse;
 }
 
-table td {
-    color: #0190DB;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    border: 1px solid #CCC;
-}
+/* Subcabeçalhos do Varys */
 
 #varysPesquisar {
     width: 80%;
-    border: 1px solid #ddd;
-    / border-radius: 50%;
-}
-
-td {
-    color: aliceblue;
-    border-bottom: 1px solid #f1f1f1;
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
 }
 
 .info {
@@ -215,28 +274,28 @@ td {
     background-color: #f1f1f1;
 }
 
-.varysLogo {
-    color: floralwhite;
-    font-family: serif;
-    font-size: 32px;
-    font-style: italic;
+/* ------- */
+
+/* Tabela que contém informações do BD */
+
+table td {
+    color: #0190DB;
+    font-weight: bold;
+    width: 40px;
+    
+    height: 40px;
+    padding: 10px;
+    border: 4px solid #CCC;
 }
+
+/* ------- */
 
 .bordaArredondada {
     border-radius: 5px;
 }
 
-.fotoPerfil {
-    margin: 5px 0px;
-    width: 50%;
-    border-radius: 50%;
-}
-
-.caixaImg {
-    width: 15%;
-    margin: 1px;
-}
-
 .depositoMensalTabela{
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
+
+/*Fim do CSS */
