@@ -2,7 +2,7 @@
 session_start();
 if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     include_once 'dbh.inc.php';
-    $agente = mysqli_real_escape_string($conn, $_POST['agente']);
+    $agente = mysqli_real_escape_string($conn, $_POST['tipo']);
     $valor = mysqli_real_escape_string($conn, $_POST['valor']);
     $destino = mysqli_real_escape_string($conn, $_POST['caixa']);
     $origem = NULL;
