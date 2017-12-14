@@ -156,7 +156,7 @@
                     <?php
 
                         include_once 'includes/dbh.inc.php';
-                        $query="SELECT * FROM varys";
+                        $query="SELECT * FROM varys ORDER BY varys.dataAcao DESC";
                         $results = mysqli_query($conn,$query);
                         while ($row = mysqli_fetch_array($results)) {
                             $destino = " ";

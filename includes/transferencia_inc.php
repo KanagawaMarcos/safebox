@@ -24,6 +24,7 @@ if(isset($_POST['submit'])){
         mysqli_query($conn, $sqlDepositar);
         $sqlDepositar = "UPDATE caixinhas SET caixinha_value=(caixinha_value + '$valor') WHERE caixinha_id = 2";
         mysqli_query($conn, $sqlDepositar);
+        $agente = $_SESSION['u_uid'];
         $sqlInserirTransfer = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
         mysqli_query($conn, $sqlInserirTransfer);
         header("Location: ../home.php?transfer=sucess");
