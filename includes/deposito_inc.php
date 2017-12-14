@@ -32,7 +32,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                 if($deposit === 1){
                     $sqlDepositarUser = "UPDATE users SET user_saldo1=user_saldo1+'$valor' WHERE user_uid='$agente'";
                     mysqli_query($conn, $sqlDepositarUser);
-                } elseif ($deposit === 1){
+                } elseif ($deposit === 2){
                     $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valor' WHERE user_uid='$agente'";
                     mysqli_query($conn, $sqlDepositarUser);
                 }

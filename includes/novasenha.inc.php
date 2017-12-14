@@ -1,7 +1,9 @@
 <?php
-if(isset($_POST['submit'])){
+session_start();
+
+if(isset($_POST['submit']) && isset($_SESSION['u_id'])){
         include_once 'dbh.inc.php';
-        $uid = mysqli_real_escape_string($conn, $_POST['username']);
+        $uid = mysqli_real_escape_string($conn, $_SESSION['u_uid']);
         $pwd = mysqli_real_escape_string($conn, $_POST['senhaantiga']);
         $newpwd = mysqli_real_escape_string($conn, $_POST['senhanova']);
         $newhashedpwd = password_hash($newpwd, PASSWORD_DEFAULT);
@@ -10,6 +12,7 @@ if(isset($_POST['submit'])){
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck < 1) {
+            //echo $_SESSION['u_uid']; die();
             header("Location: ../home.php?newpassword=noUserFound");
             exit();
         } else {

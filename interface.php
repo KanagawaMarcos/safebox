@@ -100,7 +100,7 @@
                 <div>
 
 
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface">Histórico Tutor</button>
+                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
                 </div>
 
 
@@ -408,8 +408,6 @@
 
             <form class="w3-container" action="includes/novasenha.inc.php" method="POST">
                 <div class="w3-section">
-                    <label><b>Nome de usuário</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="text" placeholder="Nome de usuário" name="username" required>
 
                     <label><b>Senha antiga:</b></label><br><br>
                     <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="password" placeholder="Senha antiga" name="senhaantiga" required>
@@ -463,7 +461,7 @@
 
                             </th>
                             <th>
-                                <button onclick="" class="botaoInterface botoes">
+                                <button onclick="" class="botaoInterface botoes" disabled>
                                     <img src="img/mateus.png" style="width: 24px;" />
                                 </button>
                             </th>
