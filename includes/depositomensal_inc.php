@@ -12,6 +12,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     $agentes = $_POST['agente']; //mysqli_real_escape_string($conn, $_POST['agente'])
     $valores = $_POST['valor'];   //mysqli_real_escape_string($conn, $_POST['valor'])
     $destinos = $_POST['caixa']; //mysqli_real_escape_string($conn, $_POST['caixa'])
+    $pago = $_POST['pago'];
     $origem = NULL;
     $tipo = "deposito";
     $deposit = 0;
@@ -35,21 +36,25 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                   $deposit = 2;
               }
 
-              $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valorAtual' WHERE caixinha_id = '$deposit'";
-
-              $mysqli->query($sqlDepositar);
 
 
-              if($deposit === 1){
-                $sqlDepositarUser = "UPDATE users SET user_saldo1=user_saldo1+'$valores[$key]' WHERE user_uid='$agentes[$key]'";
-                $mysqli->query( $sqlDepositarUser);
 
-              } elseif ($deposit === 1){
-                $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valores[$key]' WHERE user_uid='$agentes[$key]'";
-                $mysqli->query( $sqlDepositarUser);
+              if($pago[$key] === on){
+                $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valorAtual' WHERE caixinha_id = '$deposit'";
+                $mysqli->query($sqlDepositar);
+                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valores[$key]','$agentes[$key]','$origem','$destinos[$key]')";
+                $mysqli->query( $sqlInserirDeposito);
+              }else{
+                if($deposit === 1){
+                  $sqlDepositarUser = "UPDATE users SET user_saldo1=user_saldo1-'$valores[$key]' WHERE user_uid='$agentes[$key]'";
+                  $mysqli->query( $sqlDepositarUser);
+                }elseif($deposit === 2){
+                  $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2-'$valores[$key]' WHERE user_uid='$agentes[$key]'";
+                  $mysqli->query( $sqlDepositarUser);
+                }
+
               }
-              $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valores[$key]','$agentes[$key]','$origem','$destinos[$key]')";
-              $mysqli->query( $sqlInserirDeposito);
+
 
             }
 

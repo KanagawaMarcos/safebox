@@ -492,7 +492,7 @@
                                     <option style="bordaArredondada" value="caixinha2">PetShop</option>
                                   </select>
                                   </th>
-                                  <th><input id="pagoCheckbox" type="checkbox" name="pago" checked></th>
+                                  <th><input id="pagoCheckbox" type="checkbox" name="pago[]" checked></th>
                                   </tr>';
                         }
                         ?>
