@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
         exit();
     } else {
         //analiza se estes caracteres existem no primeiro nome
-        if (!preg_match("/^[a-zA-ZÁ-ú]*$/", $uid) !preg_match("/[a-zA-ZÀ-ú]$/", $first) || !preg_match("/[a-zA-ZÀ-ú]$/", $last)) {
+        if (!preg_match("/^[a-zA-ZÁ-ú]*$/", $uid) || !preg_match("/[a-zA-ZÀ-ú]$/", $first) || !preg_match("/[a-zA-ZÀ-ú]$/", $last)) {
             header("Location: ../home.php?home=invalidName");
             exit();
         } else {
