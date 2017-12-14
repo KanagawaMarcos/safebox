@@ -2,7 +2,7 @@
 session_start();
 if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     include_once 'dbh.inc.php';
-    $agente = mysqli_real_escape_string($conn, $_POST['tipo']);
+    $agente = mysqli_real_escape_string($conn, $_POST['agente']);
     $valor = mysqli_real_escape_string($conn, $_POST['valor']);
     $destino = mysqli_real_escape_string($conn, $_POST['caixa']);
     $origem = NULL;
@@ -13,7 +13,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     } elseif ($destino === "caixinha2"){
         $deposit = 2;
     }
-    if(empty($agente) || empty($valor)){
+    if(empty($valor)){
         header("Location: ../home.php?index=empty");
         exit();
     } else {
@@ -24,6 +24,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
             $sql = "SELECT * FROM users WHERE user_uid='$agente'";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
+
             if($resultCheck > 0){
                 //o usuário existe
                 $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valor' WHERE caixinha_id = '$deposit'";

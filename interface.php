@@ -482,7 +482,7 @@
                         $results = mysqli_query($conn,$query);
                         while ($row = mysqli_fetch_array($results)) {
                             echo '<tr>
-                                  <th id="nomePagoMensal" style="bordaArredondada"><input name="agente[]" value="'. $row['user_first'] .'" readonly></th>
+                                  <th id="nomePagoMensal" style="bordaArredondada"><input name="agente[]" value="'. $row['user_uid'] .'" readonly></th>
                                   <th class="info"> </th>
                                   <th class="info"> </th>
                                   <th style="bordaArredondada" value="'. $row['user_first'] .'"><input id="valorMensalInput" type="text" value="10" name="valor[]"></th>
