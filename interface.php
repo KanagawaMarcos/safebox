@@ -124,7 +124,7 @@
             <table id="varysTabelaHtml">
                 <tr class="varysHeader">
                     <th>
-                        <button onclick="document.getElementById('saqueForm').style.display='block'" class="botaoInterface botoes">Saque</button>
+                        <button onclick="document.getElementById('saqueForm').style.display='block'" class="botaoInterface botoes">Pagamento<br>Saque</button>
                     </th>
                     <th>
                         <button onclick="document.getElementById('depositoForm').style.display='block'" class="botaoInterface botoes">Depósito</button>
@@ -268,13 +268,13 @@
 
             </div>
 
-            <form class="w3-container" action="includes/saque_inc.php" method="POST">
+            <form class="w3-container" enctype="multipart/form-data" action="includes/saque_inc.php" method="POST">
                 <div class="w3-section">
 
                     <label>
                         <b>Valor</b>
                     </label>
-                    <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="number" step=0.01 placeholder="Entre com o valor do saque"
+                    <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="number" step=0.01 placeholder="Entre com o valor do saque ou pagamento"
                         name="valor" required>
 
                     <label>
@@ -286,7 +286,14 @@
                     <input type="radio" name="caixa" value="caixinha2"> Caixa Comida
                     <br>
 
-                    <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque</button>
+                    <br>
+                    <label>
+                      <b>Anexar Comprovante:</b>
+                    </label>
+                    <br>
+                    <input type="file" name="imagemComprovante">
+
+                    <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
             </form>
 
