@@ -7,6 +7,54 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     $destino = NULL;
     $origem = mysqli_real_escape_string($conn, $_POST['caixa']);
     $tipo = "saque";
+    //===========================
+    //Efetua upload da imagem do pagamento
+
+    $fileName = $_FILES['imagem']['name'];
+    $fileTmpName = $_FILES['imagem']['tmp_name'];
+    $fileSize = $_FILES['imagem']['size'];
+    $fileError = $_FILES['imagem']['size'];
+    $fileType = $_FILES['imagem']['type'];
+
+    $fileExt = explode('.',$fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+    if(!in_array($fileActualExt,$allowed)){
+      header("Location: ../home.php?saque=imgUpload=WrongExtension");
+      exit();
+    }else{
+      echo $fileError;die();
+      if($fileError === 0){
+        if($fileSize < 1000000){
+          $fileNameNew = uniqid('',true).".".$fileActualExt;
+          $fileDestination = 'comprovantes/'.$fileNameNew;
+          move_uploaded_file($fileTmpName, $fileDestination);
+          header("Location: ../home.php?pagamento efetuado");
+          exit();
+        }else{
+          header("Location: ../home.php?fileTooBig");
+          exit();
+        }
+      }else{
+        header("Location: ../home.php?saque=error=Upload");
+        exit();
+      }
+    }
+    print_r($image);
+    die();
+
+    $sqlComprovante = "INSERT INTO comprovantes(imagem, texto) VALUES('$imagem','$texto')";
+    mysqli_query($conn, $sqlComprovante);
+
+    //move o arquivo pra pasta no disco rigido
+    if(move_uploaded_file($_FILES['imagem']['tmp_name'], $target)){
+      header("Location: ../home.php?saque=sucessWithUpload".$_FILES['imagem']['name']);
+    }else{
+      header("Location: ../home.php?saque=sucessWithoutUpload");
+    }
+    //===========================
     //traduz o id onde será depositado
     $saqueid = 0;
     if($origem === "caixinha1"){

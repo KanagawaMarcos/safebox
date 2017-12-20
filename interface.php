@@ -291,8 +291,16 @@
                       <b>Anexar Comprovante:</b>
                     </label>
                     <br>
-                    <input type="file" name="imagemComprovante">
+                    <input type="hidden" name="size" value="1000000">
+                    <input type="file" name="imagem">
 
+                    <br>
+                    <br>
+                    <label>
+                      <b>Justificativa:</b>
+                    </label>
+                    <br>
+                    <textarea name="texto" cols="40" rows="4" placeholder="Explique um pouco do motivo da ação que está sendo feita..."></textarea>
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
             </form>
@@ -301,7 +309,6 @@
 
                 <button onclick="document.getElementById('saqueForm').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Cancelar</button>
 
-                <!--<span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>-->
             </div>
 
         </div>
