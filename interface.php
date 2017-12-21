@@ -99,17 +99,24 @@
                 <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface">Cadastrar Petiano</button></div>
                 <div>
 
-
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
+                <?php
+                $block = "block";
+                $cadastroForm = "cadastroForm";
+                if($_SESSION['u_permission'] >=2){
+                        echo'<button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
+                        ';
+                }
+                ?>
                 </div>
-
-
-                <form action="includes/desfazeracao.php" method="POST">
-                    <div>
-                        <input type="submit" name="submit" class="botaoUsuarioInterface " value="Desfazer">
-                    </div>
-                </form>
-
+                <?php
+                if($_SESSION['u_permission'] >=2){
+                        echo'<form action="includes/desfazeracao.php" method="POST">
+                            <div>
+                                <input type="submit" name="submit" class="botaoUsuarioInterface " value="Desfazer">
+                            </div>
+                        </form>';
+                }
+                ?>
             </div>
         </div>
 
