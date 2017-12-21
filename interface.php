@@ -123,24 +123,38 @@
         <div class="varys">
             <table id="varysTabelaHtml">
                 <tr class="varysHeader">
-                    <th>
-                        <button onclick="document.getElementById('saqueForm').style.display='block'" class="botaoInterface botoes">Pagamento<br>Saque</button>
+                        <?php
+                        $saqueForm = "saqueForm";
+                        $depositoForm = "depositoForm";
+                        $transferenciaForm = "transferenciaForm";
+                        $mensalForm = "mensalForm";
+                        $block = "block";
+                        if($_SESSION['u_permission'] >=2){
+                                echo'
+                            <th>
+                                <button onclick="document.getElementById('.$saqueForm.').style.display='.$block.'" class="botaoInterface botoes">Pagamento<br>Saque</button>
+                            </th>
+                            <th>
+                                <button onclick="document.getElementById('.$depositoForm.').style.display='.$block.'" class="botaoInterface botoes">Depósito</button>
+                            </th>
+                            <th>
+                                <button onclick="document.getElementById('.$transferenciaForm.').style.display='.$block.'" class="botaoInterface botoes">Transferência</button>
+                            </th>
+                            <th>
+                                <button onclick="document.getElementById('.$mensalForm.').style.display='.$block.'" class="botaoInterface botoes">Depósito
+                                    <br>Mensal</button>
+                            </th>
+                            ';
+                    } else {
+                            echo'
+                            <th></th><th></th><th></th><th></th>';
+                    }
+                            ?>
+                <th>
+                        <input class="bordaArredondada"type="text" id="varysPesquisar" onkeyup="varysPesquisar()" placeholder="Pesquisar" size="5">
                     </th>
                     <th>
-                        <button onclick="document.getElementById('depositoForm').style.display='block'" class="botaoInterface botoes">Depósito</button>
-                    </th>
-                    <th>
-                        <button onclick="document.getElementById('transferenciaForm').style.display='block'" class="botaoInterface botoes">Transferência</button>
-                    </th>
-                    <th>
-                        <button onclick="document.getElementById('mensalForm').style.display='block'" class="botaoInterface botoes">Depósito
-                            <br>Mensal</button>
-                    </th>
-                    <th>
-                        <input class="bordaArredondada"type="text" id="varysPesquisar" onkeyup="varysPesquisar()" placeholder="Pesquisar" size="10">
-                    </th>
-                    <th>
-                        <button onclick="document.getElementById('configuracaoForm').style.display='block'" class="botaoInterface botoes">
+                        <button onclick="document.getElementById('configuracaoForm').style.display='block'" class="botaoInterface botoes" >
                             <img src="img/mateus.png" style="width: 24px;" />
                         </button>
                     </th>
@@ -199,6 +213,7 @@
             </table>
         </div>
     </div>
+    
 
     <!--Formulário de cadastro de usuário-->
     <div id="cadastroForm" class="w3-modal">
