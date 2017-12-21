@@ -91,43 +91,44 @@
                 </button>
             </form>
 
+        <!--Area dos botoes especiais de usuario-->
+        <div id="colunaDir">
+
+            <!-- Botão de sair -->
+            <form action="includes/logout.inc.php" class="botaoSair" method="POST">
+
+                <button class=" botaoSairInterface" type="submit" name="submit">Sair
+                </button>
+            </form>
+
             <!-- Botões centrais para usuário selecionar -->
             <div class="botoesEspeciaisBaixo">
-                <?php
-                if($_SESSION['u_permission'] >=2){
-                    $block = "block";
-                    $cadastroForm = "cadastroForm";
-                        echo'<div>
-                        <button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface">Cadastrar Petiano</button></div>
-                        <div>';
-                }
-                ?>
-            
 
-                <div class="botoesEspeciaisBaixo">
-            <div>
+
+                <div>
                 <?php
-                if($_SESSION['u_permission'] >=2){
-                    $block = "block";
-                    $cadastroForm = "cadastroForm";
-                        echo'
-                        <button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface">Cadastrar Petiano</button>
-                        ';
+                if($_SESSION['u_permission'] == 3){
+                    echo'<button onclick="document.getElementById(\'cadastroForm\').style.display=\'block\'" class="botaoUsuarioInterface">Cadastrar Petiano</button>';
                 }
                 ?>
-            </div>
-            <div>
-                
                 </div>
-                <?php
-                if($_SESSION['u_permission'] >=2){
-                        echo'<form action="includes/desfazeracao.php" method="POST">
-                            <div>
-                                <input type="submit" name="submit" class="botaoUsuarioInterface " value="Desfazer">
-                            </div>
-                        </form>';
-                }
-                ?>
+                <div>
+
+
+                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
+                </div>
+
+
+                <form action="includes/desfazeracao.php" method="POST">
+                    <div>
+                    <?php
+                    if($_SESSION['u_permission'] == 3){
+                        echo'<input type="submit" name="submit" class="botaoUsuarioInterface " value="Desfazer">';
+                    }
+                    ?>
+                    </div>
+                </form>
+
             </div>
         </div>
 
@@ -142,24 +143,19 @@
             <table id="varysTabelaHtml">
                 <tr class="varysHeader">
                         <?php
-                        $saqueForm = "saqueForm";
-                        $depositoForm = "depositoForm";
-                        $transferenciaForm = "transferenciaForm";
-                        $mensalForm = "mensalForm";
-                        $block = "block";
                         if($_SESSION['u_permission'] >=2){
                                 echo'
                             <th>
-                                <button onclick="document.getElementById('.$saqueForm.').style.display='.$block.'" class="botaoInterface botoes">Pagamento<br>Saque</button>
+                                <button onclick="document.getElementById(\'saqueForm\').style.display=\'block\'" class="botaoInterface botoes">Pagamento<br>Saque</button>
                             </th>
                             <th>
-                                <button onclick="document.getElementById('.$depositoForm.').style.display='.$block.'" class="botaoInterface botoes">Depósito</button>
+                                <button onclick="document.getElementById(\'depositoForm\').style.display=\'block\'" class="botaoInterface botoes">Depósito</button>
                             </th>
                             <th>
-                                <button onclick="document.getElementById('.$transferenciaForm.').style.display='.$block.'" class="botaoInterface botoes">Transferência</button>
+                                <button onclick="document.getElementById(\'transferenciaForm\').style.display=\'block\'" class="botaoInterface botoes">Transferência</button>
                             </th>
                             <th>
-                                <button onclick="document.getElementById('.$mensalForm.').style.display='.$block.'" class="botaoInterface botoes">Depósito
+                                <button onclick="document.getElementById(\'mensalForm\').style.display=\'block\'" class="botaoInterface botoes">Depósito
                                     <br>Mensal</button>
                             </th>
                             ';
