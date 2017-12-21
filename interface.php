@@ -124,7 +124,7 @@
             <table id="varysTabelaHtml">
                 <tr class="varysHeader">
                     <th>
-                        <button onclick="document.getElementById('saqueForm').style.display='block'" class="botaoInterface botoes">Saque</button>
+                        <button onclick="document.getElementById('saqueForm').style.display='block'" class="botaoInterface botoes">Pagamento<br>Saque</button>
                     </th>
                     <th>
                         <button onclick="document.getElementById('depositoForm').style.display='block'" class="botaoInterface botoes">Depósito</button>
@@ -171,12 +171,29 @@
                             } elseif ($row['destino'] == "caixinha2"){
                                 $destino = "Box Comida";
                             }
-                            echo '<tr><td>'. $row['agente'] .'</td>
-                            <td>'. $row['tipo'] .'</td>
-                            <td>R$ '. $row['valor'] .'</td>
-                            <td>'. $origem .'</td>
-                            <td>'. $destino .'</td>
-                            <td>'. $row['dataAcao'] .'</td></tr>';
+                            if($row['tipo'] == "pagamento"){
+                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
+
+                              $caminho = "'comprovantes/petlogo.png'";
+
+                              $caminhoReal = explode("../", $row['imagem']);
+                              $func2 = "document.getElementById('imagemPagamento').src = '".$caminhoReal[1]."';";
+
+                              echo '<tr onclick="'.$func1.'; '.$func2.';"><td>'. $row['agente'] .'</td>
+                              <td>'. $row['tipo'] .'</td>
+                              <td>R$ '. $row['valor'] .'</td>
+                              <td>'. $origem .'</td>
+                              <td>'. $destino .'</td>
+                              <td>'. $row['dataAcao'] .'</td></tr>';
+                            }else{
+                              echo '<tr><td>'. $row['agente'] .'</td>
+                              <td>'. $row['tipo'] .'</td>
+                              <td>R$ '. $row['valor'] .'</td>
+                              <td>'. $origem .'</td>
+                              <td>'. $destino .'</td>
+                              <td>'. $row['dataAcao'] .'</td></tr>';
+                            }
+
                         }
                     ?>
             </table>
@@ -268,13 +285,13 @@
 
             </div>
 
-            <form class="w3-container" action="includes/saque_inc.php" method="POST">
+            <form class="w3-container" enctype="multipart/form-data" action="includes/saque_inc.php" method="POST">
                 <div class="w3-section">
 
                     <label>
                         <b>Valor</b>
                     </label>
-                    <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="number" step=0.01 placeholder="Entre com o valor do saque"
+                    <input class="w3-input w3-border w3-margin-bottom bordaArredondada" type="number" step=0.01 placeholder="Entre com o valor do saque ou pagamento"
                         name="valor" required>
 
                     <label>
@@ -286,7 +303,15 @@
                     <input type="radio" name="caixa" value="caixinha2"> Caixa Comida
                     <br>
 
-                    <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque</button>
+                    <br>
+                    <label>
+                      <b>Anexar Comprovante:</b>
+                    </label>
+                    <br>
+                    <input type="hidden" name="size" value="1000000">
+                    <input type="file" name="imagem">
+
+                    <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
             </form>
 
@@ -294,7 +319,6 @@
 
                 <button onclick="document.getElementById('saqueForm').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Cancelar</button>
 
-                <!--<span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>-->
             </div>
 
         </div>
@@ -510,6 +534,26 @@
         </div>
     </div>
 
+    <!-- Imagem comprovante -->
+    <div id="comprovanteDiv" class="w3-modal">
+
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom bordaArredondada" style="max-width:600px;  text-align: center;">
+            <div class="w3-center"><br>
+
+                <span onclick="document.getElementById('comprovanteDiv').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright bordaArredondada" title="Fechar Configuração">×</span>
+            </div>
+
+            <img id="imagemPagamento" style="width: 300px;"src="">
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+
+                <button onclick="document.getElementById('comprovanteDiv').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Fechar</button>
+
+            </div>
+
+        </div>
+    </div>
+
 </body>
 <script>
     function varysPesquisar() {
@@ -539,6 +583,7 @@
         }
 
     }
+
 </script>
 
 </html>

@@ -1,0 +1,5 @@
+CREATE TABLE comprovantes (
+	id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	imagem VARCHAR(255),
+	texto VARCHAR(255)
+);
