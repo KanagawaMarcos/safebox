@@ -337,7 +337,7 @@
 
             </div>
 
-            <form class="w3-container" action="includes/deposito_inc.php" method="POST">
+            <form class="w3-container" enctype="multipart/form-data" action="includes/deposito_inc.php" method="POST">
                 <div class="w3-section">
 
                     <label>
