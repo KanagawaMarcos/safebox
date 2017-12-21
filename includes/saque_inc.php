@@ -14,7 +14,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     }else{
       $tipo = "pagamento";
     }
-    //===========================
+    
     //Efetua upload da imagem do pagamento
 
     $fileName = $_FILES['imagem']['name'];
@@ -115,7 +115,6 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
               }
           }
       }
-=======
     $sql = "SELECT * FROM caixinhas WHERE caixinha_id='$saqueid'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
