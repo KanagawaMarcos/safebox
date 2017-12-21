@@ -2,8 +2,8 @@
 session_start();
 if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
   $dbServername = "localhost";
-  $dbUsername = "root";
-  $dbPassword = "";
+  $dbUsername = "petbox";
+  $dbPassword = "QMwzv5yGnYuCLtEt";
   $dbName = "loginsys";
 
   //'inicializa' a conexão

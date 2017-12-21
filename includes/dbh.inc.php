@@ -4,8 +4,8 @@
 
 //inicializa as váriaveis para criar uma conexão
 $dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
+$dbUsername = "petbox";
+$dbPassword = "QMwzv5yGnYuCLtEt";
 $dbName = "loginsys";
 
 //'inicializa' a conexão
