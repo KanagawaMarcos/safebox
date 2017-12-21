@@ -104,14 +104,19 @@
                 ?>
             
 
+                <div class="botoesEspeciaisBaixo">
+            <div>
                 <?php
-                $block = "block";
-                $cadastroForm = "cadastroForm";
-                if($_SESSION['u_permission'] >=1){
-                        echo'<button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
+                if($_SESSION['u_permission'] >=2){
+                    $block = "block";
+                    $cadastroForm = "cadastroForm";
+                        echo'
+                        <button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface">Cadastrar Petiano</button>
                         ';
                 }
                 ?>
+            </div>
+            <div>
                 
                 </div>
                 <?php
