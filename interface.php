@@ -93,11 +93,16 @@
 
             <!-- Botões centrais para usuário selecionar -->
             <div class="botoesEspeciaisBaixo">
-
-
-                <div>
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface">Cadastrar Petiano</button></div>
-                <div>
+                <?php
+                if($_SESSION['u_permission'] >=2){
+                    $block = "block";
+                    $cadastroForm = "cadastroForm";
+                        echo'<div>
+                        <button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface">Cadastrar Petiano</button></div>
+                        <div>';
+                }
+                ?>
+            
 
                 <?php
                 $block = "block";
@@ -107,6 +112,7 @@
                         ';
                 }
                 ?>
+                
                 </div>
                 <?php
                 if($_SESSION['u_permission'] >=2){
