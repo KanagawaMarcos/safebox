@@ -48,6 +48,23 @@ if(isset($_POST['submit'])){
         mysqli_query($conn, $sql);
         header("Location: ../home.php?=sucess2");
         exit();
+    }elseif($tipo === "pagamento"){
+        if($row['origem'] === "caixinha1"){
+            $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valor' WHERE caixinha_id = 1";
+            mysqli_query($conn, $sqlDepositar);
+            $sqlDepositarUser = "UPDATE users SET user_saldo1=user_saldo1+'$valor' WHERE user_uid='$agente'";
+            mysqli_query($conn, $sqlDepositarUser);
+        } elseif($row['origem'] === "caixinha2"){
+            $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valor' WHERE caixinha_id = 2";
+            mysqli_query($conn, $sqlDepositar);
+            $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valor' WHERE user_uid='$agente'";
+            mysqli_query($conn, $sqlDepositarUser);
+        }
+        $id = $row['id'];
+        $sql = "DELETE FROM varys WHERE id=$id;";
+        mysqli_query($conn, $sql);
+        header("Location: ../home.php?=sucess2");
+        exit();
     } elseif($tipo === "transferencia"){
         if($row['origem'] === "caixinha1"){
             $sqlDepositar = "UPDATE caixinhas SET caixinha_value=caixinha_value+'$valor' WHERE caixinha_id = 1";

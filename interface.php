@@ -171,12 +171,29 @@
                             } elseif ($row['destino'] == "caixinha2"){
                                 $destino = "Box Comida";
                             }
-                            echo '<tr><td>'. $row['agente'] .'</td>
-                            <td>'. $row['tipo'] .'</td>
-                            <td>R$ '. $row['valor'] .'</td>
-                            <td>'. $origem .'</td>
-                            <td>'. $destino .'</td>
-                            <td>'. $row['dataAcao'] .'</td></tr>';
+                            if($row['tipo'] == "pagamento"){
+                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
+
+                              $caminho = "'comprovantes/petlogo.png'";
+
+                              $caminhoReal = explode("../", $row['imagem']);
+                              $func2 = "document.getElementById('imagemPagamento').src = '".$caminhoReal[1]."';";
+
+                              echo '<tr onclick="'.$func1.'; '.$func2.';"><td>'. $row['agente'] .'</td>
+                              <td>'. $row['tipo'] .'</td>
+                              <td>R$ '. $row['valor'] .'</td>
+                              <td>'. $origem .'</td>
+                              <td>'. $destino .'</td>
+                              <td>'. $row['dataAcao'] .'</td></tr>';
+                            }else{
+                              echo '<tr><td>'. $row['agente'] .'</td>
+                              <td>'. $row['tipo'] .'</td>
+                              <td>R$ '. $row['valor'] .'</td>
+                              <td>'. $origem .'</td>
+                              <td>'. $destino .'</td>
+                              <td>'. $row['dataAcao'] .'</td></tr>';
+                            }
+
                         }
                     ?>
             </table>
@@ -294,13 +311,6 @@
                     <input type="hidden" name="size" value="1000000">
                     <input type="file" name="imagem">
 
-                    <br>
-                    <br>
-                    <label>
-                      <b>Justificativa:</b>
-                    </label>
-                    <br>
-                    <textarea name="texto" cols="40" rows="4" placeholder="Explique um pouco do motivo da ação que está sendo feita..."></textarea>
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
             </form>
@@ -524,6 +534,26 @@
         </div>
     </div>
 
+    <!-- Imagem comprovante -->
+    <div id="comprovanteDiv" class="w3-modal">
+
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom bordaArredondada" style="max-width:600px;  text-align: center;">
+            <div class="w3-center"><br>
+
+                <span onclick="document.getElementById('comprovanteDiv').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright bordaArredondada" title="Fechar Configuração">×</span>
+            </div>
+
+            <img id="imagemPagamento" style="width: 300px;"src="">
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+
+                <button onclick="document.getElementById('comprovanteDiv').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Fechar</button>
+
+            </div>
+
+        </div>
+    </div>
+
 </body>
 <script>
     function varysPesquisar() {
@@ -553,6 +583,7 @@
         }
 
     }
+
 </script>
 
 </html>

@@ -6,55 +6,59 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     $agente = $_SESSION['u_uid'];
     $destino = NULL;
     $origem = mysqli_real_escape_string($conn, $_POST['caixa']);
+    //Se algum arquivo foi passado
     $tipo = "saque";
+
+    if($_FILES['imagem']['size'] == 0){
+      $tipo = "saque";
+    }else{
+      $tipo = "pagamento";
+    }
     //===========================
     //Efetua upload da imagem do pagamento
 
     $fileName = $_FILES['imagem']['name'];
+
     $fileTmpName = $_FILES['imagem']['tmp_name'];
     $fileSize = $_FILES['imagem']['size'];
-    $fileError = $_FILES['imagem']['size'];
+    $fileError = $_FILES['imagem']['error'];
     $fileType = $_FILES['imagem']['type'];
-
     $fileExt = explode('.',$fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+    $allowed = array('jpg', 'jpeg', 'png');
 
-    if(!in_array($fileActualExt,$allowed)){
-      header("Location: ../home.php?saque=imgUpload=WrongExtension");
-      exit();
+    $caminhoFinalImagem = "";
+    //Verifica se alguma imagem foi colocada
+    if($_FILES['imagem']['size'] == 0){
+      //so efetua o saque normalmente
     }else{
-      echo $fileError;die();
-      if($fileError === 0){
-        if($fileSize < 1000000){
-          $fileNameNew = uniqid('',true).".".$fileActualExt;
-          $fileDestination = 'comprovantes/'.$fileNameNew;
-          move_uploaded_file($fileTmpName, $fileDestination);
-          header("Location: ../home.php?pagamento efetuado");
-          exit();
+      //Verifica se a extensao eh valida
+      if(!in_array($fileActualExt,$allowed)){
+        header("Location: ../home.php?saque=imgUpload=WrongExtension");
+        exit();
+      }else{
+        if($fileError === 0){
+          if($fileSize < 1000000){
+          	//chmod('../comprovantes/', 0777);
+            $fileNameNew = uniqid('',true).".".$fileActualExt;
+            $fileDestination = '../comprovantes/'.$fileNameNew;
+            $caminhoFinalImagem = $fileDestination;
+            move_uploaded_file($fileTmpName, $fileDestination);
+            //$sqlComprovante = "INSERT INTO comprovantes(imagem ) VALUES('$fileDestination',)";
+            //mysqli_query($conn, $sqlComprovante);
+          }else{
+            header("Location: ../home.php?fileTooBig");
+            exit();
+          }
         }else{
-          header("Location: ../home.php?fileTooBig");
+          header("Location: ../home.php?saque=error=Upload");
           exit();
         }
-      }else{
-        header("Location: ../home.php?saque=error=Upload");
-        exit();
       }
     }
-    print_r($image);
-    die();
 
-    $sqlComprovante = "INSERT INTO comprovantes(imagem, texto) VALUES('$imagem','$texto')";
-    mysqli_query($conn, $sqlComprovante);
 
-    //move o arquivo pra pasta no disco rigido
-    if(move_uploaded_file($_FILES['imagem']['tmp_name'], $target)){
-      header("Location: ../home.php?saque=sucessWithUpload".$_FILES['imagem']['name']);
-    }else{
-      header("Location: ../home.php?saque=sucessWithoutUpload");
-    }
-    //===========================
     //traduz o id onde será depositado
     $saqueid = 0;
     if($origem === "caixinha1"){
@@ -88,7 +92,11 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                 //o usuário existe
                 $sqlDepositar = "UPDATE caixinhas SET caixinha_value=(caixinha_value - '$valor') WHERE caixinha_id = '$saqueid'";
                 mysqli_query($conn, $sqlDepositar);
-                $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+                if($tipo === "pagamento"){
+                  $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$caminhoFinalImagem')";
+                }else{
+                  $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+                }
                 mysqli_query($conn, $sqlInserirSaque);
                 header("Location: ../home.php?saque=sucess");
                 exit();
