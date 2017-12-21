@@ -371,6 +371,15 @@
                     <input type="radio" name="caixa" value="caixinha2"> Caixa Comida
                     <br>
 
+                    <br>
+                    <label>
+                      <b>Anexar Comprovante:</b>
+                    </label>
+                    <br>
+                    <input type="hidden" name="size" value="1000000">
+                    <input type="file" name="imagem">
+
+
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar depósito</button>
                 </div>
             </form>
