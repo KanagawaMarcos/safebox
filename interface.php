@@ -107,7 +107,7 @@
                 <?php
                 $block = "block";
                 $cadastroForm = "cadastroForm";
-                if($_SESSION['u_permission'] >=2){
+                if($_SESSION['u_permission'] >=1){
                         echo'<button onclick="document.getElementById('.$cadastroForm.').style.display='.$block.'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
                         ';
                 }
