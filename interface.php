@@ -79,18 +79,6 @@
         </div>
 
 
-
-
-        <!--Area dos botoes especiais de usuario-->
-        <div id="colunaDir">
-
-            <!-- Botão de sair -->
-            <form action="includes/logout.inc.php" class="botaoSair" method="POST">
-
-                <button class=" botaoSairInterface" type="submit" name="submit">Sair
-                </button>
-            </form>
-
         <!--Area dos botoes especiais de usuario-->
         <div id="colunaDir">
 
