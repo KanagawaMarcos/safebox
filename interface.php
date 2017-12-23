@@ -102,8 +102,11 @@
                 </div>
                 <div>
 
-
-                <button onclick="document.getElementById('cadastroForm').style.display='block'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>
+                <?php
+                if($_SESSION['u_permission'] == 3){
+                    echo'<button onclick="document.getElementById(\'cadastroForm\').style.display=\'block\'" class="botaoUsuarioInterface" disabled>Histórico Tutor</button>';
+                }
+                ?>
                 </div>
 
 
