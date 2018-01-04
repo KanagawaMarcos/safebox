@@ -218,7 +218,7 @@
             </table>
         </div>
     </div>
-    
+
 
     <!--Formulário de cadastro de usuário-->
     <div id="cadastroForm" class="w3-modal">
@@ -396,7 +396,7 @@
                     </label>
                     <br>
                     <input type="hidden" name="size" value="1000000">
-                    <input type="file" name="imagem">
+                    <input type="file" name="file">
 
 
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar depósito</button>
