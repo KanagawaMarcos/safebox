@@ -193,17 +193,21 @@
                             }
 
                             //Verifica a se a extensão do arquivo é pdf
-                            if(strtolower(end(explode('.',$row['imagem'])) === 'pdf'){
+                            $tmp = explode('.',$row['imagem']);
+                            $extensao = strtolower(end($tmp));
+                            if( $extensao === 'pdf'){
                               //Mostra a tela de comprovante
                               $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
                               //Pega o caminho para o arquivo à ser mostrado
                               $caminho = explode("../", $row['imagem']);
-                              //Remove o atributo hidden da tag objeto
-                              $func2 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
                               //Adiciona o atributo hidden da tag img
-                              $func3 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden')";
+                              $func2 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden')";
+                              //Adiciona o atributo src da tag objeto
+                              $func3 = "document.getElementById('pdfPagamento').data = '".$caminho[1].";";
+                              //Remove o atributo hidden da tag objeto
+                              $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
 
-                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
+                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';'.$func4.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
