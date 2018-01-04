@@ -6,6 +6,7 @@
     <!-- Links para css -->
     <link href="css/interfacestyle.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Fontes de Caio -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Nunito" rel="stylesheet">
@@ -47,7 +48,7 @@
 
             <!-- PetBox Geral -->
             <label>
-                <h4 class="subtitulos">PetBox (Geral):</h4>
+                <h4 class="subtitulos">Caixa Geral:</h4>
             </label>
 
 
@@ -63,7 +64,7 @@
 
             <!-- PetShop Comida -->
             <label>
-                <h4 class="subtitulos">PetShop (Comida):</h4>
+                <h4 class="subtitulos">Caixa Comida:</h4>
             </label>
 
             <div class="caixinhas">
