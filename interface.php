@@ -219,9 +219,11 @@
                               $caminho = "'comprovantes/petlogo.png'";
 
                               $caminhoReal = explode("../", $row['imagem']);
+                              //Adiciona o endereço da imagem
                               $func2 = "document.getElementById('imagemPagamento').src = '".end($caminhoReal)."';";
-
-                              echo '<tr onclick="'.$func1.'; '.$func2.';"><td>'. $row['agente'] .'</td>
+                              //Atualiza o texto da justificativa da movimentação finaceira
+                              $func3 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
+                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
@@ -614,7 +616,7 @@
               <b>
             </label>
             <h6 id="justificativaTexto">
-              aqui está a justificativa
+
             </h6>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 
