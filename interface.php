@@ -206,8 +206,11 @@
                               $func3 = "document.getElementById('pdfPagamento').data = '".$caminho[1]."'";
                               //Remove o atributo hidden da tag objeto
                               $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
+                              //Atualiza o texto da justificativa da movimentação finaceira
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."'";
+                              //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
-                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.'"><td>'. $row['agente'] .'</td>
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
@@ -227,9 +230,9 @@
                               $func4 = "document.getElementById('imagemPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
                               $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."'";
-                              //$func3 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
+                              //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
-                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';"><td>'. $row['agente'] .'</td>
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
