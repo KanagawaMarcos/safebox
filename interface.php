@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <title>Petbox</title>
-
+    <?php header("Content-Type: text/html; charset=utf-8",true); ?>
 </head>
 
 <body>
