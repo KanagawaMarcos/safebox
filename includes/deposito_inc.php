@@ -71,15 +71,17 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                       header("Location: ../home.php?deposit&upload=sucess");
                       exit();
                     }else{
-                      echo 'file too big!';die();
+                      //echo 'file too big!';die();
                     }
                   }else{
-                    echo 'error uploading!';die();
+                    //echo 'error uploading!';die();
                   }
                 }else{
-                  echo 'extension not allowed!';die();
+                  //echo 'extension not allowed!';die();
                 }
                 //===========================
+
+                //Se a imagem der algum problema, simplismente faz o depósito convencional
                 header("Location: ../home.php?deposit=sucess");
                 mysqli_query($conn, $sqlInserirDeposito);
                 exit();
