@@ -362,8 +362,7 @@
                       <b>Justificativa:</b>
                     </label>
                     <br>
-                    <textarea rows="4" cols="50" name="justificativa">
-                    </textarea>
+                    <textarea rows="4" cols="50" name="justificativa"></textarea>
                     <br>
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
@@ -437,9 +436,7 @@
                       <b>Justificativa:</b>
                     </label>
                     <br>
-                    <textarea rows="4" cols="50" name="justificativa">
-
-                    </textarea>
+                    <textarea rows="4" cols="50" name="justificativa"></textarea>
                     <br>
 
 
