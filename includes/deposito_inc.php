@@ -56,8 +56,8 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                     $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valor' WHERE user_uid='$agente'";
                     mysqli_query($conn, $sqlDepositarUser);
                 }
-                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino, imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$caminhoFinalImagem')";
-                mysqli_query($conn, $sqlInserirDeposito);
+                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+
 
                 //-----Upload file code------
                 if(in_array($fileActualExt,$allowed)){
@@ -65,7 +65,9 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                     if($fileSize < 1000000){
                       $fileNameNew = uniqid('',true).".".$fileActualExt;
                       $fileDestination = '../comprovantes/'.$fileNameNew;
-                      echo move_uploaded_file($fileTmpName, $fileDestination);die();
+                      move_uploaded_file($fileTmpName, $fileDestination);
+                      $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$fileDestination')";
+                      mysqli_query($conn, $sqlInserirDeposito);
                       header("Location: ../home.php?deposit&upload=sucess");
                       exit();
                     }else{
@@ -79,6 +81,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                 }
                 //===========================
                 header("Location: ../home.php?deposit=sucess");
+                mysqli_query($conn, $sqlInserirDeposito);
                 exit();
             } else {
                 header("Location: ../home.php?index=error");
