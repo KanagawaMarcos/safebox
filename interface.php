@@ -331,7 +331,15 @@
                     <br>
                     <input type="hidden" name="size" value="1000000">
                     <input type="file" name="imagem">
-
+                    <br>
+                    <br>
+                    <label>
+                      <b>Justificativa:</b>
+                    </label>
+                    <br>
+                    <textarea rows="4" cols="50" name="justificativa">
+                    </textarea>
+                    <br>
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
             </form>
