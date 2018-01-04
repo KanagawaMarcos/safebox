@@ -199,9 +199,9 @@
                               //Pega o caminho para o arquivo à ser mostrado
                               $caminho = explode("../", $row['imagem']);
                               //Remove o atributo hidden da tag objeto
-                              $func2 = "document.getElementById('pdfPagamento').removeAttribute('hidden');";
+                              $func2 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
                               //Adiciona o atributo hidden da tag img
-                              $func3 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden');";
+                              $func3 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden')";
 
                               echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
