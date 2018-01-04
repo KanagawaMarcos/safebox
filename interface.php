@@ -202,12 +202,12 @@
                               $caminho = explode("../", $row['imagem']);
                               //Adiciona o atributo hidden da tag img
                               $func2 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden')";
-                              //Adiciona o atributo src da tag objeto
-                              $func3 = "document.getElementById('pdfPagamento').data = '".$caminho[1].";";
+                              //Adiciona o atributo data da tag objeto
+                              $func3 = "document.getElementById('pdfPagamento').data = '".$caminho[1]."'";
                               //Remove o atributo hidden da tag objeto
                               $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
-
-                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';'.$func4.'"><td>'. $row['agente'] .'</td>
+                              //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
@@ -220,10 +220,12 @@
 
                               $caminhoReal = explode("../", $row['imagem']);
                               //Adiciona o endereço da imagem
-                              $func2 = "document.getElementById('imagemPagamento').src = '".end($caminhoReal)."';";
+                              $func2 = "document.getElementById('imagemPagamento').src = '".end($caminhoReal)."'";
                               //Atualiza o texto da justificativa da movimentação finaceira
-                              $func3 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
-                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
+                              $func3 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."'";
+                              //$func3 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
+                              //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
