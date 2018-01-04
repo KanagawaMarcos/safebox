@@ -191,9 +191,27 @@
                             } elseif ($row['destino'] == "caixinha2"){
                                 $destino = "Box Comida";
                             }
-                            if($row['tipo'] == "pagamento"){
-                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
 
+                            //Verifica a se a extensão do arquivo é pdf
+                            if(strtolower(end(explode('.',$row['imagem'])) === 'pdf'){
+                              //Mostra a tela de comprovante
+                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
+                              //Pega o caminho para o arquivo à ser mostrado
+                              $caminho = explode("../", $row['imagem']);
+                              //Remove o atributo hidden da tag objeto
+                              $func2 = "document.getElementById('pdfPagamento').removeAttribute('hidden');";
+                              //Adiciona o atributo hidden da tag img
+                              $func3 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden');";
+
+                              echo '<tr onclick="'.$func1.'; '.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
+                              <td>'. $row['tipo'] .'</td>
+                              <td>R$ '. $row['valor'] .'</td>
+                              <td>'. $origem .'</td>
+                              <td>'. $destino .'</td>
+                              <td>'. $row['dataAcao'] .'</td></tr>';
+
+                            }else{
+                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
                               $caminho = "'comprovantes/petlogo.png'";
 
                               $caminhoReal = explode("../", $row['imagem']);
@@ -205,15 +223,7 @@
                               <td>'. $origem .'</td>
                               <td>'. $destino .'</td>
                               <td>'. $row['dataAcao'] .'</td></tr>';
-                            }else{
-                              echo '<tr><td>'. $row['agente'] .'</td>
-                              <td>'. $row['tipo'] .'</td>
-                              <td>R$ '. $row['valor'] .'</td>
-                              <td>'. $origem .'</td>
-                              <td>'. $destino .'</td>
-                              <td>'. $row['dataAcao'] .'</td></tr>';
                             }
-
                         }
                     ?>
             </table>
@@ -590,8 +600,18 @@
                 <span onclick="document.getElementById('comprovanteDiv').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright bordaArredondada" title="Fechar Configuração">×</span>
             </div>
 
-            <img id="imagemPagamento" style="width: 300px;"src="">
-
+            <img id="imagemPagamento" style="width: 300px;" src="">
+            <object id="pdfPagamento" width="400" height="400" data="" hidden="hidden" ></object>
+            <br>
+            <br>
+            <label style="text-align: center;">
+              <b>
+              Justificativa
+              <b>
+            </label>
+            <h6 id="justificativaTexto">
+              aqui está a justificativa
+            </h6>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 
                 <button onclick="document.getElementById('comprovanteDiv').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Fechar</button>
