@@ -56,7 +56,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                     $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valor' WHERE user_uid='$agente'";
                     mysqli_query($conn, $sqlDepositarUser);
                 }
-                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino, imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$caminhoFinalImagem')";
                 mysqli_query($conn, $sqlInserirDeposito);
 
                 //-----Upload file code------
