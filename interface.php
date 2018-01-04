@@ -215,17 +215,21 @@
                               <td>'. $row['dataAcao'] .'</td></tr>';
 
                             }else{
+                              //Mostra a tela de comprovante
                               $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
-                              $caminho = "'comprovantes/petlogo.png'";
-
-                              $caminhoReal = explode("../", $row['imagem']);
+                              //Pega o caminho para o arquivo à ser mostrado
+                              $caminho = explode("../", $row['imagem']);
+                              //Adiciona o atributo hidden da tag objeto
+                              $func2 = "document.getElementById('pdfPagamento').setAttribute('hidden','hidden')";
                               //Adiciona o endereço da imagem
-                              $func2 = "document.getElementById('imagemPagamento').src = '".end($caminhoReal)."'";
+                              $func3 = "document.getElementById('imagemPagamento').src = '".end($caminho)."'";
+                              //Remove o atributo hidden da tag img
+                              $func4 = "document.getElementById('imagemPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
-                              $func3 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."'";
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."'";
                               //$func3 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
-                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';"><td>'. $row['agente'] .'</td>
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
