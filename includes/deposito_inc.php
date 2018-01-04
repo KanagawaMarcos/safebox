@@ -23,6 +23,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
     $agente = mysqli_real_escape_string($conn, $_POST['agente']);
     $valor = mysqli_real_escape_string($conn, $_POST['valor']);
     $destino = mysqli_real_escape_string($conn, $_POST['caixa']);
+    $justificativa = mysqli_real_escape_string($conn, $_POST['justificativa']);
     $origem = NULL;
     $tipo = "deposito";
     $deposit = 0;
@@ -56,7 +57,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                     $sqlDepositarUser = "UPDATE users SET user_saldo2=user_saldo2+'$valor' WHERE user_uid='$agente'";
                     mysqli_query($conn, $sqlDepositarUser);
                 }
-                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+                $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino, justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$justificativa')";
 
 
                 //-----Upload file code------
@@ -66,7 +67,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                       $fileNameNew = uniqid('',true).".".$fileActualExt;
                       $fileDestination = '../comprovantes/'.$fileNameNew;
                       move_uploaded_file($fileTmpName, $fileDestination);
-                      $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$fileDestination')";
+                      $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem,justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$fileDestination','$justificativa')";
                       mysqli_query($conn, $sqlInserirDeposito);
                       header("Location: ../home.php?deposit&upload=sucess");
                       exit();
