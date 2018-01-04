@@ -195,7 +195,7 @@
                             //Verifica a se a extensão do arquivo é pdf
                             $tmp = explode('.',$row['imagem']);
                             $extensao = strtolower(end($tmp));
-                            if( $extensao === 'pdf'){
+                            if( $extensao == 'pdf'){
                               //Mostra a tela de comprovante
                               $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
                               //Pega o caminho para o arquivo à ser mostrado
@@ -219,7 +219,7 @@
                               $caminho = "'comprovantes/petlogo.png'";
 
                               $caminhoReal = explode("../", $row['imagem']);
-                              $func2 = "document.getElementById('imagemPagamento').src = '".$caminhoReal[1]."';";
+                              $func2 = "document.getElementById('imagemPagamento').src = '".end($caminhoReal)."';";
 
                               echo '<tr onclick="'.$func1.'; '.$func2.';"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
