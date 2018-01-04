@@ -27,7 +27,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
   $fileExt = explode('.',$fileName);
   $fileActualExt = strtolower(end($fileExt));
 
-  $allowed = array('jpg', 'jpeg', 'png');
+  $allowed = array('jpg', 'jpeg', 'png','pdf');
 
   $caminhoFinalImagem = "";
   //Verifica se alguma imagem foi colocada

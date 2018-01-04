@@ -191,29 +191,54 @@
                             } elseif ($row['destino'] == "caixinha2"){
                                 $destino = "Box Comida";
                             }
-                            if($row['tipo'] == "pagamento"){
+
+                            //Verifica a se a extensão do arquivo é pdf
+                            $tmp = explode('.',$row['imagem']);
+                            $extensao = strtolower(end($tmp));
+                            if( $extensao == 'pdf'){
+                              //Mostra a tela de comprovante
                               $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
-
-                              $caminho = "'comprovantes/petlogo.png'";
-
-                              $caminhoReal = explode("../", $row['imagem']);
-                              $func2 = "document.getElementById('imagemPagamento').src = '".$caminhoReal[1]."';";
-
-                              echo '<tr onclick="'.$func1.'; '.$func2.';"><td>'. $row['agente'] .'</td>
+                              //Pega o caminho para o arquivo à ser mostrado
+                              $caminho = explode("../", $row['imagem']);
+                              //Adiciona o atributo hidden da tag img
+                              $func2 = "document.getElementById('imagemPagamento').setAttribute('hidden','hidden')";
+                              //Adiciona o atributo data da tag objeto
+                              $func3 = "document.getElementById('pdfPagamento').data = '".$caminho[1]."'";
+                              //Remove o atributo hidden da tag objeto
+                              $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
+                              //Atualiza o texto da justificativa da movimentação finaceira
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
+                              //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
+                              //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
                               <td>'. $destino .'</td>
                               <td>'. $row['dataAcao'] .'</td></tr>';
+
                             }else{
-                              echo '<tr><td>'. $row['agente'] .'</td>
+                              //Mostra a tela de comprovante
+                              $func1 = "document.getElementById('comprovanteDiv').style.display='block'";
+                              //Pega o caminho para o arquivo à ser mostrado
+                              $caminho = explode("../", $row['imagem']);
+                              //Adiciona o atributo hidden da tag objeto
+                              $func2 = "document.getElementById('pdfPagamento').setAttribute('hidden','hidden')";
+                              //Adiciona o endereço da imagem
+                              $func3 = "document.getElementById('imagemPagamento').src = '".end($caminho)."'";
+                              //Remove o atributo hidden da tag img
+                              $func4 = "document.getElementById('imagemPagamento').removeAttribute('hidden')";
+                              //Atualiza o texto da justificativa da movimentação finaceira
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
+                              //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
+                              //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
+                              echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
                               <td>'. $row['tipo'] .'</td>
                               <td>R$ '. $row['valor'] .'</td>
                               <td>'. $origem .'</td>
                               <td>'. $destino .'</td>
                               <td>'. $row['dataAcao'] .'</td></tr>';
                             }
-
                         }
                     ?>
             </table>
@@ -337,8 +362,7 @@
                       <b>Justificativa:</b>
                     </label>
                     <br>
-                    <textarea rows="4" cols="50" name="justificativa">
-                    </textarea>
+                    <textarea rows="4" cols="50" name="justificativa"></textarea>
                     <br>
                     <button class="w3-block w3-blue w3-section w3-padding bordaArredondada botoes" type="submit" name="submit">Registrar Saque/Pagamento</button>
                 </div>
@@ -412,9 +436,7 @@
                       <b>Justificativa:</b>
                     </label>
                     <br>
-                    <textarea rows="4" cols="50" name="justificativa">
-
-                    </textarea>
+                    <textarea rows="4" cols="50" name="justificativa"></textarea>
                     <br>
 
 
@@ -590,8 +612,18 @@
                 <span onclick="document.getElementById('comprovanteDiv').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright bordaArredondada" title="Fechar Configuração">×</span>
             </div>
 
-            <img id="imagemPagamento" style="width: 300px;"src="">
+            <img id="imagemPagamento" style="width: 300px;" src="">
+            <object id="pdfPagamento" width="400" height="400" data="" hidden="hidden" ></object>
+            <br>
+            <br>
+            <label style="text-align: center;">
+              <b>
+              Justificativa
+              <b>
+            </label>
+            <h6 id="justificativaTexto">
 
+            </h6>
             <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 
                 <button onclick="document.getElementById('comprovanteDiv').style.display='none'" type="button" class="w3-button w3-red bordaArredondada">Fechar</button>
