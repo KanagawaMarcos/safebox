@@ -6,6 +6,7 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
   $agente = $_SESSION['u_uid'];
   $destino = NULL;
   $origem = mysqli_real_escape_string($conn, $_POST['caixa']);
+  $justificativa = mysqli_real_escape_string($conn, $_POST['justificativa']);
   //Se algum arquivo foi passado
   $tipo = "saque";
 
@@ -26,9 +27,10 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
   $fileExt = explode('.',$fileName);
   $fileActualExt = strtolower(end($fileExt));
 
-  $allowed = array('jpg', 'jpeg', 'png');
+  $allowed = array('jpg', 'jpeg', 'png','pdf');
 
   $caminhoFinalImagem = "";
+
   //Verifica se alguma imagem foi colocada
   if($_FILES['imagem']['size'] == 0){
     //so efetua o saque normalmente
@@ -116,40 +118,5 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
             }
         }
     }
-  $sql = "SELECT * FROM caixinhas WHERE caixinha_id='$saqueid'";
-  $result = mysqli_query($conn, $sql);
-  $row = mysqli_fetch_assoc($result);
-  if($row['caixinha_value'] < $valor){
-      header("Location: ../home.php?index=tooHigh");
-      exit();
-  }
-
-if(empty($agente) || empty($valor)){
-      header("Location: ../home.php?index=empty");
-      exit();
-} else {
-      if (!preg_match("/^[a-zA-Z]*$/", $agente) || !is_numeric($valor) || $valor<=0) {
-          header("Location: ../home.php?index=invalidInput");
-          exit();
-      } else {
-          $sqlSearch = "SELECT * FROM users WHERE user_uid='$agente'";
-          $searchResult = mysqli_query($conn, $sqlSearch);
-          $resultCheck = mysqli_num_rows($searchResult);
-          if($resultCheck > 0){
-              //o usuário existe
-              $sqlDepositar = "UPDATE caixinhas SET caixinha_value=(caixinha_value - '$valor') WHERE caixinha_id = '$saqueid'";
-              mysqli_query($conn, $sqlDepositar);
-              if($tipo === "pagamento"){
-                $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem) VALUES ('$tipo','$valor','$agente','$origem','$destino','$caminhoFinalImagem')";
-              }else{
-                $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
-              }
-              mysqli_query($conn, $sqlInserirSaque);
-              header("Location: ../home.php?saque=sucess");
-              exit();
-          } else {
-              header("Location: ../home.php?index=error");
-              exit();
-          }
-      }
-  }
+}
+}
