@@ -27,10 +27,9 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
   $fileExt = explode('.',$fileName);
   $fileActualExt = strtolower(end($fileExt));
 
-  $allowed = array('jpg', 'jpeg', 'png','pdf');
+  $allowed = array('jpg', 'jpeg', 'png');
 
   $caminhoFinalImagem = "";
-
   //Verifica se alguma imagem foi colocada
   if($_FILES['imagem']['size'] == 0){
     //so efetua o saque normalmente
@@ -108,7 +107,11 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                 //o usuário existe
                 $sqlDepositar = "UPDATE caixinhas SET caixinha_value=(caixinha_value - '$valor') WHERE caixinha_id = '$saqueid'";
                 mysqli_query($conn, $sqlDepositar);
-                $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino) VALUES ('$tipo','$valor','$agente','$origem','$destino')";
+                if($tipo === "pagamento"){
+                  $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem,justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$caminhoFinalImagem','$justificativa')";
+                }else{
+                  $sqlInserirSaque = "INSERT INTO varys(tipo, valor, agente, origem, destino,justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$justificativa')";
+                }
                 mysqli_query($conn, $sqlInserirSaque);
                 header("Location: ../home.php?saque=sucess");
                 exit();
@@ -118,5 +121,5 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
             }
         }
     }
-}
+  }
 }
