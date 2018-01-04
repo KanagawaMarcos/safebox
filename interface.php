@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <title>Petbox</title>
-    <?php header("Content-Type: text/html; charset=utf-8",true); ?>
+    
 </head>
 
 <body>
@@ -604,7 +604,7 @@
     </div>
 
     <!-- Imagem comprovante -->
-    <div id="comprovanteDiv" class="w3-modal" charset="utf-8">
+    <div id="comprovanteDiv" class="w3-modal">
 
         <div class="w3-modal-content w3-card-4 w3-animate-zoom bordaArredondada" style="max-width:600px;  text-align: center;">
             <div class="w3-center"><br>
