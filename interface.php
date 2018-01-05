@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <title>Petbox</title>
-    
+
 </head>
 
 <body>
@@ -207,7 +207,8 @@
                               //Remove o atributo hidden da tag objeto
                               $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
-                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
+                              $justificativa = utf8_encode($row['justificativa']);
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$justificativa."';";
                               //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
                               echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
@@ -229,7 +230,8 @@
                               //Remove o atributo hidden da tag img
                               $func4 = "document.getElementById('imagemPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
-                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$row['justificativa']."';";
+                              $justificativa = utf8_encode($row['justificativa']);
+                              $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$justificativa."';";
                               //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
                               echo '<tr onclick="'.$func1.';'.$func2.';'.$func3.';'.$func4.';'.$func5.'"><td>'. $row['agente'] .'</td>
