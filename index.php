@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['u_uid'])){
-    header("Location: ../rootfolder/home.php?index=login");
+    header("Location: ../box/home.php?index=login");
     exit();
 }
 ?>
