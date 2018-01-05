@@ -17,6 +17,7 @@ if(isset($_SESSION['u_uid'])){
         <!--==========Links para layouts========-->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
         <link rel="stylesheet" href="css/estilo.css" />
 
     </head>
