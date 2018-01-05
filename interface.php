@@ -207,11 +207,7 @@
                               //Remove o atributo hidden da tag objeto
                               $func4 = "document.getElementById('pdfPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
-<<<<<<< HEAD
-                              $justificativa = utf8_encode($row['justificativa']);
-=======
                               $justificativa = utf8_decode($row['justificativa']);
->>>>>>> adb4990ca800db9c132c9dd6148615f920ee5512
                               $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$justificativa."';";
                               //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
@@ -234,11 +230,7 @@
                               //Remove o atributo hidden da tag img
                               $func4 = "document.getElementById('imagemPagamento').removeAttribute('hidden')";
                               //Atualiza o texto da justificativa da movimentação finaceira
-<<<<<<< HEAD
-                              $justificativa = utf8_encode($row['justificativa']);
-=======
                               $justificativa = utf8_decode($row['justificativa']);
->>>>>>> adb4990ca800db9c132c9dd6148615f920ee5512
                               $func5 = "document.getElementById('justificativaTexto').innerHTML = '".$justificativa."';";
                               //$func5 = "document.getElementById('justificativaTexto').innerHTML = 'AECRARALHO ';";
                               //echo 'onclick="'.$func1.';'.$func2.';'.$func3.';"'; die();
