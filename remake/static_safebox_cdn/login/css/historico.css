@@ -1,0 +1,137 @@
+/*================General Section================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: url("../img/watermark.png");
+  background-repeat: repeat;
+  background-size: 24%;
+}
+
+.text-red{
+  color: #CC153A;
+}
+
+.text-blue-light{
+  color: #00B5FB;
+}
+
+.text-blue {
+  color: #050B3D;
+}
+
+.text-black{
+  color: #111;
+}
+
+/*================Header Section================*/
+header{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.navbar, .balance-text, .blue, .balance-value{
+  background-color: #050B3D;
+}
+
+.balance-text{
+  padding-top: 1em;
+}
+
+.balance-text > h4, .balance-value > h2{
+  text-align: center;
+  font-family: 'lato', sans-serif;
+  color: rgb(234,234,234);
+}
+
+.balance-text > h4 {
+  font-weight: 900;
+}
+
+.balance-value > h2 {
+  font-weight: 300;
+}
+
+/*===============================================*/
+
+/*================Filter Section================*/
+.filters{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: .5fr;
+}
+
+.filters > a{
+  text-decoration: none;
+}
+
+.filter > h4{
+  font-family: 'lato', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: rgb(234,234,234);
+}
+
+.filter {
+  padding: 0 1em 0 1em;
+}
+
+.filter-selected{
+  border-bottom: .2em solid rgb(248,248,248);
+}
+
+/*===============================================*/
+
+/*================History Section================*/
+.history{
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  grid-template-rows: repeat(6, 2fr);
+}
+
+.post-date, .post-img {
+  padding: 1em 0 .5em 0;
+}
+
+.post-date, .post-img, .post-info{
+  background-color: rgb(248,248,248);
+  border-bottom: .12em solid rgb(234,234,234);
+}
+
+.post-date{
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  color: #666666;
+}
+
+.post-img{
+  text-align: middle;
+}
+
+.post-img > img{
+  max-width: 100%;
+}
+
+.post-info {
+  text-align: left;
+  padding: .5em 0 1.1em 0;
+}
+
+.post-info > h3 , .post-info > h4 , .post-info > h5{
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.post-info > h5 , .post-info > h4{
+  color: #111;
+}
+
+.post-info > h4 {
+  font-weight: 400;
+}
+/*===============================================*/
