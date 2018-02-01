@@ -1,0 +1,62 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "login/css/login.css" %}'>
+
+    <!-- Google Font Lato -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet">
+
+    <title>Box - Login</title>
+  </head>
+
+  <body>
+    {% block content %}
+
+    <!-- Caso o usuário tente acessar algo que não possui permissão  -->
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+           please login with an account that has access.</p>
+      {% else %}
+        <p>Please login to see this page.</p>
+      {% endif %}
+    {% endif %}
+
+    <div class="login-panel">
+
+      <div class="logo">
+        <img src='{% static "/login/img/PetLogo.png" %}' alt="">
+        <h1>Safebox</h1>
+      </div>
+
+      <form class="login-form" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="username">
+          <input type="text" name="username" placeholder="Usuário" size="28">
+        </div>
+
+        <div class="password">
+          <!-- <input type="password" name="password" placeholder="Senha" size="28"> -->
+          {{ form.password }}
+        </div>
+
+        <div class="login-button">
+          <button type="submit" name="login">Entrar</button>
+        </div>
+
+        <div class="forget-password">
+          <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
+
+          <!--Caso o usuário erre o login ou senha  -->
+          {% if form.errors %}
+            <p>O login ou senha incorreto!</p>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+    {% endblock %}
+  </body>
+</html>

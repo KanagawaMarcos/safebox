@@ -1,62 +1,36 @@
-{% load staticfiles%}
-<!DOCTYPE html>
+{% load staticfiles %}
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='{% static "login/css/login.css" %}'>
 
-    <!-- Google Font Lato -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Box - Login</title>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   </head>
-
   <body>
-    {% block content %}
 
-    <!-- Caso o usuário tente acessar algo que não possui permissão  -->
-    {% if next %}
-      {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-           please login with an account that has access.</p>
-      {% else %}
-        <p>Please login to see this page.</p>
-      {% endif %}
-    {% endif %}
-
-    <div class="login-panel">
-
-      <div class="logo">
-        <img src='{% static "/login/img/PetLogo.png" %}' alt="">
-        <h1>Safebox</h1>
+    <div class="card hoverable small">
+      <div class="card-image">
+        <span class="card-title">Card Title</span>
       </div>
-
-      <form class="login-form" action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        <div class="username">
-          <input type="text" name="username" placeholder="Usuário" size="28">
-        </div>
-
-        <div class="password">
-          <!-- <input type="password" name="password" placeholder="Senha" size="28"> -->
-          {{ form.password }}
-        </div>
-
-        <div class="login-button">
-          <button type="submit" name="login">Entrar</button>
-        </div>
-
-        <div class="forget-password">
-          <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
-
-          <!--Caso o usuário erre o login ou senha  -->
-          {% if form.errors %}
-            <p>O login ou senha incorreto!</p>
-          {% endif %}
-        </div>
-      </form>
+      <div class="card-content">
+        <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+      </div>
+      <div class="card-action">
+        <a href="#">This is a link</a>
+      </div>
     </div>
+
+    <!--Import jQuery before materialize.js-->
+    {% block footer %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'materialize/js/materialize.js' %}"></script>
     {% endblock %}
+
   </body>
 </html>
