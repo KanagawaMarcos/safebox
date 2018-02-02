@@ -66,11 +66,14 @@ if(isset($_POST['submit']) AND isset($_SESSION['u_id'])){
                     if($fileSize < 1000000){
                       $fileNameNew = uniqid('',true).".".$fileActualExt;
                       $fileDestination = '../comprovantes/'.$fileNameNew;
-                      move_uploaded_file($fileTmpName, $fileDestination);
-                      $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem,justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$fileDestination','$justificativa')";
-                      mysqli_query($conn, $sqlInserirDeposito);
-                      header("Location: ../home.php?deposit&upload=sucess");
-                      exit();
+                      if(move_uploaded_file($fileTmpName, $fileDestination)){
+	                      $sqlInserirDeposito = "INSERT INTO varys(tipo, valor, agente, origem, destino,imagem,justificativa) VALUES ('$tipo','$valor','$agente','$origem','$destino','$fileDestination','$justificativa')";
+                	      mysqli_query($conn, $sqlInserirDeposito);
+        	              header("Location: ../home.php?deposit&upload=sucess");
+	                      exit();
+		      }else{
+			header("Location: ../home.php?deposito&error=permission");
+			}
                     }else{
                       //echo 'file too big!';die();
                     }
