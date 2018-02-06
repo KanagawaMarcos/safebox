@@ -11,9 +11,44 @@
     </head>
 
     <body>
-      
+
+      <!-- Barra de navegação no topo da tela-->
+      <nav class="nav-extended blue">
+
+        <!-- Logo do safebox -->
+        <div class="nav-wrapper">
+          <!-- Botão de abrir menu-->
+          <a href="#!" class="brand-logo left"><i class="material-icons button-collapse" data-activates="barra-navegacao-esquerda">menu</i></a>
+          
+          <!--Botão de pesquisar -->
+          <ul class="right">
+            <a href="#!"><li><i class="material-icons">search</i></li></a>
+          </ul>
+        </div>
+
+        <div class="nav-content">          
+          <ul>
+            
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Botão de ação -->
+      <div class="fixed-action-btn vertical">
+        <a class="btn-floating btn-large blue">
+          <i class="material-icons">add</i>
+        </a>
+
+        <ul>
+          <li><a class="btn-floating red"><i class="material-icons red">attach_money</i></a></li>
+          <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+          <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+          <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+      </div>
+
       <!-- Barra de navegação à esquerda da tela-->
-      <ul id="barra-navegacao-esquerda" class="side-nav fixed">
+      <ul id="barra-navegacao-esquerda" class="side-nav grey lighten-4">
         <!-- ======= PERFIL DE USUÁRIO RESUMIDO ======== -->
         <li>
           <div class="user-view">
@@ -37,7 +72,7 @@
         <!-- Remoção de dinheiro de alguma caixinha -->
         <li>
           <a href="#!">
-            <i class="material-icons">money</i>
+            <i class="material-icons red-text text-darken-4">attach_money</i>
             Saque
           </a>
         </li>
@@ -45,7 +80,7 @@
         <!-- Adição de dinheiro à alguma caixinha -->
         <li>
           <a href="#!">
-            <i class="material-icons">cloud</i>
+            <i class="material-icons blue-text">attach_money</i>
             Depósito
           </a>
         </li>
@@ -53,19 +88,21 @@
         <!-- Transferência de dinheiro entre duas caixinhas -->
         <li>
           <a href="#!">
-            <i class="material-icons">cloud</i>
+            <i class="material-icons green-text">compare_arrows</i>
             Transferência
           </a>
         </li>
         <!-- =========================================== -->
       </ul>
 
+
+
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
       <script type="text/javascript">
-
+        $(".button-collapse").sideNav();
       </script>
     </body>
   </html>
