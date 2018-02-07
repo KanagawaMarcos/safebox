@@ -36,15 +36,27 @@
       <!--Histórico de movimentações financeiras -->
       <ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
         <li>
-          <div class="collapsible-header"><i class="material-icons red-text">money_off</i>Saque</div>
+          <div class="collapsible-header">
+            <i class="material-icons red-text">money_off</i>
+            <span class="truncate justificativa-texto" ><b>Inscrição enepet 2018 - Celielma Baldez</b></span>
+            <span class="valign-wrapper red-text">R$168,00</span>
+          </div>
           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="material-icons blue-text">attach_money</i>Depósito</div>
+          <div class="collapsible-header">
+            <i class="material-icons green-text">attach_money</i>
+            <span class="truncate justificativa-texto" ><b>Devolução do dinheiro da viagem para o Marapet</b></span>
+            <span class="valign-wrapper green-text">R$180,00</span>
+          </div>
           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
         <li>
-          <div class="collapsible-header"><i class="material-icons green-text">swap_horiz</i>Transferência</div>
+          <div class="collapsible-header">
+            <i class="material-icons blue-text">swap_horiz</i>
+            <span class="truncate justificativa-texto" ><b>Transferência da caixa geral para caixa comida</b></span>
+            <span class="valign-wrapper">R$180,00</span>
+          </div>
           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
       </ul>
@@ -125,5 +137,11 @@
           $('.collapsible').collapsible();
         });
       </script>
+
+      <style media="screen">
+        .justificativa-texto{
+            margin: 0 .2em 0 .5em;
+        }
+      </style>
     </body>
   </html>
