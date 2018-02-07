@@ -19,20 +19,35 @@
         <div class="nav-wrapper">
           <!-- Botão de abrir menu-->
           <a href="#!" class="brand-logo left"><i class="material-icons button-collapse" data-activates="barra-navegacao-esquerda">menu</i></a>
-          
+
           <!--Botão de pesquisar -->
           <ul class="right">
             <a href="#!"><li><i class="material-icons">search</i></li></a>
           </ul>
         </div>
 
-        <div class="nav-content">          
+        <div class="nav-content">
           <ul>
-            
+
           </ul>
         </div>
       </nav>
 
+      <!--Histórico de movimentações financeiras -->
+      <ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
+        <li>
+          <div class="collapsible-header"><i class="material-icons red-text">money_off</i>Saque</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons blue-text">attach_money</i>Depósito</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons green-text">swap_horiz</i>Transferência</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+      </ul>
       <!-- Botão de ação -->
       <div class="fixed-action-btn vertical">
         <a class="btn-floating btn-large blue">
@@ -102,7 +117,13 @@
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 
       <script type="text/javascript">
+        //Botão sandwich para abrir menu do lado esquerdo da tela.
         $(".button-collapse").sideNav();
+
+        //Ativa collapsibles do histórico que foram adicionados dinamicamente.
+        $(document).ready(function(){
+          $('.collapsible').collapsible();
+        });
       </script>
     </body>
   </html>
