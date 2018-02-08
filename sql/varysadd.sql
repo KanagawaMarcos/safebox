@@ -1,2 +1,0 @@
-ALTER TABLE varys
-  ADD imagem VARCHAR(1024)
