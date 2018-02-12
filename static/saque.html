@@ -23,14 +23,63 @@
         </div>
 
         <div class="nav-content">
-          
+
+          <!-- THIS ONLY SHOWS UP ON SAQUE -->
+          <ul class="tabs tabs-transparent">
+            <li class="tab"><a class="active" href="#pagamento-template">Pagamento</a></li>
+            <li class="tab"><a href="#evento-template">Inscrição em Evento</a></li>
+            <li class="tab"><a href="#saque-template">Saque</a></li>
+          </ul>
         </div>
       </nav>
       <!--====================================================-->
 
-      <!--======Coloque aqui o conteúdo da =======-->
-      
-      
+      <!--====== Templates de saques =======-->
+      <div id="pagamento-template" class="row col s12">
+        <form class="col s12">
+
+          <div class="row"></div>
+          
+          <!-- Valor do depósito -->
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Valor</label>
+            </div>
+          </div>
+
+          <!-- Quem depositou -->
+          <div class="row">
+            
+            <div class="input-field col s12">
+              <select class="icons">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="" data-icon="images/sample-1.jpg" class="circle">Marcos Costa</option>
+                <option value="" data-icon="images/office.jpg" class="circle">Arthur Serra</option>
+                <option value="" data-icon="images/yuna.jpg" class="circle">Celielma Baldez</option>
+              </select>
+              <label>Quem está pagando ?</label>
+            </div>
+          </div>
+          
+          <div class="row"></div>
+          <div class="row"></div>
+
+          <!-- Justificativa -->  
+          <div class="row">
+            
+
+            
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Justificativa para o saque</label>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div id="evento-template" class="col s12">Inscrição em Evento</div>
+      <div id="saque-template" class="col s12">Saque</div>
       <!--====================================================-->
       
       <!--============= Botão de ação flutuante ==============-->
