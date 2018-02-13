@@ -42,7 +42,7 @@
         <!-- Valor do depósito -->
         <div class="row">
           <div class="input-field col s12">
-            <input id="valor" type="number" min="0.05" max="16000" step="0.1" class="validate" required>
+            <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required>
             <label for="valor" data-error="Valor inválido">Valor</label>
           </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="row">
           <div class="input-field col s12">
             <textarea id="textarea1" class="materialize-textarea" required></textarea>
-            <label for="textarea1">Justificativa para o saque</label>
+            <label for="textarea1">Justificativa para o depósito</label>
           </div>
         </div>
 
@@ -94,7 +94,7 @@
 
         <!-- Botão de registrar saque (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s6 offset-s6 blue" type="submit" name="action">Registrar Saque
+            <button class="btn waves-effect waves-light col s8 offset-s4 blue" type="submit" name="action">Registrar Depósito
               <i class="material-icons">send</i>
             </button>
         </div>
@@ -109,7 +109,7 @@
         <!-- Nome do evento -->
         <div class="row">
           <div class="input-field col s6">
-            <input id="nome_evento" type="number" value="10" step="1" min="0.05" max="400" class="validate" required>
+            <input id="nome_evento" type="number" value="10" step="any" min="0.05" max="400" class="validate" required>
             <label for="nome_evento">Valor do depósito</label>
           </div>
           <div class="input-field col s6">
