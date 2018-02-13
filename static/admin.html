@@ -1,13 +1,20 @@
   <!DOCTYPE html>
   <html>
     <head>
+      <meta charset="UTF-8">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
-
+    
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <!-- Favicon do safebox-->
+      <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
+      <!-- Esconde a barra de url-->
+      <meta name="mobile-web-app-capable" content="yes">
+      
     </head>
 
     <body>
@@ -77,7 +84,7 @@
           <div class="user-view">
             <!-- Background -->
             <div class="background" >
-              <img src="login/img/watermark.png" alt="PETComp watermark">
+              <img src="watermark.png" alt="PETComp watermark">
             </div>
 
             <!-- Informações do usuário -->
