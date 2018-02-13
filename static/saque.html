@@ -43,58 +43,68 @@
           <!-- Valor do depósito -->
           <div class="row">
             <div class="input-field col s12">
-              <input id="last_name" type="number" step="0.1" class="validate">
+              <input id="last_name" type="number" step="0.1" class="validate" required>
               <label for="last_name">Valor</label>
             </div>
           </div>
 
-          <!-- Quem depositou -->
           <div class="row">
-
-            <div class="input-field col s12">
-              <select class="icons">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="" data-icon="images/sample-1.jpg" class="circle">Marcos Costa</option>
-                <option value="" data-icon="images/office.jpg" class="circle">Arthur Serra</option>
-                <option value="" data-icon="images/yuna.jpg" class="circle">Celielma Baldez</option>
+              <!-- Quem depositou -->
+            <div class="input-field col s6">
+              <select class="icons" required>
+                <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Marcos Costa</option>
+                <option value="" data-icon="http://materializecss.com/images/office.jpg" class="circle">Arthur Serra</option>
+                <option value="" data-icon="http://materializecss.com/images/yuna.jpg" class="circle">Celielma Baldez</option>
               </select>
               <label>Quem está pagando ?</label>
             </div>
+
+            <!-- Qual caixinha -->
+            <div class="input-field col s6">
+              <select class="icons" required>
+                <option value="" data-icon="images/sample-1.jpg" class="circle">Geral</option>
+                <option value="" data-icon="images/office.jpg" class="circle">Comida</option>
+
+              </select>
+              <label>Qual caixa ?</label>
+            </div>
           </div>
 
-          <div class="row"></div>
-          <div class="row"></div>
+
 
           <!-- Justificativa -->
           <div class="row">
-
-
-
             <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <textarea id="textarea1" class="materialize-textarea" required></textarea>
               <label for="textarea1">Justificativa para o saque</label>
             </div>
           </div>
 
+          <!-- Arquivo(s) de comprovante(s) -->
+          <div class="row">
+            <div class="file-field input-field">
+              <div class="btn col s12">
+                <span>Anexar Comprovante</span>
+                <input type="file" name="comprovante" value="" multiple>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" name="caminho-comprovante" value="">
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão de registrar saque (submit) -->
+          <div class="row">
+              <button class="btn waves-effect waves-light col s6 offset-s6 blue" type="submit" name="action">Registrar Saque
+                <i class="material-icons">send</i>
+              </button>
+          </div>
         </form>
+
       </div>
+
       <div id="evento-template" class="col s12">Inscrição em Evento</div>
       <div id="saque-template" class="col s12">Saque</div>
-      <!--====================================================-->
-
-      <!--============= Botão de ação flutuante ==============-->
-      <div class="fixed-action-btn vertical">
-        <a class="btn-floating btn-large blue waves-effect">
-          <i class="material-icons">add</i>
-        </a>
-
-        <ul>
-          <li><a class="btn-floating yellow darken-1"><i class="material-icons red">money_off</i></a></li>
-          <li><a class="btn-floating green"><i class="material-icons red darken-3">delete</i></a></li>
-          <li><a class="btn-floating red"><i class="material-icons green">attach_money</i></a></li>
-          <li><a class="btn-floating blue"><i class="material-icons blue">swap_horiz</i></a></li>
-        </ul>
-      </div>
       <!--====================================================-->
 
 
@@ -195,6 +205,11 @@
         //Ativa collapsibles do histórico que foram adicionados dinamicamente.
         $(document).ready(function(){
           $('.collapsible').collapsible();
+        });
+
+        //Ativa os selects dos tipos de saques e depósito
+        $(document).ready(function() {
+          $('select').material_select();
         });
       </script>
 
