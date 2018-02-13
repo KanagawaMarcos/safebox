@@ -24,7 +24,7 @@
 
         <div class="nav-content">
 
-          <!-- THIS ONLY SHOWS UP ON SAQUE -->
+          <!-- ISSO SÓ APARECE NA OPÇÃO DE SAQUE -->
           <ul class="tabs tabs-transparent">
             <li class="tab"><a class="active" href="#pagamento-template">Pagamento</a></li>
             <li class="tab"><a href="#evento-template">Inscrição em Evento</a></li>
@@ -42,8 +42,8 @@
           <!-- Valor do depósito -->
           <div class="row">
             <div class="input-field col s12">
-              <input id="last_name" type="number" step="0.1" class="validate" required>
-              <label for="last_name">Valor</label>
+              <input id="valor" type="number" step="0.1" class="validate" required>
+              <label for="valor">Valor</label>
             </div>
           </div>
 
@@ -99,10 +99,157 @@
               </button>
           </div>
         </form>
-
       </div>
 
-      <div id="evento-template" class="col s12">Inscrição em Evento</div>
+      <div id="evento-template" class="row col s12">
+        <form class="col s12">
+
+          <div class="row"></div>
+
+          <!-- Nome do evento -->
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="nome_evento" type="text" class="validate" required>
+              <label for="nome_evento">Nome do Evento</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="valor-entrada" type="number" step="0.1" class="validate" required>
+              <label for="valor-entrada">Valor da Inscrição</label>
+            </div>
+          </div>
+
+          <!-- Justificativa -->
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea" required></textarea>
+              <label for="textarea1">Uma breve descrição do evento</label>
+            </div>
+          </div>
+
+          <!-- Petianos que irão para o evento -->
+          <table class="striped">
+            <thead>
+              <tr>
+                <th>Petiano</th>
+                <th>Pago</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ALISSON BISPO DOS SANTOS</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>ANTONIO MOREIRA PINTO</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>ARTHUR SERRA</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>CAIO MANFREDINI DA SILVA MARTINS</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>CELIELMA BALDEZ COSTA</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>DIEGO DA SILVA OLIVEIRA</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>EDNARA APARECIDA DOS SANTOS PEREIRA</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>EDUARDO ROGER SILVA NASCIMENTO</td>
+                <td>
+                  <div class="switch">
+                    <label>
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                    </label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="row"></div>
+          <div class="row"></div>
+
+          <!-- Arquivo(s) de comprovante(s) -->
+          <div class="row">
+            <div class="file-field input-field">
+              <div class="btn col s12">
+                <span>Anexar Comprovante</span>
+                <input type="file" name="comprovante" value="" multiple>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" name="caminho-comprovante" value="">
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão de registrar saque (submit) -->
+          <div class="row">
+              <button class="btn waves-effect waves-light col s8 offset-s4 blue" type="submit" name="action">Registrar Inscrições
+                <i class="material-icons">send</i>
+              </button>
+          </div>
+        </form>
+      </div>
       <!--====================================================-->
 
 
