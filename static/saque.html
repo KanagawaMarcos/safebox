@@ -42,7 +42,7 @@
           <!-- Valor do depósito -->
           <div class="row">
             <div class="input-field col s12">
-              <input id="valor" type="number" min="0.05" max="16000" step="0.1" class="validate" required>
+              <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required>
               <label for="valor" data-error="Valor inválido">Valor</label>
             </div>
           </div>
@@ -106,15 +106,27 @@
 
           <div class="row"></div>
 
-          <!-- Nome do evento -->
+          <!-- Nome/local do evento -->
+          <div class="row">
+            <div class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">place</i>
+                  <input type="text" id="autocomplete-input" class="autocomplete">
+                  <label for="autocomplete-input">Nome do Evento</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="input-field col s6">
-              <input id="nome_evento" type="text" class="validate" required>
-              <label for="nome_evento">Nome do Evento</label>
+              <input id="valor-entrada" type="number" min="0.05" max="16000" step="any" class="validate" required>
+              <label for="valor-entrada" data-error="Valor inválido">Valor da Inscrição</label>
             </div>
             <div class="input-field col s6">
-              <input id="valor-entrada" type="number" min="0.05" max="16000" step="0.1" class="validate" required>
-              <label for="valor-entrada" data-error="Valor inválido">Valor da Inscrição</label>
+              <input type="text" class="datepicker picker__input" readonly="" tabindex="54" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="birthdate_root" required>
+              <label for="data-mensal" data-error="Data inválida">Data do Evento</label>
             </div>
           </div>
 
@@ -356,6 +368,31 @@
         $(document).ready(function() {
           $('select').material_select();
         });
+
+        //Ativa autocomplete do local do evento
+        $('input.autocomplete').autocomplete({
+          data: {
+            "Marapet": null,
+            "Enepet": null,
+            "Anapet": null
+          },
+          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+          onAutocomplete: function(val) {
+            // Callback function when value is autcompleted.
+          },
+          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+        });
+
+        //Ativa a seleção de data do depósito mensal
+        $('.datepicker').pickadate({
+           selectMonths: true, // Creates a dropdown to control month
+           selectYears: 10, // Creates a dropdown of 15 years to control year,
+           today: 'Hoje',
+           clear: 'Limpar',
+           close: 'Fechar',
+           closeOnSelect: false // Close upon selecting a date,
+         });
+
       </script>
 
       <style media="screen">
