@@ -1,2 +1,1 @@
-Safebox
 django>=2.0.2
