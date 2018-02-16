@@ -7,6 +7,7 @@ class Transaction(models.Model):
 	justification = models.CharField(max_length=257, default='Sem Descrição')
 	created_at = models.DateTimeField(auto_now_add=True)
 
+	#Separe essas duas linhas em classes separadas por herança
 	origin = models.CharField(max_length=257, default='Caixa Não Informada')
 	destination = models.CharField(max_length=257, default='Caixa Não Informada')
 

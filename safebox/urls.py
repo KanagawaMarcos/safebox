@@ -20,10 +20,12 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from varys import views
+
 urlpatterns = [
 	path('admin/', admin.site.urls),
 	path('accounts/', include('django.contrib.auth.urls')),
-	#path('login/', include('login.urls')),
+    path('historico/', views.historico, name='historico'),
 ]
 
 if settings.DEBUG:
