@@ -7,5 +7,9 @@ class Transaction(models.Model):
 	justification = models.CharField(max_length=257, default='Sem Descrição')
 	created_at = models.DateTimeField(auto_now_add=True)
 
+	origin = models.CharField(max_length=257, default='Caixa Não Informada')
+	destination = models.CharField(max_length=257, default='Caixa Não Informada')
+
 	def __str__(self):
+		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
 		return self.justification + ' - ' + who_did_it + ' ( R$ ' + str(value) +' ) ( ' + str(date)+' )'
