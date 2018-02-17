@@ -66,20 +66,6 @@
               {{ cur_transaction.who_did_it }}
             </span>
 
-
-            {% if cur_transaction.its_type == 'Saque' %}
-              <span class="red-text badge valor-texto">
-                {{ cur_transaction.value }}
-              </span>
-            {% elif cur_transaction.its_type == 'Deposito' %}
-              <span class="green-text badge valor-texto">
-                {{ cur_transaction.value }}
-              </span>
-            {% elif cur_transaction.its_type == 'Transferencia' %}
-              <span class="blue-text badge valor-texto">
-                {{ cur_transaction.value }}
-              </span>
-            {% endif %}
           </div>
 
           <div class="collapsible-body">
@@ -96,13 +82,13 @@
                 {{ cur_transaction.created_date.date }}
               </div>
 
-              <div class="col s4 center-align">
+              <div class="col s3 center-align">
                 <i class="material-icons small">account_circle</i>
                 <br>
                 {{ cur_transaction.who_did_it }}
               </div>
 
-              <div class="col s4 center-align">
+              <div class="col s2 center-align">
                 <i class="material-icons small">account_balance</i>
                 <br>
                 {% if cur_transaction.destination %}
@@ -114,12 +100,22 @@
                   {{ cur_transaction.origin }}
                 {% endif %}
               </div>
+              <div class="col s3 center-align">
+                <i class="material-icons small">account_balance_wallet</i>
+                <br>
+                R${{ cur_transaction.value }}
+              </div>
             <span class="row">
               <div class="col s12 center-align justificativa-texto">
                 <span class="justificativa-texto"><b>
-                  <a href="{{ cur_transaction.receipt.path }}">
-                  {{ cur_transaction.justification }}
-                  </a>
+                  {% if cur_transaction.receipt %}
+                    <a href="{{ cur_transaction.receipt.path }}">
+                      Comprovante da {{ cur_transaction.justification }}
+                    </a>
+                  {% else %}
+                      O motivo foi {{ cur_transaction.justification }}
+                  {% endif %}
+
                 </b></span>
               </div>
             </span>
