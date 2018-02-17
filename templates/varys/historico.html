@@ -53,17 +53,33 @@
         {% for cur_transaction in transactions %}
         <li>
           <div class="collapsible-header ">
-            <!-- <i class="material-icons red-text">money_off</i> -->
-            <i class="material-icons green-text">attach_money</i>
-            <!-- <i class="material-icons blue-text">swap_horiz</i> -->
+            {% if cur_transaction.its_type == 'Saque' %}
+              <i class="material-icons red-text">money_off</i>
+            {% elif cur_transaction.its_type == 'Deposito' %}
+              <i class="material-icons green-text">attach_money</i>
+            {% elif cur_transaction.its_type == 'Transferencia' %}
+              <i class="material-icons blue-text">swap_horiz</i>
+            {% endif %}
             <span class="truncate justificativa-header" >
               {{ cur_transaction.justification }}
               -
               {{ cur_transaction.who_did_it }}
             </span>
-            <span class="red-text badge valor-texto">
-              {{ cur_transaction.value }}
-            </span>
+
+
+            {% if cur_transaction.its_type == 'Saque' %}
+              <span class="red-text badge valor-texto">
+                {{ cur_transaction.value }}
+              </span>
+            {% elif cur_transaction.its_type == 'Deposito' %}
+              <span class="green-text badge valor-texto">
+                {{ cur_transaction.value }}
+              </span>
+            {% elif cur_transaction.its_type == 'Transferencia' %}
+              <span class="blue-text badge valor-texto">
+                {{ cur_transaction.value }}
+              </span>
+            {% endif %}
           </div>
 
           <div class="collapsible-body">
@@ -75,7 +91,7 @@
               </div>
 
               <div class="col s4 center-align">
-                <i class="material-icons small">access_time</i>
+                <i class="material-icons small">date_range</i>
                 <br>
                 {{ cur_transaction.created_date.date }}
               </div>

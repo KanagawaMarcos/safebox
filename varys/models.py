@@ -15,6 +15,7 @@ class Transaction(models.Model):
 	origin = models.CharField(max_length=257, default='', blank=True, null=True)
 	destination = models.CharField(max_length=257, default='', blank=True, null=True)
 	comprovante = models.FileField(upload_to='comprovantes', blank=True, null=True)
+	its_type = models.CharField(max_length=257, default='')
 
 	def __str__(self):
 		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
