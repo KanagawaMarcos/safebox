@@ -25,10 +25,11 @@ from varys import views
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
+    path('', include('django.contrib.auth.urls'), name='login'),
 	path('admin/', admin.site.urls),
     path('historico/', views.historico, name='historico'),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
