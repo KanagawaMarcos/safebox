@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Transaction
 
 # Create your views here.
 def historico(request):
-    return render(request, 'varys/historico.html', {})
+    transactions = Transaction.objects.all()
+    return render(request, 'varys/historico.html',{'transactions':transactions})

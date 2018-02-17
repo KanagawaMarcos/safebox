@@ -42,52 +42,30 @@
 
       <!--======Histórico de movimentações financeiras =======-->
       <ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+
+        {% for cur_transaction in transactions %}
         <li>
           <div class="collapsible-header ">
-            <i class="material-icons red-text">money_off</i>
-            <span class="truncate justificativa-header" >Inscrição enepet 2018 - Celielma Baldez</span>
-            <span class="red-text badge valor-texto">R$168,00</span>
-          </div>
-
-          <div class="collapsible-body">
-            <span class="row">
-
-              <!-- Comprovante preview -->
-              <div  class="hide-on-med-and-down">
-                <!-- Adicionar aqui o pdf/img -->
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">access_time</i>
-                <br>
-                2018-02-06
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">account_circle</i>
-                <br>
-                Geraldo Braz
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">account_balance</i>
-                <br>
-                Caixa Geral
-              </div>
-            <span class="row">
-              <div class="col s12 center-align justificativa-texto">
-                <span class="justificativa-texto"><b>Inscrição enepet 2018 - Celielma Baldez</b></span>
-              </div>
-            </span>
-            </span>
-          </div>
-        </li>
-        <li>
-          <div class="collapsible-header">
+            <!-- <i class="material-icons red-text">money_off</i> -->
             <i class="material-icons green-text">attach_money</i>
-            <span class="truncate justificativa-header ">Devolução do dinheiro da viagem para o Marapet</span>
-            <span class="green-text badge valor-texto ">R$180,00</span>
+            <!-- <i class="material-icons blue-text">swap_horiz</i> -->
+            <span class="truncate justificativa-header" >
+              {{ cur_transaction.justification }}
+              -
+              {{ cur_transaction.who_did_it }}
+            </span>
+            <span class="red-text badge valor-texto">
+              {{ cur_transaction.value }}
+            </span>
           </div>
+
           <div class="collapsible-body">
             <span class="row">
 
@@ -99,67 +77,30 @@
               <div class="col s4 center-align">
                 <i class="material-icons small">access_time</i>
                 <br>
-                2018-02-06
+                {{ cur_transaction.created_date }}
               </div>
 
               <div class="col s4 center-align">
                 <i class="material-icons small">account_circle</i>
                 <br>
-                Geraldo Braz
+                {{ cur_transaction.who_did_it }}
               </div>
 
               <div class="col s4 center-align">
                 <i class="material-icons small">account_balance</i>
                 <br>
-                Caixa Geral
+                {{ cur_transaction.destination }}
               </div>
             <span class="row">
               <div class="col s12 center-align justificativa-texto">
-                <span class="justificativa-texto"><b>Devolução do dinheiro da viagem para o Marapet</b></span>
+                <span class="justificativa-texto"><b>{{ cur_transaction.justification }}</b></span>
               </div>
             </span>
             </span>
           </div>
         </li>
-        <li>
-          <div class="collapsible-header">
-            <i class="material-icons blue-text">swap_horiz</i>
-            <span class="truncate justificativa-header" >Transferência da caixa geral para caixa comida</span>
-            <span class="badge valor-texto ">R$20,00</span>
-          </div>
-          <div class="collapsible-body">
-            <span class="row">
 
-              <!-- Comprovante preview -->
-              <div  class="hide-on-med-and-down">
-                <!-- Adicionar aqui o pdf/img -->
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">access_time</i>
-                <br>
-                2018-02-06
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">account_circle</i>
-                <br>
-                Geraldo Braz
-              </div>
-
-              <div class="col s4 center-align">
-                <i class="material-icons small">account_balance</i>
-                <br>
-                Caixa Geral
-              </div>
-            <span class="row">
-              <div class="col s12 center-align justificativa-texto">
-                <span class="justificativa-texto"><b>Transferência da caixa geral para caixa comida</b></span>
-              </div>
-            </span>
-            </span>
-          </div>
-        </li>
+        {% endfor %}
       </ul>
       <!--====================================================-->
 
