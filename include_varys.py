@@ -1,4 +1,5 @@
 import csv
+from varys.models import Transaction
 
 def carregar():
     with open("varys.csv") as f:
@@ -23,7 +24,7 @@ def carregar():
             created = Transaction()
             created.who_did_it = quem
             created.value = row[2]
-            created.justification = row[7]
+            created.justification = row[6]
             created.created_date = row[5]
             created.origin = origem
             created.destination = destino
