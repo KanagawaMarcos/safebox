@@ -109,7 +109,11 @@
               </div>
             <span class="row">
               <div class="col s12 center-align justificativa-texto">
-                <span class="justificativa-texto"><b>{{ cur_transaction.justification }}</b></span>
+                <span class="justificativa-texto"><b>
+                  <a href="{{ cur_transaction.receipt.path }}">
+                  {{ cur_transaction.justification }}
+                  </a>
+                </b></span>
               </div>
             </span>
             </span>

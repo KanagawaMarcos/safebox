@@ -14,7 +14,7 @@ class Transaction(models.Model):
 	#Separe essas duas linhas em classes separadas por herança
 	origin = models.CharField(max_length=257, default='', blank=True, null=True)
 	destination = models.CharField(max_length=257, default='', blank=True, null=True)
-	comprovante = models.FileField(upload_to='comprovantes', blank=True, null=True)
+	receipt = models.FileField(upload_to='comprovantes', blank=True, null=True)
 	its_type = models.CharField(max_length=257, default='')
 
 	def __str__(self):
