@@ -50,7 +50,7 @@
             </div>
         {% endfor %}
 
-        {% for cur_transaction in transactions %}
+        {% for cur_transaction in transactions reversed %}
         <li>
           <div class="collapsible-header ">
             {% if cur_transaction.its_type == 'Saque' %}
