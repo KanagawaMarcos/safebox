@@ -1,16 +1,21 @@
 from django.db import models
 
+#created_date attibute needs it
+from django.utils import timezone
+
 # This Model is a super class "Financial Transaction"
 class Transaction(models.Model):
-	who_did_it = models.CharField(max_length=257, default='Desconhecido')
-	value = models.DecimalField(max_digits=6, decimal_places=2, default=-666)
-	justification = models.CharField(max_length=257, default='Sem Descrição')
-	created_at = models.DateTimeField(auto_now_add=True)
+	who_did_it = models.CharField(max_length=257, default='')
+	value = models.DecimalField(max_digits=6, decimal_places=2)
+	justification = models.CharField(max_length=257, default='')
+	#created_at = models.DateTimeField(auto_now_add=True)
+	created_date = models.DateTimeField(default=timezone.now)
 
 	#Separe essas duas linhas em classes separadas por herança
-	origin = models.CharField(max_length=257, default='Caixa Não Informada')
-	destination = models.CharField(max_length=257, default='Caixa Não Informada')
+	origin = models.CharField(max_length=257, default='', blank=True, null=True)
+	destination = models.CharField(max_length=257, default='', blank=True, null=True)
+	comprovante = models.FileField(upload_to='comprovantes', blank=True, null=True)
 
 	def __str__(self):
 		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
-		return self.justification + ' - ' + who_did_it + ' ( R$ ' + str(value) +' ) ( ' + str(date)+' )'
+		return "%s - %s" % (self.justification , self.who_did_it)

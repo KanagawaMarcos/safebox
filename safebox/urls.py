@@ -22,9 +22,11 @@ from django.conf.urls.static import static
 
 from varys import views
 
+from django.shortcuts import redirect
+
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
 	path('admin/', admin.site.urls),
-	path('accounts/', include('django.contrib.auth.urls')),
     path('historico/', views.historico, name='historico'),
 ]
 
