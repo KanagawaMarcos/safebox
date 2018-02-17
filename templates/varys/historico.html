@@ -105,7 +105,14 @@
               <div class="col s4 center-align">
                 <i class="material-icons small">account_balance</i>
                 <br>
-                {{ cur_transaction.destination }}
+                {% if cur_transaction.destination %}
+                  {{ cur_transaction.destination }}
+                  {% if cur_transaction.origin %}
+                     - {{ cur_transaction.origin }}
+                  {% endif %}
+                {% elif cur_transaction.origin %}
+                  {{ cur_transaction.origin }}
+                {% endif %}
               </div>
             <span class="row">
               <div class="col s12 center-align justificativa-texto">
