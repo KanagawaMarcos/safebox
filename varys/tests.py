@@ -11,8 +11,8 @@ class Transaction_Model_Test(TestCase):
             justification='Testing some deposits',
             its_type='Deposito',
         )
-    def test_deposits(self):
 
-        #Test if the printed name of a transaction is correct
+    def test_deposit_str_function(self):
         positive_deposit = Transaction.objects.get(who_did_it='Generic_Deposit')
         self.assertEqual(positive_deposit.__str__(), positive_deposit.justification + " - " + positive_deposit.who_did_it )
+    

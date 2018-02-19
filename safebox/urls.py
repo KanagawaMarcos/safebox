@@ -22,8 +22,6 @@ from django.conf.urls.static import static
 
 from varys import views
 
-from django.shortcuts import redirect
-
 urlpatterns = [
     path('', include('django.contrib.auth.urls'), name='login'),
 	path('admin/', admin.site.urls),
