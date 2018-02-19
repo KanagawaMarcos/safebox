@@ -1,7 +1,6 @@
 from django.test import TestCase
 from varys.models import Transaction
 
-from random
 # Create your tests here.
 class Transaction_Model_Test(TestCase):
 
@@ -14,7 +13,6 @@ class Transaction_Model_Test(TestCase):
         )
     def test_deposits(self):
 
-        #Test if only values greater or equal to 0 are valid
+        #Test if the printed name of a transaction is correct
         positive_deposit = Transaction.objects.get(who_did_it='Generic_Deposit')
-        positive_deposit.value = random.uniform(0.05 , 16000.0)
-        self.assertEqual(positive_deposit.value > 0.0 , True)
+        self.assertEqual(positive_deposit.__str__(), positive_deposit.justification + " - " + positive_deposit.who_did_it )
