@@ -6,11 +6,13 @@ class Transaction_Model_Test(TestCase):
 
     def setUp(self):
         deposit = Transaction.objects.create(
-            who_did_it='Positive_Deposit',
-            value=10,
-            justification='Testing positive values',
+            who_did_it='Generic_Deposit',
+            value=0,
+            justification='Testing some deposits',
             its_type='Deposito',
         )
-    def test_positive_deposits(self):
-        positive_deposit = Transaction.objects.get(who_did_it='Positive_Deposit')
-        self.assertEqual(positive_deposit.value > 0.0 , True)
+    def test_deposits(self):
+
+        #Test if the printed name of a transaction is correct
+        positive_deposit = Transaction.objects.get(who_did_it='Generic_Deposit')
+        self.assertEqual(positive_deposit.__str__(), positive_deposit.justification + " - " + positive_deposit.who_did_it )
