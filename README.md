@@ -115,7 +115,7 @@ Foi usado o [Git](https://git-scm.com/) para versionamento.
 
 * **Marcos Costa Santos**
 
-Veja também a lista de [contribuidores](https://github.com/your/project/contributors) que participaram do projeto.
+Veja também a lista de [contribuidores](https://github.com/Marcos-Costa/safebox/graphs/contributors) que participaram do projeto.
 
 ## License
 
