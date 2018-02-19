@@ -24,7 +24,7 @@ Acesse o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador e d
 * Materialize CSS 1.0
 * Git
 
-### Installing
+### Instalação
 
 Primeiramente você deve instalar python 3.0. Python é uma linguagem de programação de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte. 
 
