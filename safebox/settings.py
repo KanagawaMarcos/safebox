@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'varys',
     'deposit',
+    'withdraw',
+    'transfer',
+    'metas',
 ]
 
 MIDDLEWARE = [
