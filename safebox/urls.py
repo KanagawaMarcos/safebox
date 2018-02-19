@@ -20,14 +20,26 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from varys import views
-
-from django.shortcuts import redirect
-
 urlpatterns = [
     path('', include('django.contrib.auth.urls'), name='login'),
 	path('admin/', admin.site.urls),
+]
+
+#History page
+from varys import views
+urlpatterns +=[
     path('historico/', views.historico, name='historico'),
+]
+
+#Deposit page
+from deposit import views
+urlpatterns +=[
+    path('deposito/', views.deposito, name='deposito'),
+]
+#Withdraw page
+from withdraw import views
+urlpatterns +=[
+    path('saque/', views.saque, name='saque'),
 ]
 
 if settings.DEBUG:
