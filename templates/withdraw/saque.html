@@ -1,3 +1,4 @@
+{% load staticfiles %}
   <!DOCTYPE html>
   <html>
     <head>
@@ -5,16 +6,17 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            
+
       <!-- Favicon do safebox-->
-      <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
+      <link rel="shortcut icon" type="image/x-icon" href="{% static 'general-img/favicon.png' %}" />
       <!-- Esconde a barra de url-->
       <meta name="mobile-web-app-capable" content="yes">
-      
+
+      <title>Saque</title>
     </head>
 
     <body>
@@ -70,8 +72,8 @@
             <!-- Qual caixinha -->
             <div class="input-field col s6">
               <select class="icons" required>
-                <option value="" data-icon="images/sample-1.jpg" class="circle">Geral</option>
-                <option value="" data-icon="images/office.jpg" class="circle">Comida</option>
+                <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Geral</option>
+                <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Comida</option>
 
               </select>
               <label>Qual caixa ?</label>
@@ -285,17 +287,17 @@
       <!--====== Barra de navegação à esquerda da tela ======-->
       <ul id="barra-navegacao-esquerda" class="side-nav grey lighten-4 collapsible" data-collapsible="accordion">
 
-                     <!--  Perfil usuário resumido  -->
+        <!--  Perfil usuário resumido  -->
 
         <li>
           <div class="user-view">
             <!-- Background -->
-            <div class="background" >
-              <img src="watermark.png" alt="PETComp watermark">
+            <div class="background">
+              <img src="{% static 'general-img/watermark.png'%}" alt="PETComp watermark">
             </div>
 
             <!-- Informações do usuário -->
-            <a href="#!user"><img class="circle" src="profile-pictures/marcos.png"></a>
+            <a href="#!user"><img class="circle" src="{% static 'profile-pictures/marcos.png'%}"></a>
             <a href="#!name"><span class="black-text name">Marcos Costa</span></a>
             <a href="#!email"><span class="black-text email">Mcs1901@outlook.com</span></a>
 
@@ -370,9 +372,12 @@
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
 
       <script type="text/javascript">
+
+
+
         //Botão sandwich para abrir menu do lado esquerdo da tela.
         $(".button-collapse").sideNav();
 
@@ -386,21 +391,7 @@
           $('select').material_select();
         });
 
-        //Ativa autocomplete do local do evento
-        $('input.autocomplete').autocomplete({
-          data: {
-            "Marapet": null,
-            "Enepet": null,
-            "Anapet": null
-          },
-          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-          onAutocomplete: function(val) {
-            // Callback function when value is autcompleted.
-          },
-          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-        });
-
-        //Ativa a seleção de data do depósito mensal
+        //Ativa a seleção de data do saque
         $('.datepicker').pickadate({
            selectMonths: true, // Creates a dropdown to control month
            selectYears: 10, // Creates a dropdown of 15 years to control year,
@@ -408,6 +399,19 @@
            clear: 'Limpar',
            close: 'Fechar',
            closeOnSelect: false // Close upon selecting a date,
+         });
+         //Ativa autocomplete do local do evento
+         $('input.autocomplete').autocomplete({
+           data: {
+             "Marapet": null,
+             "Enepet": null,
+             "Anapet": null
+           },
+           limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+           onAutocomplete: function(val) {
+             // Callback function when value is autcompleted.
+           },
+           minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
          });
 
       </script>

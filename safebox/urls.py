@@ -33,9 +33,13 @@ urlpatterns +=[
 
 #Deposit page
 from deposit import views
-
 urlpatterns +=[
     path('deposito/', views.deposito, name='deposito'),
+]
+#Withdraw page
+from withdraw import views
+urlpatterns +=[
+    path('saque/', views.saque, name='saque'),
 ]
 
 if settings.DEBUG:
