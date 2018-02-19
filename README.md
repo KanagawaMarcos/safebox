@@ -18,16 +18,21 @@ Acesse o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador e d
 
 ### Pré-requisitos
 
+*Python 3.0
+*Pip
+*Django 2.0.2
+*Materialize CSS
+*Git
 
 ### Installing
 
-**Primeiramente você deve instalar python 3.0**. Python é uma linguagem de programação de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte. 
+Primeiramente você deve instalar python 3.0. Python é uma linguagem de programação de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte. 
 
 ```
 sudo apt-get install python3
 ```
 
-**Após isso instale o pip**. Pip é um sistema de gerenciamento de pacotes usado para instalar e gerenciar pacotes de software em python.
+Após isso instale o pip. Pip é um sistema de gerenciamento de pacotes usado para instalar e gerenciar pacotes de software em python.
 
 ```
 sudo apt-get install python3-pip
@@ -114,4 +119,4 @@ Veja também a lista de [contribuidores](https://github.com/your/project/contrib
 
 ## License
 
-Esse projeto usa a licença MIT License - veja o arquivo de licença [LICENSE.md](LICENSE.md) para mais detalhes.
+Esse projeto usa a licença MIT License - veja o arquivo de licença [LICENSE.md](https://github.com/Marcos-Costa/safebox/blob/master/LICENSE) para mais detalhes.
