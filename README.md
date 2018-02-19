@@ -91,7 +91,7 @@ localmente utilizado o comando
 python3 manage.py test
 ```
 
-## Deployment
+## Deploy
 
 O deploy da aplicação também é automatizada utilizando [CircleCI](http://circleci.com/). Toda vez que há um merge/commit no branch master (que é um branch protegido), um webhook é executado e o deploy automatizado acontece no servidor.
 Para configurar o deploy em seu servidor, leia a [documentação](https://circleci.com/docs/1.0/introduction-to-continuous-deployment/) do CircleCI sobre arquivos de configuração YAML.
