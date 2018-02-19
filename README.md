@@ -18,11 +18,11 @@ Acesse o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador e d
 
 ### Pré-requisitos
 
-*Python 3.0
-*Pip
-*Django 2.0.2
-*Materialize CSS
-*Git
+* Python 3.0
+* Pip
+* Django 2.0.2
+* Materialize CSS
+* Git
 
 ### Installing
 
@@ -95,7 +95,7 @@ python3 manage.py test
 
 O deploy da aplicação também é automatizada utilizando [CircleCI](http://circleci.com/). Toda vez que há um merge/commit no branch master (que é um branch protegido), um webhook é executado e o deploy automatizado acontece no servidor.
 Para configurar o deploy em seu servidor, leia a [documentação](https://circleci.com/docs/1.0/introduction-to-continuous-deployment/) do CircleCI sobre arquivos de configuração YAML.
-**O arquivo de configuração se encontra no sub diretório .circleci/config.yml**
+O arquivo de configuração se encontra no sub diretório **.circleci/config.yml**
 
 ## Tecnologias Usadas
 
