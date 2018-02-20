@@ -1,3 +1,4 @@
+{% load staticfiles %}
   <!DOCTYPE html>
   <html>
     <head>
@@ -5,16 +6,17 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            
+
       <!-- Favicon do safebox-->
       <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
       <!-- Esconde a barra de url-->
       <meta name="mobile-web-app-capable" content="yes">
-      
+
+      <title>Transferencia</title>
     </head>
 
     <body>
@@ -98,11 +100,11 @@
           <div class="user-view">
             <!-- Background -->
             <div class="background" >
-              <img src="watermark.png" alt="PETComp watermark">
+              <img src="{% static 'watermark.png' %}" alt="PETComp watermark">
             </div>
 
             <!-- Informações do usuário -->
-            <a href="#!user"><img class="circle" src="profile-pictures/marcos.png"></a>
+            <a href="#!user"><img class="circle" src="{% static 'profile-pictures/marcos.png'%}"></a>
             <a href="#!name"><span class="black-text name">Marcos Costa</span></a>
             <a href="#!email"><span class="black-text email">Mcs1901@outlook.com</span></a>
 
@@ -123,53 +125,53 @@
         </li>
 
               <!--  Opções válidas  -->
-        <!-- Histórico de movimentações financeiras -->
-        <li>
-          <a href="historico.html" class="waves-effect">
-            <i class="material-icons ">history</i>
-            Histórico
-          </a>
-        </li>
+              <!-- Histórico de movimentações financeiras -->
+              <li>
+                <a href="{% url 'historico'%}" class="waves-effect">
+                  <i class="material-icons ">history</i>
+                  Histórico
+                </a>
+              </li>
 
-        <!-- Remoção de dinheiro de alguma caixinha -->
-        <li>
-          <a href="saque.html" class="waves-effect">
-            <i class="material-icons red-text text-darken-4">money_off</i>
-            Saque
-          </a>
-        </li>
+              <!-- Remoção de dinheiro de alguma caixinha -->
+              <li>
+                <a href="{% url 'saque'%}" class="waves-effect">
+                  <i class="material-icons red-text text-darken-4">money_off</i>
+                  Saque
+                </a>
+              </li>
 
-        <!-- Adição de dinheiro à alguma caixinha -->
-        <li>
-          <a href="deposito.html" class="waves-effect">
-            <i class="material-icons green-text">attach_money</i>
-            Depósito
-          </a>
-        </li>
+              <!-- Adição de dinheiro à alguma caixinha -->
+              <li>
+                <a href="{% url 'deposito'%}" class="waves-effect">
+                  <i class="material-icons green-text">attach_money</i>
+                  Depósito
+                </a>
+              </li>
 
-        <!-- Transferência de dinheiro entre duas caixinhas -->
-        <li>
-          <a href="transferencia.html" class="waves-effect">
-            <i class="material-icons blue-text">compare_arrows</i>
-            Transferência
-          </a>
-        </li>
+              <!-- Transferência de dinheiro entre duas caixinhas -->
+              <li>
+                <a href="{% url 'transferencia'%}" class="waves-effect">
+                  <i class="material-icons blue-text">compare_arrows</i>
+                  Transferência
+                </a>
+              </li>
 
-        <!-- Pet Metas -->
-        <li>
-          <a href="metas.html" class="waves-effect">
-            <i class="material-icons amber-text text-darken-2">content_paste</i>
-            Metas
-          </a>
-        </li>
+              <!-- Pet Metas -->
+              <li>
+                <a href="{% url 'metas'%}" class="waves-effect">
+                  <i class="material-icons amber-text text-darken-2">content_paste</i>
+                  Metas
+                </a>
+              </li>
 
-        <!-- Painel de tutor -->
-        <li>
-          <a href="admin.html" class="waves-effect">
-            <i class="material-icons grey-text">create</i>
-            Painel de Administrador
-          </a>
-        </li>
+              <!-- Painel de tutor -->
+              <li>
+                <a href="#!" class="waves-effect">
+                  <i class="material-icons grey-text">create</i>
+                  Painel de Administrador
+                </a>
+              </li>
         <!-- =========================================== -->
       </ul>
 
@@ -177,7 +179,7 @@
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
 
       <script type="text/javascript">
         //Botão sandwich para abrir menu do lado esquerdo da tela.
