@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Transaction
 from django.contrib.auth.decorators import login_required
 
@@ -8,4 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def historico(request):
     transactions = Transaction.objects.all()
-    return render(request, 'varys/historico.html',{'transactions':transactions})
+    return render(request, 'varys/historico.html', {'transactions':transactions})
+
+def redirect_login(request):
+    return redirect('login')
