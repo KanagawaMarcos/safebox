@@ -119,4 +119,4 @@ Veja também a lista de [contribuidores](https://github.com/Marcos-Costa/safebox
 
 ## License
 
-Esse projeto usa a licença MIT License - veja o arquivo de licença [LICENSE.md](https://github.com/Marcos-Costa/safebox/blob/master/LICENSE) para mais detalhes.
+Esse projeto usa a licença MIT - veja o arquivo de licença [LICENSE.md](https://github.com/Marcos-Costa/safebox/blob/master/LICENSE) para mais detalhes.
