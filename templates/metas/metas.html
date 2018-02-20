@@ -1,3 +1,4 @@
+  {% load staticfiles %}
   <!DOCTYPE html>
   <html>
     <head>
@@ -5,16 +6,16 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            
+
       <!-- Favicon do safebox-->
       <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
       <!-- Esconde a barra de url-->
       <meta name="mobile-web-app-capable" content="yes">
-      
+
     </head>
 
     <body>
@@ -131,7 +132,7 @@
             </div>
 
             <!-- Informações do usuário -->
-            <a href="#!user"><img class="circle" src="profile-pictures/marcos.png"></a>
+            <a href="#!user"><img class="circle" src="{% static 'profile-pictures/marcos.png'%}"></a>
             <a href="#!name"><span class="black-text name">Marcos Costa</span></a>
             <a href="#!email"><span class="black-text email">Mcs1901@outlook.com</span></a>
 
@@ -209,7 +210,7 @@
 
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js' %}"></script>
 
       <script type="text/javascript">
         //Botão sandwich para abrir menu do lado esquerdo da tela.
