@@ -21,10 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-import varys.views      #Página Histórico
 import deposit.views    #Página Deposito
-import withdraw.views   #Página Saque
 import metas.views      #Página Metas
+import transfer.views   #Página Transferência
+import varys.views      #Página Histórico
+import withdraw.views   #Página Saque
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls'), name='login'),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('deposito/', deposit.views.deposito, name='deposito'),
     path('saque/', withdraw.views.saque, name='saque'),
     path('metas/', metas.views.metas, name='metas'),
+    path('transferencia/', transfer.views.transferencia, name='transferencia'),
 ]
 
 
