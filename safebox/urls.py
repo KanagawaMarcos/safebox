@@ -20,27 +20,19 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+import varys.views      #Página Histórico
+import deposit.views    #Página Deposito
+import withdraw.views   #Página Saque
+
 urlpatterns = [
     path('', include('django.contrib.auth.urls'), name='login'),
 	path('admin/', admin.site.urls),
+    path('historico/', varys.views.historico, name='historico'),
+    path('deposito/', deposit.views.deposito, name='deposito'),
+    path('saque/', withdraw.views.saque, name='saque'),
 ]
 
-#History page
-from varys import views
-urlpatterns +=[
-    path('historico/', views.historico, name='historico'),
-]
-
-#Deposit page
-from deposit import views
-urlpatterns +=[
-    path('deposito/', views.deposito, name='deposito'),
-]
-#Withdraw page
-from withdraw import views
-urlpatterns +=[
-    path('saque/', views.saque, name='saque'),
-]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
