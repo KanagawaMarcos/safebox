@@ -21,7 +21,6 @@ Acesse o endereço [127.0.0.1:8000](http://127.0.0.1:8000/) no seu navegador e d
 * Python 3.0
 * Pip
 * Django 2.0.2
-* Materialize CSS 1.0
 * Git
 
 ### Instalação
