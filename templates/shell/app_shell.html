@@ -25,7 +25,7 @@
       <nav class="blue">
         <div class="nav-wrapper">
           <!-- Página atual do safebox -->
-          <a href="#!" class="brand-logo">Pagina Atual</a>
+          <a href="#!" class="brand-logo center">Pagina Atual</a>
           <!-- Botão de abrir menu-->
           <a href="#!" data-activates="barra-navegacao-esquerda" class="button-collapse">
             <i class="material-icons">
@@ -77,28 +77,47 @@
       </li>
 
             <!--  Opções válidas  -->
+
       <!-- Histórico de movimentações financeiras -->
       <li>
-        <a href="{% url 'historico' %}" class="waves-effect">
-          <i class="material-icons ">history</i>
-          Histórico
-        </a>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect">Histórico<i class="material-icons">history</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
       </li>
 
       <!-- Remoção de dinheiro de alguma caixinha -->
       <li>
-        <a href="{% url 'saque' %}" class="waves-effect">
-          <i class="material-icons red-text text-darken-4">money_off</i>
-          Saque
-        </a>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header" >Saque<i class="material-icons red-text text-darken-4">money_off</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{% url 'saque' %}">Pagamento</a></li>
+                <!-- Como redirecionar ele para à aba correta? -->
+                <li><a href="#!">Inscrição em Evento</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </li>
 
       <!-- Adição de dinheiro à alguma caixinha -->
       <li>
-        <a href="{% url 'deposito' %}" class="waves-effect">
-          <i class="material-icons green-text">attach_money</i>
-          Depósito
-        </a>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header" >Depósito<i class="material-icons green-text">attach_money</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{% url 'deposito' %}">Avulso</a></li>
+                <!-- Como redirecionar ele para à aba correta? -->
+                <li><a href="#!">Mensal</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </li>
 
       <!-- Transferência de dinheiro entre duas caixinhas -->
