@@ -129,20 +129,17 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="{% url 'transferencia' %}" class="waves-effect">
-          <i class="material-icons blue-text">compare_arrows</i>
-          Transferência
-        </a>
-      </li>
 
       <!-- Pet Metas -->
       <li>
-        <a href="{% url 'metas' %}" class="waves-effect">
-          <i class="material-icons amber-text text-darken-2">content_paste</i>
-          Metas
-        </a>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'metas' %}">Metas<i class="material-icons amber-text text-darken-2">content_paste</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
       </li>
+
 
       <!-- Painel de tutor -->
       <li>
