@@ -22,7 +22,7 @@
 
     <!--======== Barra de navegação no topo da tela ========-->
     <header>
-      <nav class="blue">
+      <nav class="nav-extended blue">
         <div class="nav-wrapper">
           <!-- Página atual do safebox -->
           <a href="#!" class="brand-logo center light">Pagina Atual</a>
@@ -33,14 +33,22 @@
             </i>
           </a>
         </div>
+        {% if is_withdraw %}
+          {% include 'withdraw/navbar_tabs.html'%}
+        {% endif %}
       </nav>
 
     </header>
     <!--====================================================-->
 
-    <!--======Coloque aqui o conteúdo da =======-->
-
-
+    <!--======Coloque aqui o conteúdo da página=======-->
+    <main>
+      {% if is_varys %}
+        {% include 'varys/historico.html' %}
+      {% elif is_withdraw %}
+        {% include 'withdraw/saque.html'%}
+      {% endif %}
+    </main>
     <!--====================================================-->
 
     <!--====== Barra de navegação à esquerda da tela ======-->
@@ -87,7 +95,7 @@
       <li>
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header waves-effect">Histórico<i class="material-icons">history</i></a>
+            <a class="collapsible-header waves-effect" href="{% url 'historico'%}">Histórico<i class="material-icons">history</i></a>
             <div class="collapsible-body"></div>
           </li>
         </ul>

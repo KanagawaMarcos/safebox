@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 def historico(request):
     transactions = Transaction.objects.all()
     # return render(request, 'varys/historico.html', {'transactions':transactions})
-    return render(request, 'shell/app_shell.html')
+    return render(request, 'shell/app_shell.html', {'is_varys': True,
+                    'transactions': transactions })
 
 def redirect_login(request):
     return redirect('login')
