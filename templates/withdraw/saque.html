@@ -6,7 +6,7 @@
 
     <!-- Valor do depósito -->
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field col s12 m6">
         <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required>
         <label for="valor" data-error="Valor inválido">Valor</label>
       </div>
@@ -47,7 +47,7 @@
     <!-- Arquivo(s) de comprovante(s) -->
     <div class="row">
       <div class="file-field input-field">
-        <div class="btn col s12">
+        <div class="btn col s12 m3">
           <span>Anexar Comprovante</span>
           <input type="file" name="comprovante" value="" multiple>
         </div>
@@ -59,8 +59,8 @@
 
     <!-- Botão de registrar saque (submit) -->
     <div class="row">
-        <button class="btn waves-effect waves-light col s6 offset-s6 blue" type="submit" name="action">Registrar Saque
-          <i class="material-icons">send</i>
+        <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Registrar Saque
+          <i class="material-icons right">send</i>
         </button>
     </div>
   </form>
@@ -217,9 +217,9 @@
     <!-- Arquivo(s) de comprovante(s) -->
     <div class="row">
       <div class="file-field input-field">
-        <div class="btn col s12">
+        <div class="btn col s12 m3">
           <span>Anexar Comprovante</span>
-          <input type="file" name="comprovante" value="" multiple required>
+          <input type="file" name="comprovante" value="" multiple>
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text" name="caminho-comprovante" value="">
@@ -229,9 +229,9 @@
 
     <!-- Botão de registrar saque (submit) -->
     <div class="row">
-        <button class="btn waves-effect waves-light col s8 offset-s4 blue" type="submit" name="action">Registrar Inscrições
-          <i class="material-icons">send</i>
-        </button>
+      <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Registrar Saque
+        <i class="material-icons right">send</i>
+      </button>
     </div>
   </form>
 </div>
