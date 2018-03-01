@@ -1,3 +1,4 @@
+{% load staticfiles%}
 <!--====== Templates de saques =======-->
 <div id="pagamento-template" class="row col s12">
   <form class="col s12" method="POST" action="{% url 'saque' %}">
@@ -8,9 +9,9 @@
     <!-- Valor do depósito -->
      <div class="row">
       <div class="input-field col s12 m6">
-        {{ transaction }}
         <!-- <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required> -->
-        <!-- <label for="valor" data-error="Valor inválido">Valor</label> -->
+        <label for="{{ transaction.value.id_for_label}}" data-error="{{ transaction.value.errors }}">Valor do Saque</label>
+        {{ transaction.value }}
       </div>
     </div>
 
@@ -18,9 +19,9 @@
         <!-- Quem depositou -->
       <div class="input-field col s6">
         <select class="icons" required>
-          <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Marcos Costa</option>
-          <option value="" data-icon="http://materializecss.com/images/office.jpg" class="circle">Arthur Serra</option>
-          <option value="" data-icon="http://materializecss.com/images/yuna.jpg" class="circle">Celielma Baldez</option>
+          {% for user in users_list %}
+            <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
+          {% endfor %}
         </select>
         <label>Quem está pagando ?</label>
       </div>

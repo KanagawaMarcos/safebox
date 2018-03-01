@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 # from varys.models import Transaction
 from .forms import WithdrawForm
 
+#To get all users and list as "who_did_it"
+from django.contrib.auth.models import User
+
 # Create your views here.
 @login_required
 def saque(request):
@@ -24,4 +27,5 @@ def saque(request):
     return render(request, 'shell/app_shell.html',
                     {'is_withdraw': True,
                      'title': 'Saque',
-                     'transaction': transaction})
+                     'transaction': transaction,
+                     'users_list': User.objects.all()})
