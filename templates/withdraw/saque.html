@@ -1,14 +1,16 @@
 <!--====== Templates de saques =======-->
 <div id="pagamento-template" class="row col s12">
-  <form class="col s12">
+  <form class="col s12" method="POST" action="{% url 'saque' %}">
+    {% csrf_token %}
 
     <div class="row"></div>
 
     <!-- Valor do depósito -->
-    <div class="row">
+     <div class="row">
       <div class="input-field col s12 m6">
-        <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required>
-        <label for="valor" data-error="Valor inválido">Valor</label>
+        {{ transaction }}
+        <!-- <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required> -->
+        <!-- <label for="valor" data-error="Valor inválido">Valor</label> -->
       </div>
     </div>
 
@@ -34,8 +36,6 @@
       </div>
     </div>
 
-
-
     <!-- Justificativa -->
     <div class="row">
       <div class="input-field col s12">
@@ -44,6 +44,7 @@
       </div>
     </div>
 
+    <div class="row"></div>
     <!-- Arquivo(s) de comprovante(s) -->
     <div class="row">
       <div class="file-field input-field">

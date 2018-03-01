@@ -16,6 +16,7 @@
     <!-- Esconde a barra de url-->
     <meta name="mobile-web-app-capable" content="yes">
 
+    <title>Safebox - {{ title }}</title>
   </head>
 
   <body>
@@ -25,7 +26,9 @@
       <nav class="nav-extended blue">
         <div class="nav-wrapper">
           <!-- Página atual do safebox -->
-          <a href="#!" class="brand-logo center light">Pagina Atual</a>
+          <a href="#!" class="brand-logo center light">
+            {{ title }}
+          </a>
           <!-- Botão de abrir menu-->
           <a href="#!" data-activates="barra-navegacao-esquerda" class="button-collapse">
             <i class="material-icons">
