@@ -29,7 +29,7 @@
       <!-- Qual caixinha -->
       <div class="input-field col s6">
         <select class="icons" required>
-          {% for box in boxes reversed%}
+          {% for box in boxes reversed %}
             <option value="" data-icon="{% static 'profile-pictures/PetLogo.png'%}" class="circle">{{ box.name }}</option>
           {% endfor%}
         </select>
@@ -41,6 +41,7 @@
     <div class="row">
       <div class="input-field col s12">
         <!-- <textarea id="textarea1" class="materialize-textarea" required></textarea> -->
+        {{ transaction.justification }}
         <label for="textarea1">Justificativa para o saque</label>
       </div>
     </div>

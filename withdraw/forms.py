@@ -3,8 +3,8 @@ from varys.models import Transaction
 
 class WithdrawForm(forms.Form):
 
-    value = forms.DecimalField(max_digits=6, decimal_places=2)
-    justification = forms.CharField(max_length=257, default='')
+    value = forms.DecimalField()
+    justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
 
     class Meta:
         model = Transaction
