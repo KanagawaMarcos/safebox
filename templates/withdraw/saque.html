@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!--====== Templates de saques =======-->
 <div id="pagamento-template" class="row col s12">
-  <form class="col s12" method="POST" action="{% url 'saque' %}">
+  <form class="col s12" method="POST" action="{% url 'saque' %} " enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="row"></div>
