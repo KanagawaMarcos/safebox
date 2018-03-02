@@ -2,8 +2,9 @@ from django import forms
 from varys.models import Transaction
 
 class WithdrawForm(forms.Form):
-    
+
     value = forms.DecimalField()
+
 
     class Meta:
         model = Transaction
