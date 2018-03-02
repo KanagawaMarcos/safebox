@@ -6,8 +6,9 @@ from .forms import WithdrawForm
 
 #To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
-#To get all boxes
-from varys.models import Box
+#To get all boxes and Transactions
+from varys.models import Box,Transaction
+
 
 # Create your views here.
 @login_required
@@ -21,6 +22,8 @@ def saque(request):
         #Se os dados foram preenchido corretamente
         if transaction.is_valid():
             return HttpResponseRedirect('/thanks/')
+        else:
+            return HttpResponseRedirect('/deu-ruim')
     #Se for a primeira vez que a página é renderizada
     else:
         #Cria uma transação vazia para ser preenchida
