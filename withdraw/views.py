@@ -6,6 +6,8 @@ from .forms import WithdrawForm
 
 #To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
+#To get all boxes
+from varys.models import Box
 
 # Create your views here.
 @login_required
@@ -28,4 +30,5 @@ def saque(request):
                     {'is_withdraw': True,
                      'title': 'Saque',
                      'transaction': transaction,
+                     'boxes': Box.objects.all(),
                      'users_list': User.objects.all()})

@@ -29,8 +29,9 @@
       <!-- Qual caixinha -->
       <div class="input-field col s6">
         <select class="icons" required>
-          <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Geral</option>
-          <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Comida</option>
+          {% for box in boxes reversed%}
+            <option value="" data-icon="{% static 'profile-pictures/PetLogo.png'%}" class="circle">{{ box.name }}</option>
+          {% endfor%}
         </select>
         <label>Qual caixa ?</label>
       </div>
