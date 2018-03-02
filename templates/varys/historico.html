@@ -1,0 +1,86 @@
+<!--======Histórico de movimentações financeiras =======-->
+<ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
+  {% for post in posts %}
+      <div>
+          <p>published: {{ post.published_date }}</p>
+          <h1><a href="">{{ post.title }}</a></h1>
+          <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+  {% endfor %}
+
+  {% for cur_transaction in transactions reversed %}
+  <li>
+    <div class="collapsible-header ">
+      {% if cur_transaction.its_type == 'Saque' %}
+        <i class="material-icons red-text">money_off</i>
+      {% elif cur_transaction.its_type == 'Deposito' %}
+        <i class="material-icons green-text">attach_money</i>
+      {% elif cur_transaction.its_type == 'Transferencia' %}
+        <i class="material-icons blue-text">swap_horiz</i>
+      {% endif %}
+      <span class="truncate justificativa-header" >
+        {{ cur_transaction.justification }}
+        -
+        {{ cur_transaction.who_did_it }}
+      </span>
+
+    </div>
+
+    <div class="collapsible-body">
+      <span class="row">
+
+        <!-- Comprovante preview -->
+        <div  class="hide-on-med-and-down">
+          <!-- Adicionar aqui o pdf/img -->
+        </div>
+
+        <div class="col s4 center-align">
+          <i class="material-icons small">date_range</i>
+          <br>
+          {{ cur_transaction.created_date.date }}
+        </div>
+
+        <div class="col s3 center-align">
+          <i class="material-icons small">account_circle</i>
+          <br>
+          {{ cur_transaction.who_did_it }}
+        </div>
+
+        <div class="col s2 center-align">
+          <i class="material-icons small">account_balance</i>
+          <br>
+          {% if cur_transaction.destination %}
+            {{ cur_transaction.destination }}
+            {% if cur_transaction.origin %}
+               - {{ cur_transaction.origin }}
+            {% endif %}
+          {% elif cur_transaction.origin %}
+            {{ cur_transaction.origin }}
+          {% endif %}
+        </div>
+        <div class="col s3 center-align">
+          <i class="material-icons small">account_balance_wallet</i>
+          <br>
+          R${{ cur_transaction.value }}
+        </div>
+      <span class="row">
+        <div class="col s12 center-align justificativa-texto">
+          <span class="justificativa-texto"><b>
+            {% if cur_transaction.receipt %}
+              <a href="{{ cur_transaction.receipt.path }}">
+                Comprovante da {{ cur_transaction.justification }}
+              </a>
+            {% else %}
+                O motivo foi {{ cur_transaction.justification }}
+            {% endif %}
+
+          </b></span>
+        </div>
+      </span>
+      </span>
+    </div>
+  </li>
+
+  {% endfor %}
+</ul>
+<!--====================================================-->
