@@ -32,6 +32,6 @@ def saque(request):
                     {'is_withdraw': True,
                      'title': 'Saque',
                      'transaction': transaction,
-                     'users_list': User.objects.all()
-
+                     'users_list': User.objects.all(),
+                     'boxes' : Box.objects.all()
                      })

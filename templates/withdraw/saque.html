@@ -20,7 +20,9 @@
       <div class="input-field col s6">
         <select class="icons" required>
           {% for user in users_list %}
-            <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
+            {% if user.get_full_name != '' %}
+              <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
+            {% endif %}
           {% endfor %}
         </select>
         <label>Quem está pagando ?</label>
@@ -29,9 +31,9 @@
       <!-- Qual caixinha -->
       <div class="input-field col s6">
         <select class="icons" required>
-          
-          <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Geral</option>
-          <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Comida</option>
+          {% for box in boxes %}
+            <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ box.name }}</option>
+          {% endfor %}
         </select>
         <label>Qual caixa ?</label>
       </div>
@@ -40,7 +42,8 @@
     <!-- Justificativa -->
     <div class="row">
       <div class="input-field col s12">
-        <textarea id="textarea1" class="materialize-textarea" required></textarea>
+        <!-- <textarea id="textarea1" class="materialize-textarea" required></textarea> -->
+        {{ transaction.justification }}
         <label for="textarea1">Justificativa para o saque</label>
       </div>
     </div>

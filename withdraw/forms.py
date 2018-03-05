@@ -6,7 +6,7 @@ class WithdrawForm(forms.Form):
     value = forms.DecimalField()
     who_did_it = forms.CharField()
     destination = forms.CharField()
-    justification = forms.CharField()
+    justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}) )
     receipt = forms.FileField()
 
     class Meta:
