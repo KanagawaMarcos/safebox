@@ -19,14 +19,13 @@
         <!-- Quem depositou -->
       <div class="input-field col s6">
         <select class="icons" required>
-          <!--
+
           {% for user in users_list %}
             {% if user.get_full_name != '' %}
               <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
             {% endif %}
           {% endfor %}
-          -->
-          {{ transaction.who_did_it }}
+
         </select>
         <label>Quem está pagando ?</label>
       </div>
