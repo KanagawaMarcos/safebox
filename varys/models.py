@@ -20,3 +20,12 @@ class Transaction(models.Model):
 	def __str__(self):
 		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
 		return "%s - %s" % (self.justification , self.who_did_it)
+
+class Box(models.Model):
+	name = models.CharField(max_length=257)
+	balance = models.DecimalField(max_digits=9, decimal_places=2)
+
+	def __str__(self):
+		return "%s - R$ %d" % (self.name, self.balance)
+	class Meta:
+		verbose_name_plural = 'Boxes'

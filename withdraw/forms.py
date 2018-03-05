@@ -4,11 +4,14 @@ from varys.models import Transaction
 class WithdrawForm(forms.Form):
 
     value = forms.DecimalField()
-
+    who_did_it = forms.CharField()
+    destination = forms.CharField()
+    justification = forms.CharField()
+    receipt = forms.FileField()
 
     class Meta:
         model = Transaction
-        fields = ('value')
+        fields = ('value','who_did_it','destination','justification','receipt')
 
     # def clean_value(self):
     #     self.cleaned_data.get('value')
