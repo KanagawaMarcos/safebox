@@ -1,13 +1,14 @@
 from django import forms
 from varys.models import Transaction
-
+from django.contrib.auth.models import User
 class WithdrawForm(forms.Form):
 
+
     value = forms.DecimalField()
-    who_did_it = forms.CharField()
+    who_did_it = forms.MultipleChoiceField(choices=User.objects.all())
     destination = forms.CharField()
     justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}) )
-    receipt = forms.FileField()
+    receipt = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple':True}))
 
     class Meta:
         model = Transaction

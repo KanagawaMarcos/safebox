@@ -19,11 +19,14 @@
         <!-- Quem depositou -->
       <div class="input-field col s6">
         <select class="icons" required>
+          <!--
           {% for user in users_list %}
             {% if user.get_full_name != '' %}
               <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
             {% endif %}
           {% endfor %}
+          -->
+          {{ transaction.who_did_it }}
         </select>
         <label>Quem está pagando ?</label>
       </div>
@@ -54,7 +57,8 @@
       <div class="file-field input-field">
         <div class="btn col s12 m3">
           <span>Anexar Comprovante</span>
-          <input type="file" name="comprovante" value="" multiple>
+          <!-- <input type="file" name="comprovante" value="" multiple> -->
+          {{ transaction.receipt }}
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text" name="caminho-comprovante" value="">
