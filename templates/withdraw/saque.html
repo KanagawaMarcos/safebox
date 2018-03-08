@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!--====== Templates de saques =======-->
 <div id="pagamento-template" class="row col s12">
-  <form class="col s12" method="POST" action="{% url 'saque' %} " enctype="multipart/form-data">
+  <form class="col s12" method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="row"></div>
@@ -18,22 +18,23 @@
     <div class="row">
         <!-- Quem depositou -->
       <div class="input-field col s6">
-        <select class="icons" required>
-          {% for user in users_list %}
-            <option value="" data-icon="{% static 'profile-pictures/PetLogo.png' %}" class="circle">{{ user.get_full_name }}</option>
-          {% endfor %}
+        <!--<select class="icons" required>
+
         </select>
-        <label>Quem está pagando ?</label>
+        <label>Quem está pagando (not working)?</label>
+      -->
       </div>
 
       <!-- Qual caixinha -->
       <div class="input-field col s6">
+        <!--
         <select class="icons" required>
           {% for box in boxes reversed %}
             <option value="" data-icon="{% static 'profile-pictures/PetLogo.png'%}" class="circle">{{ box.name }}</option>
           {% endfor%}
         </select>
-        <label>Qual caixa ?</label>
+        <label>Qual caixa ?(not working)</label>
+      -->
       </div>
     </div>
 
@@ -50,14 +51,16 @@
     <!-- Arquivo(s) de comprovante(s) -->
     <div class="row">
       <div class="file-field input-field">
-        <div class="btn col s12 m3">
+        <div class="btn col s12 m3 disabled">
           <span>Anexar Comprovante</span>
           <!-- <input type="file" name="comprovante" value="" multiple> -->
-          {{ transaction.receipt }}
+          <!-- {{ transaction.receipt }} -->
         </div>
+        <!--
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text" name="caminho-comprovante" value="">
         </div>
+        -->
       </div>
     </div>
 
