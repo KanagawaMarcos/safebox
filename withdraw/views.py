@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .forms import WithdrawForm
 
 #To get all boxes and Transactions
-from varys.models import Box,Transaction
+from varys.models import Transaction
 
 
 # Create your views here.
@@ -33,5 +33,4 @@ def saque(request):
                      'is_withdraw': True,
                      'title': 'Saque',
                      'transaction': form,
-                     'boxes': Box.objects.all(),
                      })

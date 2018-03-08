@@ -3,6 +3,8 @@ from varys.models import Transaction
 
 #To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
+#To get all boxes
+from varys.models import Box
 
 class WithdrawForm(forms.Form):
 
@@ -21,6 +23,16 @@ class WithdrawForm(forms.Form):
 
     who_did_it = forms.ChoiceField(choices=users_options)
 
+    #Get all boxes from database
+    all_boxes = Box.objects.all()
+    #Empty tuple of tuples
+    boxes_options = ()
+    #loop throught all boxes and get their names
+    for cur_box in reversed(all_boxes):
+        boxes_options += ((cur_box.name , cur_box.name ),)
+
+    origin = forms.ChoiceField(choices=boxes_options)
+
     class Meta:
         model = Transaction
-        fields = ('value','justification','who_did_it')
+        fields = ('value','justification','who_did_it','origin')
