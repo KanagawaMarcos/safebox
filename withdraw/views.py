@@ -5,8 +5,6 @@ from django.http import HttpResponseRedirect
 # from varys.models import Transaction
 from .forms import WithdrawForm
 
-#To get all users and list as "who_did_it"
-from django.contrib.auth.models import User
 #To get all boxes and Transactions
 from varys.models import Box,Transaction
 
