@@ -36,5 +36,4 @@ def saque(request):
                      'title': 'Saque',
                      'transaction': form,
                      'boxes': Box.objects.all(),
-                     'users_list': User.objects.all()
                      })
