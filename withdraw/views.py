@@ -20,7 +20,7 @@ def saque(request):
     if request.method == 'POST':
         #Copia os dados de transação enviados via método POST
         #E cria um formulário novo com eles
-        form = WithdrawForm(request.POST)
+        form = WithdrawForm(request.POST, request.FILES)
         #Se os dados foram preenchido corretamente
         if form.is_valid():
             form.cleaned_data['its_type'] = 'Deposito'
