@@ -38,6 +38,8 @@
         </div>
         {% if is_withdraw %}
           {% include 'withdraw/navbar_tabs.html'%}
+        {% elif is_deposit %}
+          {% include 'deposit/navbar_tabs.html'%}
         {% endif %}
       </nav>
 
@@ -50,6 +52,8 @@
         {% include 'varys/historico.html' %}
       {% elif is_withdraw %}
         {% include 'withdraw/saque.html'%}
+      {% elif is_deposit %}
+        {% include 'deposit/deposito.html'%}
       {% endif %}
     </main>
     <!--====================================================-->

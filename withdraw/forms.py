@@ -3,36 +3,21 @@ from varys.models import Transaction
 
 #To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
+
 #To get all boxes
 from varys.models import Box
+
+#That's a custom library made by @Marcos Costa Santos
+from varys.choices import who_did,which_box
 
 class WithdrawForm(forms.ModelForm):
 
     value = forms.DecimalField()
     justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
     receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
-    its_type = forms.CharField(widget=forms.HiddenInput(), initial='Saque')
-
-    #Get all users from database
-    all_users = User.objects.all()
-    #Empty tuple of tuples
-    users_options = ()
-    #loop throught all users and get their names
-    for cur_user in all_users:
-        if not cur_user.groups.filter(name='Administradores').exists():
-            users_options += ((cur_user.get_full_name(), cur_user.get_full_name()),)
-
-    who_did_it = forms.ChoiceField(choices=users_options)
-
-    #Get all boxes from database
-    all_boxes = Box.objects.all()
-    #Empty tuple of tuples
-    boxes_options = ()
-    #loop throught all boxes and get their names
-    for cur_box in reversed(all_boxes):
-        boxes_options += ((cur_box.name , cur_box.name ),)
-
-    origin = forms.ChoiceField(choices=boxes_options)
+    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Saque')
+    who_did_it = forms.ChoiceField(choices=who_did())
+    origin = forms.ChoiceField(choices=which_box())
 
     class Meta:
         model = Transaction
