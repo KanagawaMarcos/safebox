@@ -67,7 +67,7 @@
         <div class="col s12 center-align justificativa-texto">
           <span class="justificativa-texto"><b>
             {% if cur_transaction.receipt %}
-              <a href="{{ cur_transaction.receipt.path }}">
+              <a href="{{ cur_transaction.receipt.url }}">
                 Comprovante da {{ cur_transaction.justification }}
               </a>
             {% else %}
