@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from deposit.forms import DepositForm
 
 # Create your views here.
 @login_required
@@ -11,7 +13,7 @@ def deposito(request):
             HttpResponseRedirect('/historico/')
     else:
         form = DepositForm()
-    return render(request, 'shell/app_shell,html', {
+    return render(request, 'shell/app_shell.html', {
         'is_deposit' : True,
         'title' : 'Depósito',
         'transaction' : form
