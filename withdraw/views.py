@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 # from varys.models import Transaction
 from .forms import WithdrawForm
 
-#To get all users and list as "who_did_it"
-from django.contrib.auth.models import User
 #To get all boxes and Transactions
-from varys.models import Box,Transaction
+from varys.models import Transaction
 
 
 # Create your views here.
@@ -16,22 +15,23 @@ def saque(request):
     #Se esse view está recebendo um POST, ou seja
     #já foi renderizado e o formulário completado
     if request.method == 'POST':
-        #Copia o objeto de transação enviados via método POST
-        transaction = Transaction(request.POST)
-
+        #Copia os dados de transação enviados via método POST
+        #E cria um formulário novo com eles
+        form = WithdrawForm(request.POST)
         #Se os dados foram preenchido corretamente
-        if transaction.is_valid():
-            return HttpResponseRedirect('/thanks/')
+        if form.is_valid():
+            form.cleaned_data['its_type'] = 'Deposito'
+            form.save()
+            return HttpResponseRedirect('/historico/')
         else:
-            return HttpResponseRedirect('/deu-ruim')
+            return HttpResponseRedirect('/deu-ruim/'+str(form.errors.as_data()))
     #Se for a primeira vez que a página é renderizada
     else:
         #Cria uma transação vazia para ser preenchida
-        transaction = WithdrawForm()
+        form = WithdrawForm()
 
-    return render(request, 'shell/app_shell.html',
-                    {'is_withdraw': True,
+    return render(request, 'shell/app_shell.html',{
+                     'is_withdraw': True,
                      'title': 'Saque',
-                     'transaction': transaction,
-                     'boxes': Box.objects.all(),
-                     'users_list': User.objects.all()})
+                     'transaction': form,
+                     })
