@@ -21,6 +21,7 @@ class Transaction(models.Model):
 		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
 		return "%s - %s" % (self.justification , self.who_did_it)
 
+
 class Box (models.Model):
 	name = models.CharField(max_length=257)
 	value = models.DecimalField(max_digits=6, decimal_places=2)

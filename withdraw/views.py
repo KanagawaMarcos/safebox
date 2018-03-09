@@ -9,6 +9,9 @@ from .forms import WithdrawForm
 from varys.models import Transaction
 
 
+#Import the safebox
+from varys.models import Box
+
 # Create your views here.
 @login_required
 def saque(request):
