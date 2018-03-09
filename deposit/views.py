@@ -11,9 +11,11 @@ def deposito(request):
         if form.is_valid():
             form.save()
             HttpResponseRedirect('/historico/')
+        else:
+            print (str(form.errors.as_data()))
     else:
         form = DepositForm()
-    return render(request, 'shell/app_shell,html'+, {
+    return render(request, 'shell/app_shell.html', {
         'is_deposit' : True,
         'title' : 'Depósito',
         'transaction' : form
