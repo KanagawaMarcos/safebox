@@ -15,7 +15,7 @@ class WithdrawForm(forms.ModelForm):
     value = forms.DecimalField()
     justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
     receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
-    its_type = forms.CharField(widget=forms.HiddenInput(), initial='Saque')
+    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Saque')
     who_did_it = forms.ChoiceField(choices=who_did())
     origin = forms.ChoiceField(choices=which_box())
 

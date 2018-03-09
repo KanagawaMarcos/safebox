@@ -1,37 +1,31 @@
 {% load staticfiles %}
     <!--====== Templates dos depósitos =======-->
     <div id="avulso-template" class="row col s12">
-      <form class="col s12">
+      <form class="col s12" method="POST" action="" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ transaction.its_type }}
 
         <div class="row"></div>
 
         <!-- Valor do depósito -->
         <div class="row">
           <div class="input-field col s12">
-            <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required>
-            <label for="valor" data-error="Valor inválido">Valor</label>
+            <label for="{{ transaction.value.id_for_label}}" data-error="{{ transaction.value.errors }}">Valor do Depósito</label>
+            {{ transaction.value }}
           </div>
         </div>
 
         <div class="row">
+
             <!-- Quem depositou -->
           <div class="input-field col s6">
-            <select class="icons" required>
-              <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Marcos Costa</option>
-              <option value="" data-icon="http://materializecss.com/images/office.jpg" class="circle">Arthur Serra</option>
-              <option value="" data-icon="http://materializecss.com/images/yuna.jpg" class="circle">Celielma Baldez</option>
-            </select>
-            <label>Quem está pagando ?</label>
+            {{ transaction.who_did_it }}
           </div>
 
           <!-- Qual caixinha -->
           <div class="input-field col s6">
-            <select class="icons" required>
-              <option value="" data-icon="http://materializecss.com/images/sample-1.jpg" class="circle">Geral</option>
-              <option value="" data-icon="http://materializecss.com/images/yuna.jpg" class="circle">Comida</option>
-
-            </select>
-            <label>Qual caixa ?</label>
+            {{ transaction.destination }}
           </div>
         </div>
 
@@ -40,7 +34,7 @@
         <!-- Justificativa -->
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea" required></textarea>
+            {{ transaction.justification }}
             <label for="textarea1">Justificativa para o depósito</label>
           </div>
         </div>
@@ -48,10 +42,11 @@
         <!-- Arquivo(s) de comprovante(s) -->
         <div class="row">
           <div class="file-field input-field">
-            <div class="btn col s12">
+            <div class="btn col s12 m3">
               <span>Anexar Comprovante</span>
-              <input type="file" name="comprovante" value="" multiple>
+              {{ transaction.receipt }}
             </div>
+            <!-- Nome dos Arquivos -->
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" name="caminho-comprovante" value="">
             </div>
@@ -60,8 +55,8 @@
 
         <!-- Botão de registrar saque (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s8 offset-s4 blue" type="submit" name="action">Registrar Depósito
-              <i class="material-icons">send</i>
+            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Registrar Saque
+              <i class="material-icons right">send</i>
             </button>
         </div>
       </form>

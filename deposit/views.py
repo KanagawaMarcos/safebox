@@ -13,7 +13,7 @@ def deposito(request):
             HttpResponseRedirect('/historico/')
     else:
         form = DepositForm()
-    return render(request, 'shell/app_shell.html', {
+    return render(request, 'shell/app_shell,html'+, {
         'is_deposit' : True,
         'title' : 'Depósito',
         'transaction' : form
