@@ -18,12 +18,13 @@ def saque(request):
         #Copia os dados de transação enviados via método POST
         #E cria um formulário novo com eles
         form = WithdrawForm(request.POST)
-
         #Se os dados foram preenchido corretamente
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            form.cleaned_data['its_type'] = 'Deposito'
+            form.save()
+            return HttpResponseRedirect('/historico/')
         else:
-            return HttpResponseRedirect('/deu-ruim/')
+            return HttpResponseRedirect('/deu-ruim/'+str(form.errors.as_data()))
     #Se for a primeira vez que a página é renderizada
     else:
         #Cria uma transação vazia para ser preenchida

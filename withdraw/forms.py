@@ -6,11 +6,12 @@ from django.contrib.auth.models import User
 #To get all boxes
 from varys.models import Box
 
-class WithdrawForm(forms.Form):
+class WithdrawForm(forms.ModelForm):
 
     value = forms.DecimalField()
     justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
-    #receipt = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    its_type = forms.CharField(widget=forms.HiddenInput(), initial='Saque')
 
     #Get all users from database
     all_users = User.objects.all()
@@ -35,4 +36,4 @@ class WithdrawForm(forms.Form):
 
     class Meta:
         model = Transaction
-        fields = ('value','justification','who_did_it','origin')
+        fields = ('value','justification','who_did_it','origin','receipt', 'its_type')
