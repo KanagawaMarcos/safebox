@@ -19,7 +19,10 @@ class GroupTransaction(models.Model):
 
 	def __str__(self):
 		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
-		return "Depósito mensal de  %s" % (self.date)
+		if its_type == 'Evento':
+			return "Inscrição no evento %s de %s" % (self.name, self.date)
+		else:
+			return "Depósito mensal de  %s" % (self.date)
 
 
 # This Model is a super class "Financial Transaction"

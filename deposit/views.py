@@ -15,14 +15,10 @@ def deposito(request):
             if form.is_valid():
                 form.save()
                 HttpResponseRedirect('/historico/')
-            else:
-                print (str(form.errors.as_data()))
         else:
             if groupForm.is_valid():
                 groupForm.save()
-                # for who_paid in request.POST['who_paid']:
-                #     if User.objects.get(pk=who_paid):
-                #         print(User.objects.get(pk=who_paid).get_full_name())
+
     else:
         form = DepositForm()
         groupForm = MonthlyDepositForm()
@@ -32,5 +28,4 @@ def deposito(request):
         'transaction' : form,
         'groupTransaction' : groupForm,
         'users': User.objects.all(),
-        'user_class':User
     })
