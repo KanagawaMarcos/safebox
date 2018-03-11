@@ -63,7 +63,7 @@
     </div>
 
     <div id="mensal-template" class="row col s12">
-      <form class="col s12">
+      <form class="col s12" method="POST" action="" >
 
         {% csrf_token %}
         {{ groupTransaction.its_type }}
@@ -109,8 +109,11 @@
           <tbody>
             {% for checkbox in groupTransaction.who_paid %}
             <tr>
-              <td>{{ checkbox.choice_label }}</td>
-
+              {% for user in users %}
+                {% if user.get_username == checkbox.choice_label %}
+                  <td>{{ user.get_full_name }}</td>
+                {% endif %}
+              {% endfor %}
               <td>
                 <div class="switch">
                   <label>
