@@ -15,12 +15,10 @@ def deposito(request):
             if form.is_valid():
                 form.save()
                 HttpResponseRedirect('/historico/')
-            else:
-                print (str(form.errors.as_data()))
         else:
             if groupForm.is_valid():
                 groupForm.save()
-                
+
     else:
         form = DepositForm()
         groupForm = MonthlyDepositForm()
