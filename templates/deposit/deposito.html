@@ -94,10 +94,11 @@
               <th>Petiano</th>
               <th>
                 <div class="switch">
-                  <b class="center-align">Padrão Pago</b>
                   <label>
+                    Não Pago
                     <input type="checkbox">
                     <span class="lever"></span>
+                    Pago
                   </label>
                 </div>
               </th>
@@ -106,15 +107,15 @@
           </thead>
 
           <tbody>
-            {% for user in users %}
+            {% for checkbox in groupTransaction.who_paid %}
             <tr>
-              <td>{{ user.get_full_name }}</td>
+              <td>{{ checkbox.choice_label }}</td>
 
               <td>
                 <div class="switch">
                   <label>
                     <!-- <input type="checkbox"> -->
-                    {{ groupTransaction.who_paid }}
+                    {{ checkbox.tag }}
                     <span class="lever"></span>
                   </label>
                 </div>

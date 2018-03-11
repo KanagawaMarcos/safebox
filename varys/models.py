@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 #created_date attibute needs it
 from django.utils import timezone
 # This Model is a super class "Financial Transaction"
 class GroupTransaction(models.Model):
 	name = models.CharField(max_length=257, default='')
-	who_paid = models.CharField(max_length=257, default='')
+	who_paid = models.ManyToManyField(User)
 	value = models.DecimalField(max_digits=6, decimal_places=2)
 	justification = models.CharField(max_length=257, default='')
 	#created_at = models.DateTimeField(auto_now_add=True)

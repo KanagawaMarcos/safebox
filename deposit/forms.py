@@ -14,7 +14,7 @@ class MonthlyDepositForm(forms.ModelForm):
         'aria-readonly':'false',
         'aria-owns':'birthdate_root'
         }))
-    who_paid = forms.BooleanField()
+    who_paid = forms.CheckboxInput()
 
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}),
                                 initial='Deposito Mensal')
@@ -23,6 +23,9 @@ class MonthlyDepositForm(forms.ModelForm):
     class Meta:
         model = GroupTransaction
         fields = ('value', 'date','who_paid','its_type')
+        widgets = {
+            'who_paid': forms.CheckboxSelectMultiple()
+        }
 
 class DepositForm(forms.ModelForm):
     value = forms.DecimalField()
