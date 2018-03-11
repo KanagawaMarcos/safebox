@@ -63,21 +63,28 @@
     </div>
 
     <div id="mensal-template" class="row col s12">
-      <form class="col s12">
+      <form class="col s12" method="POST" action="" >
 
+        {% csrf_token %}
+        {{ groupTransaction.its_type }}
         <div class="row"></div>
 
         <!-- Nome do evento -->
         <div class="row">
           <div class="input-field col s6">
-            <input id="nome_evento" type="number" value="10" step="any" min="0.05" max="400" class="validate" required>
+            <!-- <input id="nome_evento" type="number" value="10" step="any" min="0.05" max="400" class="validate" required> -->
+            {{ groupTransaction.value }}
             <label for="nome_evento">Valor do depósito</label>
           </div>
           <div class="input-field col s6">
-            <input type="text" class="datepicker picker__input" readonly="" tabindex="54" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="birthdate_root" required>
+            <!-- <input type="text" class="datepicker picker__input" readonly="" tabindex="54" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="birthdate_root" required> -->
+            {{ groupTransaction.date }}
             <label for="data-mensal" data-error="Data inválida">Data do depósito</label>
           </div>
         </div>
+
+
+
 
         <!-- Petianos que irão para o evento -->
         <table class="striped">
@@ -87,105 +94,38 @@
               <th>Petiano</th>
               <th>
                 <div class="switch">
-                  <b class="center-align">Padrão Pago</b>
                   <label>
+                    Não Pago
                     <input type="checkbox">
                     <span class="lever"></span>
+                    Pago
                   </label>
                 </div>
               </th>
             </tr>
             <!-- ============= -->
           </thead>
+
           <tbody>
+
+            {% for checkbox in groupTransaction.who_paid %}
             <tr>
-              <td>ALISSON BISPO DOS SANTOS</td>
+              {% for user in users %}
+                {% if user.get_username == checkbox.choice_label %}
+                  <td>{{ user.get_full_name }}</td>
+                {% endif %}
+              {% endfor %}
               <td>
                 <div class="switch">
                   <label>
-                    <input type="checkbox">
+                    <!-- <input type="checkbox"> -->
+                    {{ checkbox.tag }}
                     <span class="lever"></span>
                   </label>
                 </div>
               </td>
             </tr>
-            <tr>
-              <td>ANTONIO MOREIRA PINTO</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>ARTHUR SERRA</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>CAIO MANFREDINI DA SILVA MARTINS</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>CELIELMA BALDEZ COSTA</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>DIEGO DA SILVA OLIVEIRA</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>EDNARA APARECIDA DOS SANTOS PEREIRA</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>EDUARDO ROGER SILVA NASCIMENTO</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
 
