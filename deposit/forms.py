@@ -1,7 +1,28 @@
 from django import forms
 from withdraw.forms import WithdrawForm
 from varys.choices import who_did,which_box
-from varys.models import Transaction
+from varys.models import Transaction,GroupTransaction
+
+class MonthlyDepositForm(forms.ModelForm):
+    value = forms.DecimalField()
+    date = forms.CharField(widget=forms.TextInput(attrs={
+        'class':'datepicker picker__input',
+        'readonly':'',
+        'tabindex':'54',
+        'aria-haspopup':'True',
+        'aria-expanded':'false',
+        'aria-readonly':'false',
+        'aria-owns':'birthdate_root'
+        }))
+    who_paid = forms.BooleanField()
+
+    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}),
+                                initial='Deposito Mensal')
+
+
+    class Meta:
+        model = GroupTransaction
+        fields = ('value', 'date','who_paid','its_type')
 
 class DepositForm(forms.ModelForm):
     value = forms.DecimalField()
