@@ -29,11 +29,12 @@ def saque(request):
                 form.save()
                 return HttpResponseRedirect('/historico/')
         else:
+            print("lets see")
             if groupForm.is_valid():
                 groupForm.save()
                 return HttpResponseRedirect('/historico/')
             else:
-                return HttpResponseRedirect('/erro/'+str(groupForm.errors))
+                return HttpResponseRedirect('/erro/'+str(groupForm.errors.as_data()))
 
 
     #Se for a primeira vez que a página é renderizada

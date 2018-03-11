@@ -25,7 +25,7 @@ class EventForm(forms.ModelForm):
     who_paid = forms.CheckboxInput()
     justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}),
-                                initial='Evento')
+                            initial='Evento')
     class Meta:
         model = GroupTransaction
         fields = ('name','justification','value', 'date','who_paid','its_type','receipt')
