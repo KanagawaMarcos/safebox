@@ -18,9 +18,11 @@ def deposito(request):
             else:
                 print (str(form.errors.as_data()))
         else:
-            for who_paid in request.POST['who_paid']:
-                if User.objects.get(pk=who_paid):
-                    print(User.objects.get(pk=who_paid).get_full_name())
+            if groupForm.is_valid():
+                groupForm.save()
+                # for who_paid in request.POST['who_paid']:
+                #     if User.objects.get(pk=who_paid):
+                #         print(User.objects.get(pk=who_paid).get_full_name())
     else:
         form = DepositForm()
         groupForm = MonthlyDepositForm()
