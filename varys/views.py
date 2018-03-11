@@ -4,6 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
 @login_required
+def admin(request):
+    return redirect('admin-redirect')
+
+@login_required
 def sair(request):
     logout(request)
     return redirect('login')
