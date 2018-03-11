@@ -76,7 +76,16 @@
                 Comprovante da {{ cur_transaction.justification }}
               </a>
             {% else %}
-                O motivo foi {{ cur_transaction.justification }}
+
+              {%if cur_transaction.its_type == 'Transferencia'%}
+                Transferência da caixa
+                {{ cur_transaction.origin }}
+                 para caixa
+                {{ cur_transaction.destination }}
+                no valor de {{ cur_transaction.value }}
+              {%else %}
+                  O motivo foi {{ cur_transaction.justification }}
+              {% endif %}
             {% endif %}
 
           </b></span>

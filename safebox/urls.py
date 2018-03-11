@@ -31,6 +31,7 @@ urlpatterns = [
     path('', varys.views.redirect_login, name='home'),
     path('contas/', include('django.contrib.auth.urls'), name='login'),
 	path('admin/', admin.site.urls, name='admin'),
+    path('contas/sair', varys.views.sair, name='sair'),
     path('historico/', varys.views.historico, name='historico'),
     path('deposito/', deposit.views.deposito, name='deposito'),
     path('saque/', withdraw.views.saque, name='saque'),
