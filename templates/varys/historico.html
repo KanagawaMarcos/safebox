@@ -1,12 +1,6 @@
 <!--======Histórico de movimentações financeiras =======-->
 <ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
-  {% for post in posts %}
-      <div>
-          <p>published: {{ post.published_date }}</p>
-          <h1><a href="">{{ post.title }}</a></h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-      </div>
-  {% endfor %}
+
 
   {% for cur_transaction in transactions reversed %}
   <li>
@@ -18,11 +12,22 @@
       {% elif cur_transaction.its_type == 'Transferencia' %}
         <i class="material-icons blue-text">swap_horiz</i>
       {% endif %}
-      <span class="truncate justificativa-header" >
-        {{ cur_transaction.justification }}
-        -
-        {{ cur_transaction.who_did_it }}
-      </span>
+
+      {% if not cur_transaction.its_type == 'Transferencia'%}
+        <span class="truncate justificativa-header" >
+          {{ cur_transaction.justification }}
+          -
+          {{ cur_transaction.who_did_it }}
+        </span>
+      {% else %}
+        <span class="truncate justificativa-header" >
+          Transferência da caixa
+          {{ cur_transaction.origin }}
+           para caixa
+          {{ cur_transaction.destination }}
+          no valor de {{ cur_transaction.value }}
+        </span>
+      {% endif %}
 
     </div>
 

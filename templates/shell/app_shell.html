@@ -54,6 +54,8 @@
         {% include 'withdraw/saque.html'%}
       {% elif is_deposit %}
         {% include 'deposit/deposito.html'%}
+      {% elif is_transfer %}
+        {% include 'transfer/transferencia.html'%}
       {% endif %}
     </main>
     <!--====================================================-->
@@ -149,8 +151,8 @@
           </li>
         </ul>
       </li>
-
       <!-- Pet Metas -->
+      <!--
       <li>
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -158,6 +160,7 @@
             <div class="collapsible-body"></div>
           </li>
         </ul>
+      -->
       </li>
 
 

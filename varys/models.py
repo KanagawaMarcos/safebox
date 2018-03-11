@@ -40,8 +40,10 @@ class Transaction(models.Model):
 	its_type = models.CharField(max_length=257, default='')
 
 	def __str__(self):
-		#INCOMPLETOreturn "%s fez a movimentação financeira de %d para %s no dia " % (self.name, self.restaurant)
-		return "%s - %s" % (self.justification , self.who_did_it)
+		if self.its_type == 'Transferencia':
+			return "Transferencia da caixa %s para %s no valor de %s" % (self.origin , self.destination, self.value)
+		else:
+			return "%s - %s" % (self.justification , self.who_did_it)
 
 
 class Box (models.Model):
