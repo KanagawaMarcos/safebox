@@ -1,5 +1,6 @@
 from django import forms
 from varys.models import Transaction
+from django.core.validators import MaxValueValidator
 
 #To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
@@ -17,7 +18,11 @@ class EventForm(forms.ModelForm):
         'max':'16000',
         'step':'any',
         'class':'validate'
-    }))
+    }),
+        validators=[
+            MaxValueValidator(16000,message='Valor Alto demais')
+        ]
+    )
     date = forms.CharField(widget=forms.TextInput(attrs={
         'class':'datepicker picker__input',
         'readonly':'',
@@ -50,7 +55,11 @@ class WithdrawForm(forms.ModelForm):
         'max':'16000',
         'step':'any',
         'class':'validate'
-    }))
+    }),
+        validators=[
+            MaxValueValidator(16000,message='Valor Alto demais')
+        ]
+    )
     justification = forms.CharField(widget=forms.Textarea(attrs={
         'class':'materialize-textarea'
         }),

@@ -2,6 +2,7 @@ from django import forms
 from withdraw.forms import WithdrawForm
 from varys.choices import who_did,which_box
 from varys.models import Transaction,GroupTransaction
+from django.core.validators import MaxValueValidator
 
 class MonthlyDepositForm(forms.ModelForm):
     value = forms.DecimalField(widget=forms.NumberInput(attrs={
@@ -10,6 +11,9 @@ class MonthlyDepositForm(forms.ModelForm):
         'step':'any',
         'class':'validate'
     }),
+        validators=[
+            MaxValueValidator(16000,message='Valor Alto demais')
+        ],
         initial=10
     )
     date = forms.CharField(widget=forms.TextInput(attrs={
@@ -40,7 +44,11 @@ class DepositForm(forms.ModelForm):
         'max':'16000',
         'step':'any',
         'class':'validate'
-    }))
+    }),
+        validators=[
+            MaxValueValidator(16000,message='Valor Alto demais')
+        ]
+    )
     justification = forms.CharField(widget=forms.Textarea(attrs={
         'class':'materialize-textarea'
         }),
