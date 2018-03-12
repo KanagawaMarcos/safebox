@@ -24,7 +24,7 @@ def deposito(request):
         groupForm = MonthlyDepositForm()
     return render(request, 'shell/app_shell.html', {
         'is_deposit' : True,
-        'title' : 'Deposit',
+        'title' : 'Depósito',
         'transaction' : form,
         'groupTransaction' : groupForm,
         'users': User.objects.all(),
