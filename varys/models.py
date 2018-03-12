@@ -76,14 +76,15 @@ class Transaction(models.Model):
 
 	def save(self,*args,**kwargs):
 		if self.its_type == 'Saque':
-			current_value = Box.objects.filter(name=self.origin)[0].value
-			Box.objects.filter(name=self.origin).update(value=(current_value - self.value))
+			boxes = Box.objects.filter(name=self.origin)
+			for box in boxes:
+				cur_value = box.value
+				box.update(value=cur_value - box.value)
 		elif self.its_type == 'Deposito':
 			boxes = Box.objects.filter(name=self.destination)
 			for box in boxes:
 				cur_value = box.value
 				box.update(value=cur_value + box.value)
-				#Box.objects.filter(name=self.destination).update(value=(current_value + self.value))
 
 		elif self.its_type == 'Transferencia':
 			#Adiciona o valor ao destino
