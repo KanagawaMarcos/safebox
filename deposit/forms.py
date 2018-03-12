@@ -4,7 +4,14 @@ from varys.choices import who_did,which_box
 from varys.models import Transaction,GroupTransaction
 
 class MonthlyDepositForm(forms.ModelForm):
-    value = forms.DecimalField()
+    value = forms.DecimalField(widget=forms.NumberInput(attrs={
+        'min':'0.05',
+        'max':'16000',
+        'step':'any',
+        'class':'validate'
+    }),
+        initial=10
+    )
     date = forms.CharField(widget=forms.TextInput(attrs={
         'class':'datepicker picker__input',
         'readonly':'',
@@ -28,8 +35,17 @@ class MonthlyDepositForm(forms.ModelForm):
         }
 
 class DepositForm(forms.ModelForm):
-    value = forms.DecimalField()
-    justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
+    value = forms.DecimalField(widget=forms.NumberInput(attrs={
+        'min':'0.05',
+        'max':'16000',
+        'step':'any',
+        'class':'validate'
+    }))
+    justification = forms.CharField(widget=forms.Textarea(attrs={
+        'class':'materialize-textarea'
+        }),
+        max_length=255
+    )
     receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Deposito')
     who_did_it = forms.ChoiceField(choices=who_did())

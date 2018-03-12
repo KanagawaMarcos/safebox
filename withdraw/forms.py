@@ -11,8 +11,13 @@ from varys.models import Box,GroupTransaction
 from varys.choices import who_did,which_box
 
 class EventForm(forms.ModelForm):
-    name = forms.CharField()
-    value = forms.DecimalField()
+    name = forms.CharField(max_length=46)
+    value = forms.DecimalField(widget=forms.NumberInput(attrs={
+        'min':'0.05',
+        'max':'16000',
+        'step':'any',
+        'class':'validate'
+    }))
     date = forms.CharField(widget=forms.TextInput(attrs={
         'class':'datepicker picker__input',
         'readonly':'',
@@ -23,9 +28,14 @@ class EventForm(forms.ModelForm):
         'aria-owns':'birthdate_root'
         }))
     who_paid = forms.CheckboxInput()
-    justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
+    justification = forms.CharField(widget=forms.Textarea(attrs={
+        'class':'materialize-textarea'
+        }),
+        max_length=255
+    )
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}),
                             initial='Evento')
+
     class Meta:
         model = GroupTransaction
         fields = ('name','justification','value', 'date','who_paid','its_type','receipt')
@@ -35,8 +45,17 @@ class EventForm(forms.ModelForm):
 
 class WithdrawForm(forms.ModelForm):
 
-    value = forms.DecimalField()
-    justification = forms.CharField(widget=forms.Textarea(attrs={'class':'materialize-textarea'}))
+    value = forms.DecimalField(widget=forms.NumberInput(attrs={
+        'min':'0.05',
+        'max':'16000',
+        'step':'any',
+        'class':'validate'
+    }))
+    justification = forms.CharField(widget=forms.Textarea(attrs={
+        'class':'materialize-textarea'
+        }),
+        max_length=255
+    )
     receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Saque')
     who_did_it = forms.ChoiceField(choices=who_did())
