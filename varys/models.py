@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 
 #created_date attibute needs it
 from django.utils import timezone
+class Box (models.Model):
+	name = models.CharField(max_length=257)
+	value = models.DecimalField(max_digits=6, decimal_places=2)
+
+	class Meta:
+		verbose_name_plural = "boxes"
+	def __str__(self):
+		return "%s - R$ %s" %(self.name, self.value)
 # This Model is a super class "Financial Transaction"
 class GroupTransaction(models.Model):
 	name = models.CharField(max_length=257, default='')
@@ -45,12 +53,14 @@ class Transaction(models.Model):
 		else:
 			return "%s - %s" % (self.justification , self.who_did_it)
 
+	def save(self,*args,**kwargs):
+		if self.its_type == 'Saque':
+			current_value = Box.objects.filter(name=self.origin).value
+			Box.objects.filter(name=self.origin).update(value=(current_value - self.value))
+		super().save(*args, **kwargs)  # Call the "real" save() method.
 
-class Box (models.Model):
-	name = models.CharField(max_length=257)
-	value = models.DecimalField(max_digits=6, decimal_places=2)
-
-	class Meta:
-		verbose_name_plural = "boxes"
-	def __str__(self):
-		return "%s - R$ %s" %(self.name, self.value)
+	def delete(self, *args, **kwargs):
+		if self.its_type == 'Saque':
+			current_value = Box.objects.filter(name=self.origin).value
+			Box.objects.filter(name=self.origin).update(value=(current_value + self.value))
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
