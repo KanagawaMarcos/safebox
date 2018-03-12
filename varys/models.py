@@ -79,8 +79,12 @@ class Transaction(models.Model):
 			current_value = Box.objects.filter(name=self.origin)[0].value
 			Box.objects.filter(name=self.origin).update(value=(current_value - self.value))
 		elif self.its_type == 'Deposito':
-			current_value = Box.objects.filter(name=self.destination)[0].value
-			Box.objects.filter(name=self.destination).update(value=(current_value + self.value))
+			boxes = Box.objects.filter(name=self.destination)
+			for box in boxes:
+				cur_value = box.value
+				box.update(value=cur_value + box.value)
+				#Box.objects.filter(name=self.destination).update(value=(current_value + self.value))
+
 		elif self.its_type == 'Transferencia':
 			#Adiciona o valor ao destino
 			current_value = Box.objects.filter(name=self.destination)[0].value
