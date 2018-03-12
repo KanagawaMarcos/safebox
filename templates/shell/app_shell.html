@@ -54,6 +54,8 @@
         {% include 'withdraw/saque.html'%}
       {% elif is_deposit %}
         {% include 'deposit/deposito.html'%}
+      {% elif is_transfer %}
+        {% include 'transfer/transferencia.html'%}
       {% endif %}
     </main>
     <!--====================================================-->
@@ -67,7 +69,7 @@
         <div class="user-view">
           <!-- Background -->
           <div class="background" >
-            <img src="{% static 'watermark.png'%}" alt="PETComp watermark">
+            <img src="{% static 'pattern.png'%}" alt="PETComp watermark">
           </div>
 
           <!-- Informações do usuário -->
@@ -83,7 +85,7 @@
         </div>
       </li>
                    <!--  Barra de pesquisa  -->
-      <li class="search">
+      <!-- <li class="search">
         <div class="row">
           <form class="col s12">
             <div class="row">
@@ -94,7 +96,7 @@
             </div>
           </form>
         </div>
-      </li>
+      </li> -->
 
             <!--  Opções válidas  -->
 
@@ -149,8 +151,8 @@
           </li>
         </ul>
       </li>
-
       <!-- Pet Metas -->
+      <!--
       <li>
         <ul class="collapsible collapsible-accordion">
           <li>
@@ -159,13 +161,24 @@
           </li>
         </ul>
       </li>
-
+    -->
 
       <!-- Painel de tutor -->
+      {% if user.is_superuser %}
       <li>
         <ul class="collapsible collapsible-accordion">
           <li>
-            <a class="collapsible-header waves-effect" href="#">Painel de Administrador<i class="material-icons grey-text">create</i></a>
+            <a class="collapsible-header waves-effect" href="{% url 'admin-redirect'%}">Painel de Administrador<i class="material-icons grey-text">create</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+      <!-- Sair -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'sair'%}">Sair<i class="material-icons red-text">exit_to_app</i></a>
             <div class="collapsible-body"></div>
           </li>
         </ul>
@@ -217,7 +230,7 @@
            // Callback function when value is autcompleted.
          },
          minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-       });
+       });       
 
     </script>
 
