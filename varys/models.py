@@ -63,4 +63,4 @@ class Transaction(models.Model):
 		if self.its_type == 'Saque':
 			current_value = Box.objects.filter(name=self.origin).value
 			Box.objects.filter(name=self.origin).update(value=(current_value + self.value))
-		super().delete(*args, **kwargs)  # Call the "real" save() method.
+		super().save(*args, **kwargs)  # Call the "real" save() method.
