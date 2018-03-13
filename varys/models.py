@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # An Abstract class containing basic info about any financial object
-class Info (models.Models):
+class Info (models.Model):
 	# How much money has or had this instance
 	value = models.DecimalField('Valor', max_digits=6, decimal_places=2)
 	# Why was this instance made
@@ -99,7 +99,7 @@ class Withdraw (SingleTransaction):
 # Any deposit made to any safebox by any user
 class Deposit (SingleTransaction):
 	#To which safebox the money goes to
-	destination = models.models.ForeignKey(
+	destination = models.ForeignKey(
 		Box,
 		on_delete = models.SET_NULL,
 		null = True
