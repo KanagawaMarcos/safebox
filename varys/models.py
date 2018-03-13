@@ -58,6 +58,9 @@ class MultipleTransactions(models.Model):
 
 	users = models.ManyToManyField(User)
 
+	class Meta:
+		abstract = True
+
 class MonthlyPayment (models.Model):
 	info = models.GroupTransaction(
 		Transaction,
