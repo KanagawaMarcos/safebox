@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # An Abstract class containing basic info about any financial object
-class Info (models.Model):
+class Info (models.Models):
 	# How much money has or had this instance
 	value = models.DecimalField('Valor', max_digits=6, decimal_places=2)
 	# Why was this instance made
@@ -26,7 +26,7 @@ class Info (models.Model):
 # A Abstract class representing the any safebox or account
 class Box (Info):
 	#The label for this safebox
-	name = forms.CharField('Nome', max_length=255)
+	name = models.CharField('Nome', max_length=255)
 
 	class Meta:
 		# Human friendly singular and plural name
@@ -40,7 +40,12 @@ class Box (Info):
 # An abstract class containing info about a Transaction made by one user
 class SingleTransaction (Info):
 	# The user related to this transaction
-	user = models.ForeignKey('Usuário',User)
+	user = models.ForeignKey(
+		User,
+		on_delete = models.SET_NULL,
+		blank = True,
+		null = True
+	)
 
 	#A file as receipt, it can be an image or a pdf. This is optional
 	receipt = models.FileField(
@@ -60,7 +65,7 @@ class SingleTransaction (Info):
 # An abstract class containing info about a Transaction made by multiple users
 class MultipleTransaction (Info):
 	# All users that paid the the monthly bill
-	users = models.ManyToManyField('Usuários', User)
+	users = models.ManyToManyField(User)
 
 	#A file as receipt, it can be an image or a pdf. This is optional
 	receipt = models.FileField(
@@ -78,9 +83,13 @@ class MultipleTransaction (Info):
 		verbose_name_plural = 'Transações em Grupo'
 
 # Any withdraw made to any safebox by any user
-class Withdraw (Info ,SingleTransaction):
+class Withdraw (SingleTransaction):
 	#From which safebox the money comes from
-	origin = models.ForeignKey('Caixinha',Box)
+	origin = models.ForeignKey(
+		Box,
+		on_delete = models.SET_NULL,
+		null = True
+	)
 
 	class Meta:
 		# Human friendly singular and plural name
@@ -88,9 +97,13 @@ class Withdraw (Info ,SingleTransaction):
 		verbose_name_plural = 'Saques'
 
 # Any deposit made to any safebox by any user
-class Deposit (Info ,SingleTransaction):
+class Deposit (SingleTransaction):
 	#To which safebox the money goes to
-	destination = models.ForeignKey(Box)
+	destination = models.models.ForeignKey(
+		Box,
+		on_delete = models.SET_NULL,
+		null = True
+	)
 
 	class Meta:
 		# Human friendly singular and plural name
@@ -98,18 +111,18 @@ class Deposit (Info ,SingleTransaction):
 		verbose_name_plural = 'Depósitos'
 
 # An payment that every user should make every month
-class MonthlyDeposit (Info ,MultipleTransaction):
+class MonthlyDeposit (MultipleTransaction):
 	# The date that this bill is referent to
-	date = forms.CharField('Data do pagamento', max_length=32)
+	date = models.CharField('Data do pagamento', max_length=32)
 
 	class Meta:
 		# Human friendly singular and plural name
 		verbose_name = 'Pagamento Mensal Obrigatório'
 		verbose_name_plural = 'Pagamentos Mensal Obrigatórios'
 
-class EventSubscription (Info, MultipleTransaction):
+class EventSubscription (MultipleTransaction):
 	# The date that this will happen
-	date = forms.CharField('Data do Evento', max_length=32)
+	date = models.CharField('Data do Evento', max_length=32)
 
 	class Meta:
 		# Human friendly singular and plural name
