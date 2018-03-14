@@ -3,15 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
-# from varys.models import Transaction
-from .forms import WithdrawForm,EventForm
+from withdraw.forms import WithdrawForm,EventSubscriptionForm
 
-#To get all boxes and Transactions
-from varys.models import Transaction
-
-
-#Import the safebox
-from varys.models import Box
 
 @login_required
 def saque(request):
