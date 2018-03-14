@@ -1,15 +1,39 @@
 from django import forms
-from varys.models import Transaction
 from django.core.validators import MaxValueValidator
-
-#To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
 
-#To get all boxes
-from varys.models import Box,GroupTransaction
+# Get all safeboxes
+from varys.models import Box
+# Get the base model for each form
+from withdraw.models import Withdraw,EventSubscription
 
-#That's a custom library made by @Marcos Costa Santos
-from varys.choices import who_did,which_box
+class WithdrawForm(forms.ModelForm):
+
+    value = forms.DecimalField(widget=forms.NumberInput(attrs={
+        'min':'0.05',
+        'max':'16000',
+        'step':'any',
+        'class':'validate'
+    }),
+        validators=[
+            MaxValueValidator(16000,message='Valor Alto demais')
+        ]
+    )
+    justification = forms.CharField(widget=forms.Textarea(attrs={
+        'class':'materialize-textarea'
+        }),
+        max_length=255
+    )
+
+    receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+    user = forms.ModelChoiceField(User.objects.all())
+    origin = forms.ModelChoiceField(Box.objects.all())
+
+    class Meta:
+        model = Withdraw
+        fields = ('value','justification','receipt','user','origin')
+
 
 class EventForm(forms.ModelForm):
     name = forms.CharField(max_length=46)
@@ -47,29 +71,3 @@ class EventForm(forms.ModelForm):
         widgets = {
             'who_paid': forms.CheckboxSelectMultiple()
         }
-
-class WithdrawForm(forms.ModelForm):
-
-    value = forms.DecimalField(widget=forms.NumberInput(attrs={
-        'min':'0.05',
-        'max':'16000',
-        'step':'any',
-        'class':'validate'
-    }),
-        validators=[
-            MaxValueValidator(16000,message='Valor Alto demais')
-        ]
-    )
-    justification = forms.CharField(widget=forms.Textarea(attrs={
-        'class':'materialize-textarea'
-        }),
-        max_length=255
-    )
-    receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
-    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Saque')
-    who_did_it = forms.ChoiceField(choices=who_did())
-    origin = forms.ChoiceField(choices=which_box())
-
-    class Meta:
-        model = Transaction
-        fields = ('value','justification','who_did_it','origin','receipt', 'its_type')
