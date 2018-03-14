@@ -14,32 +14,32 @@ def saque(request):
         if 'withdraw-submit' in request.POST:
 
             # Bind the form data to a Model Form
-            withdraw_form = WithdrawForm(request.POST, request.FILES)
+            withdraw = WithdrawForm(request.POST, request.FILES)
 
-            if withdraw_form.is_valid():
-                withdraw_form.save()
+            if withdraw.is_valid():
+                withdraw.save()
+                return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the event subscription form
-            event_form = EventSubscriptionForm(prefix='Event Subscription Form')
-            return HttpResponseRedirect('/historico/')
+            event_subscription = EventSubscriptionForm(prefix='Event Subscription Form')
 
         elif 'event-submit' in request.POST:
 
             # Bind the form data to an Model Form
-            event_form = EventSubscriptionForm(request.POST, request.FILES)
+            event_subscription = EventSubscriptionForm(request.POST, request.FILES)
 
-            if event_form.is_valid():
-                event_form.save()
+            if event_subscription.is_valid():
+                event_subscription.save()
+                return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the withdraw form
-            withdraw_form = WithdrawForm(prefix='Withdraw Form')
-            return HttpResponseRedirect('/historico/')
+            withdraw = WithdrawForm(prefix='Withdraw Form')
 
     #If it's a GET request
     else:
         # Create a clean new form
-        withdraw_form = WithdrawForm(prefix='Withdraw Form')
-        event_form = EventSubscriptionForm(prefix='Event Subscription Form')
+        withdraw = WithdrawForm(prefix='Withdraw Form')
+        event_subscription = EventSubscriptionForm(prefix='Event Subscription Form')
 
     return render(
         request,
@@ -47,8 +47,8 @@ def saque(request):
         {
             'is_withdraw': True,
             'title': 'Saque',
-            'transaction' : withdraw_form,
-            'groupTransaction' : event_form,
+            'transaction' : withdraw,
+            'groupTransaction' : event_subscription,
             'users' : User.objects.all()
         }
     )
