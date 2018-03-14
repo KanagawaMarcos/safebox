@@ -17,6 +17,10 @@ class Withdraw (SingleTransaction):
 
 # Model for every time there's a group subscription in some event
 class EventSubscription (MultipleTransaction):
+
+	# The actual name of the event
+	name = models.CharField('Nome Do Evento', max_length=64)
+
 	# The date that this will happen
 	date = models.CharField('Data do Evento', max_length=32)
 
