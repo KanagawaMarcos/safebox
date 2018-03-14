@@ -7,14 +7,16 @@ class Transference (SingleTransaction):
 	origin = models.ForeignKey(
 		Box,
 		on_delete = models.SET_NULL,
-		null = True
+		null = True,
+		related_name = 'origin'
 	)
 
 	#To which safebox the money goes to
 	destination = models.ForeignKey(
 		Box,
 		on_delete = models.SET_NULL,
-		null = True
+		null = True,
+		related_name = 'destination'
 	)
 
 	class Meta:
