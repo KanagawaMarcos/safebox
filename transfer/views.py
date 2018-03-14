@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from varys.models import Transaction
 from django.http import HttpResponseRedirect
 
 from transfer.forms import TransferenceForm

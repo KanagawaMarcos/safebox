@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator
 
 # Get all safeboxes
-from varys.models import Box,MultipleTransaction
+from varys.models import Box,MultipleTransaction,SingleTransaction
 
 class BasicInfoForm(forms.ModelForm):
     value = forms.DecimalField(widget=forms.NumberInput(attrs={
@@ -27,6 +27,8 @@ class BasicInfoForm(forms.ModelForm):
 
     class Meta:
         abstract = True
+        model = SingleTransaction
+        fields = ('value', 'justification','receipt')
 
 
 class MultipleTransactionForm(BasicInfoForm):
@@ -46,8 +48,9 @@ class MultipleTransactionForm(BasicInfoForm):
     )
 
     class Meta:
+        abstract = True
         model = MultipleTransaction
-        fields = ('value', 'date','who_paid')
+        fields = ('value', 'date','users')
         widgets = {
             'who_paid': forms.CheckboxSelectMultiple()
         }
