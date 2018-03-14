@@ -126,6 +126,21 @@
       </thead>
 
       <tbody>
+        {% for user in groupTransaction.users %}
+            <tr>
+              <td>{{ user.label_tag }}</td>
+              <td>
+                <div class="switch">
+                  <label>
+                    {{ user.tag }}
+                    <span class="lever"></span>
+                  </label>
+                </div>
+              </td>
+            </tr>
+        {% endfor %}
+
+        <!--
         {% for checkbox in groupTransaction.who_paid %}
           {% for user in users %}
             {% if user.get_username == checkbox.choice_label and user.get_full_name != '' %}
@@ -143,6 +158,7 @@
             {% endif %}
           {% endfor %}
         {% endfor %}
+      -->
       </tbody>
     </table>
     <div class="row"></div>
