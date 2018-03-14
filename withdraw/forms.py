@@ -1,14 +1,12 @@
 from django import forms
-
 from django.contrib.auth.models import User
 
 # Get all safeboxes
 from varys.models import Box
-
-from varys.forms import MultipleTransactionForm,BasicInfoForm
-
 # Get the base model for each form
 from withdraw.models import Withdraw,EventSubscription
+# Get the base form for each form
+from varys.forms import MultipleTransactionForm,BasicInfoForm
 
 
 class WithdrawForm(BasicInfoForm):

@@ -1,26 +1,29 @@
 from django import forms
-from withdraw.forms import WithdrawForm
-#from varys.choices import who_did,which_box
-from varys.models import Transaction,GroupTransaction
-from django.core.validators import MaxValueValidator
+from django.contrib.auth.models import User
+
+# Get all safeboxes
+from varys.models import Box
+# Get the base model for each form
+from varys.forms import MultipleTransactionForm,BasicInfoForm
+# Get the base form for each form
+from deposit.models import Deposit,MonthlyDeposit
+
+class DepositForm(BasicInfoForm):
+
+    user = forms.ModelChoiceField(User.objects.all())
+    destination = forms.ModelChoiceField(Box.objects.all())
+
+
+    class Meta:
+        model = Deposit
+        fields = ('value','justification','user','destination','receipt')
 
 
 class MonthlyDepositForm(MultipleTransactionForm):
 
     class Meta:
         model = MonthlyDeposit
-        fields = ('value', 'date','who_paid','its_type')
+        fields = ('value', 'date','users')
         widgets = {
             'who_paid': forms.CheckboxSelectMultiple()
         }
-
-class DepositForm(BasicInfoForm):
-
-    receipt = forms.FileField(required=False,widget=forms.ClearableFileInput(attrs={'multiple': True}))
-    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Deposito')
-    who_did_it = forms.ChoiceField(choices=who_did())
-    destination = forms.ChoiceField(choices=which_box())
-
-    class Meta:
-        model = Transaction
-        fields = ('value','justification','who_did_it','destination','receipt', 'its_type')
