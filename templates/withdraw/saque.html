@@ -9,7 +9,6 @@
     <!-- Valor do depósito -->
      <div class="row">
       <div class="input-field col s12 m6">
-        <!-- <input id="valor" type="number" min="0.05" max="16000" step="any" class="validate" required> -->
         <label for="{{ transaction.value.id_for_label}}" data-error="{{ transaction.value.errors }}">Valor do Saque</label>
         {{ transaction.value }}
       </div>
@@ -19,7 +18,7 @@
         <!-- Quem depositou -->
       <div class="input-field col s6">
         <!-- o label do formulário do django não tá funcionando -->
-        {{ transaction.who_did_it }}
+        {{ transaction.user }}
         <label>Quem está pagando</label>
       </div>
 
@@ -33,7 +32,6 @@
     <!-- Justificativa -->
     <div class="row">
       <div class="input-field col s12">
-        <!-- <textarea id="textarea1" class="materialize-textarea" required></textarea> -->
         {{ transaction.justification }}
         <label for="textarea1">Justificativa para o saque</label>
       </div>
