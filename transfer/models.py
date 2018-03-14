@@ -1,5 +1,6 @@
 from django.db import models
 from varys.models import SingleTransaction
+# Any deposit made to any safebox by any user
 
 class Transfer (SingleTransaction):
 	#From which safebox the money comes from
