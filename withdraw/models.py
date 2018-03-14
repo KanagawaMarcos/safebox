@@ -1,5 +1,5 @@
 from django.db import models
-from varys.models import SingleTransaction,MultipleTransaction
+from varys.models import SingleTransaction,MultipleTransaction,Box
 
 # Any withdraw made to any safebox by any user
 class Withdraw (SingleTransaction):

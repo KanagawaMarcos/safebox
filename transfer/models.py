@@ -1,5 +1,5 @@
 from django.db import models
-from varys.models import SingleTransaction
+from varys.models import SingleTransaction,Box
 
 # Any transference of any value from a box to another
 class Transference (SingleTransaction):
@@ -17,7 +17,7 @@ class Transference (SingleTransaction):
 		null = True
 	)
 
-    class Meta:
-    	# Human friendly singular and plural name
-    	verbose_name = 'Transferência'
-    	verbose_name_plural = 'Transferências'
+	class Meta:
+		# Human friendly singular and plural name
+		verbose_name = 'Transferência'
+		verbose_name_plural = 'Transferências'
