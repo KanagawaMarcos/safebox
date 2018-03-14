@@ -124,11 +124,11 @@
         </tr>
         <!-- ============= -->
       </thead>
-
+      {{groupTransaction.users}}
       <tbody>
         {% for user in groupTransaction.users %}
             <tr>
-              <td>{{ user.label_tag }}</td>
+              <td>{{ user.label }}</td>
               <td>
                 <div class="switch">
                   <label>

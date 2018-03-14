@@ -52,5 +52,5 @@ class MultipleTransactionForm(BasicInfoForm):
         model = MultipleTransaction
         fields = ('value', 'date','users')
         widgets = {
-            'who_paid': forms.CheckboxSelectMultiple()
+            'users': forms.CheckboxInput()
         }
