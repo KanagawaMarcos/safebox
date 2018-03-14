@@ -66,7 +66,6 @@
   <form class="col s12" method="POST" action="" enctype="multipart/form-data">
 
     {% csrf_token %}
-    {{ groupTransaction.its_type }}
     <div class="row"></div>
 
     <!-- Nome/local do evento -->
@@ -75,7 +74,6 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">place</i>
-            <!-- <input type="text" id="autocomplete-input" class="autocomplete"> -->
             {{ groupTransaction.name }}
             <label for="autocomplete-input">Nome do Evento</label>
           </div>
@@ -85,12 +83,10 @@
 
     <div class="row">
       <div class="input-field col s6">
-        <!-- <input id="valor-entrada" type="number" min="0.05" max="16000" step="any" class="validate" required> -->
         {{ groupTransaction.value }}
         <label for="valor-entrada" data-error="Valor inválido">Valor da Inscrição</label>
       </div>
       <div class="input-field col s6">
-        <!-- <input type="text" class="datepicker picker__input" readonly="" tabindex="54" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="birthdate_root" required> -->
         {{ groupTransaction.date }}
         <label for="data-mensal" data-error="Data inválida">Data do Evento</label>
       </div>
@@ -99,68 +95,15 @@
     <!-- Justificativa -->
     <div class="row">
       <div class="input-field col s12">
-        <!-- <textarea id="textarea1" class="materialize-textarea" required></textarea> -->
         {{ groupTransaction.justification }}
         <label for="textarea1">Uma breve descrição do evento</label>
       </div>
     </div>
 
-    <!-- Petianos que irão para o evento -->
-    <table class="striped">
-      <thead>
-        <!-- Cabeçalho tabela -->
-        <tr>
-          <th>Petiano</th>
-          <th>
-            <div class="switch">
-              <label>
-                Não Pago
-                <input type="checkbox">
-                <span class="lever"></span>
-                Pago
-              </label>
-            </div>
-          </th>
-        </tr>
-        <!-- ============= -->
-      </thead>
-      {{groupTransaction.users}}
-      <tbody>
-        {% for user in groupTransaction.users %}
-            <tr>
-              <td>{{ user.label }}</td>
-              <td>
-                <div class="switch">
-                  <label>
-                    {{ user.tag }}
-                    <span class="lever"></span>
-                  </label>
-                </div>
-              </td>
-            </tr>
-        {% endfor %}
+    <!-- Quem vai para o evento -->
+    <label>Quem vai para o evento</label>
+    {{ groupTransaction.users }}
 
-        <!--
-        {% for checkbox in groupTransaction.who_paid %}
-          {% for user in users %}
-            {% if user.get_username == checkbox.choice_label and user.get_full_name != '' %}
-              <tr>
-                <td>{{ user.get_full_name }}</td>
-                <td>
-                  <div class="switch">
-                    <label>
-                      {{ checkbox.tag }}
-                      <span class="lever"></span>
-                    </label>
-                  </div>
-                </td>
-              </tr>
-            {% endif %}
-          {% endfor %}
-        {% endfor %}
-      -->
-      </tbody>
-    </table>
     <div class="row"></div>
     <div class="row"></div>
 
@@ -169,7 +112,6 @@
       <div class="file-field input-field">
         <div class="btn col s12 m3">
           <span>Anexar Comprovante</span>
-          <!-- <input type="file" name="comprovante" value="" multiple> -->
           {{ groupTransaction.receipt }}
         </div>
         <div class="file-path-wrapper">

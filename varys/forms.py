@@ -33,7 +33,7 @@ class BasicInfoForm(forms.ModelForm):
 
 class MultipleTransactionForm(BasicInfoForm):
 
-    users = forms.CheckboxInput(User)
+    users = forms.ModelMultipleChoiceField(User.objects.all())
 
     date = forms.CharField(widget=forms.TextInput(attrs={
             'class' : 'datepicker picker__input',
