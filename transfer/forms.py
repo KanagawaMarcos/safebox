@@ -1,39 +1,18 @@
 from django import forms
-from varys.models import Transaction
-
-#To get all users and list as "who_did_it"
 from django.contrib.auth.models import User
 
-#To get all boxes
-from varys.models import Box,GroupTransaction
+# Get all safeboxes
+from varys.models import Box
+# Get the base model for each form
+from varys.forms import MultipleTransactionForm,BasicInfoForm
+# Get the base form for each form
+from transfer.models import Transference
 
-#That's a custom library made by @Marcos Costa Santos
-from varys.choices import who_did,which_box
+class TransferenceForm(BasicInfoForm):
 
-class TransferenceForm(forms.ModelForm):
-
-    its_type = forms.CharField(
-        widget=forms.HiddenInput(
-            attrs={
-                'readonly' : True
-            }
-        ),
-        initial='Transferencia'
-     )
-
-    value = forms.DecimalField(
-        widget=forms.NumberInput(
-            attrs={
-                'min' : '0.05',
-                'max' : '16000',
-                'step' : 'any',
-                'class' : 'validate'
-            }
-        )
-    )
-    origin = forms.ChoiceField(choices=which_box())
-    destination = forms.ChoiceField(choices=which_box())
+    origin = forms.ModelChoiceField(Box.objects.all())
+    destination = forms.ModelChoiceField(Box.objects.all())
 
     class Meta:
-        model = Transaction
-        fields = ('value','origin','destination', 'its_type')
+        model = Transference
+        fields = ('value','origin','destination')
