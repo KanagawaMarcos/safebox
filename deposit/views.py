@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from deposit.forms import DepositForm,MonthlyDepositForm
 from django.contrib.auth.models import User
+
+from deposit.forms import DepositForm,MonthlyDepositForm
 
 # Create your views here.
 @login_required

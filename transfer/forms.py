@@ -10,7 +10,7 @@ from varys.models import Box,GroupTransaction
 #That's a custom library made by @Marcos Costa Santos
 from varys.choices import who_did,which_box
 
-class TransferForm(forms.ModelForm):
+class TransferenceForm(forms.ModelForm):
 
     its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Transferencia')
     value = forms.DecimalField(widget=forms.NumberInput(attrs={
