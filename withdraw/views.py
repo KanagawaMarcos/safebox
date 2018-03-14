@@ -13,39 +13,49 @@ from varys.models import Transaction
 #Import the safebox
 from varys.models import Box
 
-# Create your views here.
 @login_required
 def saque(request):
-    #Se esse view está recebendo um POST, ou seja
-    #já foi renderizado e o formulário completado
+    # Check if the form is being submited by the user
     if request.method == 'POST':
-        #Copia os dados de transação enviados via método POST
-        #E cria um formulário novo com eles
-        form = WithdrawForm(request.POST, request.FILES)
-        groupForm = EventForm(request.POST, request.FILES)
-        #Se os dados foram preenchido corretamente
-        if request.POST['its_type'] == 'Saque':
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect('/historico/')
-        else:
-            print("lets see")
-            if groupForm.is_valid():
-                groupForm.save()
-                return HttpResponseRedirect('/historico/')
-            else:
-                return HttpResponseRedirect('/erro/'+str(groupForm.errors.as_data()))
+        # If the submit button was the one from withdraw form
+        if 'withdraw-submit' in request.POST:
 
+            # Bind the form data to a Model Form
+            withdraw_form = WithdrawForm(request.POST, request.FILES)
 
-    #Se for a primeira vez que a página é renderizada
+            if withdraw_form.is_valid():
+                withdraw_form.save()
+
+            # Clean the cached data from the event subscription form
+            event_form = EventSubscriptionForm(prefix='Event Subscription Form')
+            return HttpResponseRedirect('/historico/')
+
+        elif 'event-submit' in request.POST:
+
+            # Bind the form data to an Model Form
+            event_form = EventSubscriptionForm(request.POST, request.FILES)
+
+            if event_form.is_valid():
+                event_form.save()
+
+            # Clean the cached data from the withdraw form
+            withdraw_form = WithdrawForm(prefix='Withdraw Form')
+            return HttpResponseRedirect('/historico/')
+
+    #If it's a GET request
     else:
-        #Cria uma transação vazia para ser preenchida
-        form = WithdrawForm()
-        groupForm = EventForm()
-    return render(request, 'shell/app_shell.html',{
-                     'is_withdraw': True,
-                     'title': 'Saque',
-                     'transaction': form,
-                     'groupTransaction':groupForm,
-                     'users':User.objects.all()
-                     })
+        # Create a clean new form
+        withdraw_form = WithdrawForm(prefix='Withdraw Form')
+        event_form = EventSubscriptionForm(prefix='Event Subscription Form')
+
+    return render(
+        request,
+        'shell/app_shell.html',
+        {
+            'is_withdraw': True,
+            'title': 'Saque',
+            'transaction' : withdraw_form,
+            'groupTransaction' : event_form,
+            'users' : User.objects.all()
+        }
+    )
