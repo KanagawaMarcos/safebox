@@ -8,7 +8,6 @@ from withdraw.models import Withdraw,EventSubscription
 # Get the base form for each form
 from varys.forms import MultipleTransactionForm,BasicInfoForm
 
-
 class WithdrawForm(BasicInfoForm):
 
     user = forms.ModelChoiceField(User.objects.all())
