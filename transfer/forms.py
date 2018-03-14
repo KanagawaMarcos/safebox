@@ -12,13 +12,25 @@ from varys.choices import who_did,which_box
 
 class TransferenceForm(forms.ModelForm):
 
-    its_type = forms.CharField(widget=forms.HiddenInput(attrs={'readonly':True}), initial='Transferencia')
-    value = forms.DecimalField(widget=forms.NumberInput(attrs={
-        'min':'0.05',
-        'max':'16000',
-        'step':'any',
-        'class':'validate'
-    }))
+    its_type = forms.CharField(
+        widget=forms.HiddenInput(
+            attrs={
+                'readonly' : True
+            }
+        ),
+        initial='Transferencia'
+     )
+
+    value = forms.DecimalField(
+        widget=forms.NumberInput(
+            attrs={
+                'min' : '0.05',
+                'max' : '16000',
+                'step' : 'any',
+                'class' : 'validate'
+            }
+        )
+    )
     origin = forms.ChoiceField(choices=which_box())
     destination = forms.ChoiceField(choices=which_box())
 
