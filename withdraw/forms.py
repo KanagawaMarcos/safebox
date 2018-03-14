@@ -53,7 +53,7 @@ class EventSubscriptionForm(BasicInfoForm):
             }
         )
     )
-    users = forms.MultipleModelChoiceField(User.objects.all())
+    users = forms.ModelMultipleChoiceField(User.objects.all())
 
     class Meta:
         model = EventSubscription
