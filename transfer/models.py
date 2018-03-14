@@ -1,8 +1,8 @@
 from django.db import models
 from varys.models import SingleTransaction
-# Any deposit made to any safebox by any user
 
-class Transfer (SingleTransaction):
+# Any transference of any value from a box to another
+class Transference (SingleTransaction):
 	#From which safebox the money comes from
 	origin = models.ForeignKey(
 		Box,
