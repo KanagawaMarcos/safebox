@@ -38,7 +38,7 @@ def deposito(request):
     else:
         # Create a clean new form
         deposit = DepositForm(prefix='Deposit Form')
-        monthly_deposit = EventSubscriptionForm(prefix='Event Subscription')
+        monthly_deposit = MonthlyDepositForm(prefix='Event Subscription')
 
     return render(
         request,
