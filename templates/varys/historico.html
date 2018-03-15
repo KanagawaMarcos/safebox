@@ -17,14 +17,14 @@
         <span class="truncate justificativa-header" >
           {{ transaction.justification }}
           -
-          {{ transaction.who_did_it }}
+          {{ transaction.user }}
         </span>
       {% else %}
         <span class="truncate justificativa-header" >
           Transferência da caixa
-          {{ transaction.origin }}
+          {{ transaction.origin.name }}
            para caixa
-          {{ transaction.destination }}
+          {{ transaction.destination.name }}
           no valor de {{ transaction.value }}
         </span>
       {% endif %}
@@ -42,13 +42,14 @@
         <div class="col s4 center-align">
           <i class="material-icons small">date_range</i>
           <br>
-          {{ transaction.created_date.date }}
+          <!-- Mude isso caso seja uma movimentação financeira do grupo -->
+          {{ transaction.created_at }}
         </div>
 
         <div class="col s3 center-align">
           <i class="material-icons small">account_circle</i>
           <br>
-          {{ transaction.who_did_it }}
+          {{ transaction.user.get_full_name }}
         </div>
 
         <div class="col s2 center-align">
@@ -57,10 +58,10 @@
           {% if transaction.destination %}
             {{ transaction.destination }}
             {% if transaction.origin %}
-               - {{ transaction.origin }}
+               - {{ transaction.origin.name }}
             {% endif %}
           {% elif transaction.origin %}
-            {{ transaction.origin }}
+            {{ transaction.origin.name }}
           {% endif %}
         </div>
         <div class="col s3 center-align">
@@ -79,9 +80,9 @@
 
               {%if transaction.its_type == 'Transferencia'%}
                 Transferência da caixa
-                {{ transaction.origin }}
+                {{ transaction.origin.name }}
                  para caixa
-                {{ transaction.destination }}
+                {{ transaction.destination.name }}
                 no valor de {{ transaction.value }}
               {%else %}
                   O motivo foi {{ transaction.justification }}
