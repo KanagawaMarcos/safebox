@@ -24,4 +24,4 @@ class MonthlyDeposit (MultipleTransaction):
 	class Meta:
 		# Human friendly singular and plural name
 		verbose_name = 'Pagamento Mensal Obrigatório'
-		verbose_name_plural = 'Pagamentos Mensal Obrigatórios'
+		verbose_name_plural = 'Pagamentos Mensais Obrigatórios'
