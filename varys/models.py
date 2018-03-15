@@ -21,7 +21,7 @@ class Info (models.Model):
 		verbose_name = 'Informações'
 
 	def __str__(self):
-		return "%s no valor de R$%s na data %s" % (self.destination, self.value, self.date)
+		return "%s no valor de R$%s" % (self.justification, self.value)
 
 # A Abstract class representing the any safebox or account
 class Box (Info):
