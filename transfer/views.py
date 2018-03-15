@@ -11,11 +11,11 @@ def transferencia(request):
     if request.method == 'POST':
         # Bind the form data to a Model Form
         transference = TransferenceForm(request.POST)
-        if form.is_valid():
-            form.save()
+        if transference.is_valid():
+            transference.save()
             return HttpResponseRedirect('/historico/')
     else:
-        form = TransferForm()
+        transference = TransferenceForm()
 
     return render(
         request,
