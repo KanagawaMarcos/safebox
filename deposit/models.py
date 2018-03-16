@@ -11,6 +11,9 @@ class Deposit (SingleTransaction):
 		null = True
 	)
 
+	def __str__(self):
+		return "%s no valor de R$%s" % (self.justification, self.value)
+		
 	class Meta:
 		# Human friendly singular and plural name
 		verbose_name = 'Depósito'
