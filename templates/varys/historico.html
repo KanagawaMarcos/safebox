@@ -2,30 +2,30 @@
 <ul class="collapsible" data-collapsible="accordion" style="margin-top: 0;">
 
 
-  {% for cur_transaction in transactions reversed %}
+  {% for transaction in transactions reversed %}
   <li>
     <div class="collapsible-header ">
-      {% if cur_transaction.its_type == 'Saque' %}
+      {% if transaction.its_type == 'Saque' %}
         <i class="material-icons red-text">money_off</i>
-      {% elif cur_transaction.its_type == 'Deposito' %}
+      {% elif transaction.its_type == 'Deposito' %}
         <i class="material-icons green-text">attach_money</i>
-      {% elif cur_transaction.its_type == 'Transferencia' %}
+      {% elif transaction.its_type == 'Transferencia' %}
         <i class="material-icons blue-text">swap_horiz</i>
       {% endif %}
 
-      {% if not cur_transaction.its_type == 'Transferencia'%}
+      {% if not transaction.its_type == 'Transferencia'%}
         <span class="truncate justificativa-header" >
-          {{ cur_transaction.justification }}
+          {{ transaction.justification }}
           -
-          {{ cur_transaction.who_did_it }}
+          {{ transaction.user }}
         </span>
       {% else %}
         <span class="truncate justificativa-header" >
           Transferência da caixa
-          {{ cur_transaction.origin }}
+          {{ transaction.origin.name }}
            para caixa
-          {{ cur_transaction.destination }}
-          no valor de {{ cur_transaction.value }}
+          {{ transaction.destination.name }}
+          no valor de {{ transaction.value }}
         </span>
       {% endif %}
 
@@ -42,49 +42,50 @@
         <div class="col s4 center-align">
           <i class="material-icons small">date_range</i>
           <br>
-          {{ cur_transaction.created_date.date }}
+          <!-- Mude isso caso seja uma movimentação financeira do grupo -->
+          {{ transaction.created_at }}
         </div>
 
         <div class="col s3 center-align">
           <i class="material-icons small">account_circle</i>
           <br>
-          {{ cur_transaction.who_did_it }}
+          {{ transaction.user.get_full_name }}
         </div>
 
         <div class="col s2 center-align">
           <i class="material-icons small">account_balance</i>
           <br>
-          {% if cur_transaction.destination %}
-            {{ cur_transaction.destination }}
-            {% if cur_transaction.origin %}
-               - {{ cur_transaction.origin }}
+          {% if transaction.destination %}
+            {{ transaction.destination }}
+            {% if transaction.origin %}
+               - {{ transaction.origin.name }}
             {% endif %}
-          {% elif cur_transaction.origin %}
-            {{ cur_transaction.origin }}
+          {% elif transaction.origin %}
+            {{ transaction.origin.name }}
           {% endif %}
         </div>
         <div class="col s3 center-align">
           <i class="material-icons small">account_balance_wallet</i>
           <br>
-          R${{ cur_transaction.value }}
+          R${{ transaction.value }}
         </div>
       <span class="row">
         <div class="col s12 center-align justificativa-texto">
           <span class="justificativa-texto"><b>
-            {% if cur_transaction.receipt %}
-              <a href="{{ cur_transaction.receipt.url }}">
-                Comprovante da {{ cur_transaction.justification }}
+            {% if transaction.receipt %}
+              <a href="{{ transaction.receipt.url }}">
+                Comprovante da {{ transaction.justification }}
               </a>
             {% else %}
 
-              {%if cur_transaction.its_type == 'Transferencia'%}
+              {%if transaction.its_type == 'Transferencia'%}
                 Transferência da caixa
-                {{ cur_transaction.origin }}
+                {{ transaction.origin.name }}
                  para caixa
-                {{ cur_transaction.destination }}
-                no valor de {{ cur_transaction.value }}
+                {{ transaction.destination.name }}
+                no valor de {{ transaction.value }}
               {%else %}
-                  O motivo foi {{ cur_transaction.justification }}
+                  O motivo foi {{ transaction.justification }}
               {% endif %}
             {% endif %}
 
