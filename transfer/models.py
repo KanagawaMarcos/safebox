@@ -23,3 +23,4 @@ class Transference (SingleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Transferência'
 		verbose_name_plural = 'Transferências'
+		

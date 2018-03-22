@@ -14,6 +14,8 @@ def transferencia(request):
         if transference.is_valid():
             transference.save()
             return HttpResponseRedirect('/historico/')
+        else:
+            print(transference.errors)
     else:
         transference = TransferenceForm()
 
