@@ -5,6 +5,7 @@
 
         {% csrf_token %}
 
+
         <div class="row"></div>
 
         <!-- Valor do depósito -->
@@ -65,7 +66,6 @@
       <form class="col s12" method="POST" action="" >
 
         {% csrf_token %}
-        {{ groupTransaction.its_type }}
         <div class="row"></div>
 
         <!-- Nome do evento -->
@@ -83,57 +83,19 @@
         </div>
 
 
-
-
         <!-- Petianos que irão para o evento -->
-        <table class="striped">
-          <thead>
-            <!-- Cabeçalho tabela -->
-            <tr>
-              <th>Petiano</th>
-              <th>
-                <div class="switch">
-                  <label>
-                    Não Pago
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                    Pago
-                  </label>
-                </div>
-              </th>
-            </tr>
-            <!-- ============= -->
-          </thead>
-
-          <tbody>
-            {% for checkbox in groupTransaction.who_paid %}
-              {% for user in users %}
-                {% if user.get_username == checkbox.choice_label and user.get_full_name != '' %}
-                  <tr>
-                    <td>{{ user.get_full_name }}</td>
-                    <td>
-                      <div class="switch">
-                        <label>
-                          {{ checkbox.tag }}
-                          <span class="lever"></span>
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-          </tbody>
-        </table>
+        <label>Quem vai para o evento</label>
+        {{ groupTransaction.users }}
 
         <div class="row"></div>
         <div class="row"></div>
 
-        <!-- Botão de registrar saque (submit) -->
+        {{ groupTransaction.justification }}
+        <!-- Botão de registrar depósito (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s10 offset-s1 blue" type="submit" name="monthly-submit">Registrar Depósito Mensal
-              <i class="material-icons">send</i>
-            </button>
+          <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="monthly-submit">Registrar Depósito Mensal
+            <i class="material-icons right">send</i>
+          </button>
         </div>
       </form>
     </div>
