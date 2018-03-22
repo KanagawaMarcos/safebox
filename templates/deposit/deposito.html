@@ -29,8 +29,6 @@
           </div>
         </div>
 
-
-
         <!-- Justificativa -->
         <div class="row">
           <div class="input-field col s12">
@@ -90,7 +88,14 @@
         <div class="row"></div>
         <div class="row"></div>
 
-        {{ groupTransaction.justification }}
+        <!-- Justificativa -->
+        <div class="row">
+          <div class="input-field col s12">
+            {{ groupTransaction.justification }}
+            <label for="textarea1">Justificativa para o saque</label>
+          </div>
+        </div>
+
         <!-- Botão de registrar depósito (submit) -->
         <div class="row">
           <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="monthly-submit">Registrar Depósito Mensal
