@@ -17,11 +17,12 @@ def saque(request):
             withdraw = WithdrawForm(request.POST, request.FILES)
 
             if withdraw.is_valid():
+                print('Foi!')
                 withdraw.save()
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the event subscription form
-            event_subscription = EventSubscriptionForm(prefix='Event Subscription Form')
+            event_subscription = EventSubscriptionForm()
 
         elif 'event-submit' in request.POST:
 
@@ -33,13 +34,13 @@ def saque(request):
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the withdraw form
-            withdraw = WithdrawForm(prefix='Withdraw Form')
+            withdraw = WithdrawForm()
 
     #If it's a GET request
     else:
         # Create a clean new form
-        withdraw = WithdrawForm(prefix='Withdraw Form')
-        event_subscription = EventSubscriptionForm(prefix='Event Subscription Form')
+        withdraw = WithdrawForm()
+        event_subscription = EventSubscriptionForm()
 
     return render(
         request,
