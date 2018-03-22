@@ -4,7 +4,6 @@
       <form class="col s12" method="POST" action="" enctype="multipart/form-data">
 
         {% csrf_token %}
-        {{ transaction.its_type }}
 
         <div class="row"></div>
 
@@ -20,7 +19,7 @@
 
             <!-- Quem depositou -->
           <div class="input-field col s6">
-            {{ transaction.who_did_it }}
+            {{ transaction.user }}
           </div>
 
           <!-- Qual caixinha -->
@@ -55,7 +54,7 @@
 
         <!-- Botão de registrar saque (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Registrar Depósito
+            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="deposit-submit">Registrar Depósito
               <i class="material-icons right">send</i>
             </button>
         </div>
@@ -132,7 +131,7 @@
 
         <!-- Botão de registrar saque (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s10 offset-s1 blue" type="submit" name="action">Registrar Depósito Mensal
+            <button class="btn waves-effect waves-light col s10 offset-s1 blue" type="submit" name="monthly-submit">Registrar Depósito Mensal
               <i class="material-icons">send</i>
             </button>
         </div>

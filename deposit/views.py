@@ -21,7 +21,7 @@ def deposito(request):
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the event subscription form
-            monthly_deposit = MonthlyDepositForm(prefix='Monthly Deposit')
+            monthly_deposit = MonthlyDepositForm()
         elif 'monthly-submit' in request.POST:
 
             # Bind the form data to a Model Form
@@ -32,13 +32,13 @@ def deposito(request):
                 HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the withdraw form
-            deposit = DepositForm(prefix='Deposit Form')
+            deposit = DepositForm()
 
     #If it's a GET request
     else:
         # Create a clean new form
-        deposit = DepositForm(prefix='Deposit Form')
-        monthly_deposit = MonthlyDepositForm(prefix='Event Subscription')
+        deposit = DepositForm()
+        monthly_deposit = MonthlyDepositForm()
 
     return render(
         request,
