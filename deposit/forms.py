@@ -23,7 +23,7 @@ class MonthlyDepositForm(MultipleTransactionForm):
 
     class Meta:
         model = MonthlyDeposit
-        fields = ('value', 'date','users')
+        fields = ('value', 'date','users','justification')
         widgets = {
-            'who_paid': forms.CheckboxSelectMultiple()
+            'users': forms.CheckboxSelectMultiple()
         }

@@ -4,7 +4,7 @@
       <form class="col s12" method="POST" action="" enctype="multipart/form-data">
 
         {% csrf_token %}
-        {{ transaction.its_type }}
+
 
         <div class="row"></div>
 
@@ -20,7 +20,7 @@
 
             <!-- Quem depositou -->
           <div class="input-field col s6">
-            {{ transaction.who_did_it }}
+            {{ transaction.user }}
           </div>
 
           <!-- Qual caixinha -->
@@ -28,8 +28,6 @@
             {{ transaction.destination }}
           </div>
         </div>
-
-
 
         <!-- Justificativa -->
         <div class="row">
@@ -55,7 +53,7 @@
 
         <!-- Botão de registrar saque (submit) -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Registrar Depósito
+            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="deposit-submit">Registrar Depósito
               <i class="material-icons right">send</i>
             </button>
         </div>
@@ -66,7 +64,6 @@
       <form class="col s12" method="POST" action="" >
 
         {% csrf_token %}
-        {{ groupTransaction.its_type }}
         <div class="row"></div>
 
         <!-- Nome do evento -->
@@ -84,57 +81,26 @@
         </div>
 
 
-
-
         <!-- Petianos que irão para o evento -->
-        <table class="striped">
-          <thead>
-            <!-- Cabeçalho tabela -->
-            <tr>
-              <th>Petiano</th>
-              <th>
-                <div class="switch">
-                  <label>
-                    Não Pago
-                    <input type="checkbox">
-                    <span class="lever"></span>
-                    Pago
-                  </label>
-                </div>
-              </th>
-            </tr>
-            <!-- ============= -->
-          </thead>
-
-          <tbody>
-            {% for checkbox in groupTransaction.who_paid %}
-              {% for user in users %}
-                {% if user.get_username == checkbox.choice_label and user.get_full_name != '' %}
-                  <tr>
-                    <td>{{ user.get_full_name }}</td>
-                    <td>
-                      <div class="switch">
-                        <label>
-                          {{ checkbox.tag }}
-                          <span class="lever"></span>
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-          </tbody>
-        </table>
+        <label>Quem vai para o evento</label>
+        {{ groupTransaction.users }}
 
         <div class="row"></div>
         <div class="row"></div>
 
-        <!-- Botão de registrar saque (submit) -->
+        <!-- Justificativa -->
         <div class="row">
-            <button class="btn waves-effect waves-light col s10 offset-s1 blue" type="submit" name="action">Registrar Depósito Mensal
-              <i class="material-icons">send</i>
-            </button>
+          <div class="input-field col s12">
+            {{ groupTransaction.justification }}
+            <label for="textarea1">Justificativa para o saque</label>
+          </div>
+        </div>
+
+        <!-- Botão de registrar depósito (submit) -->
+        <div class="row">
+          <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="monthly-submit">Registrar Depósito Mensal
+            <i class="material-icons right">send</i>
+          </button>
         </div>
       </form>
     </div>

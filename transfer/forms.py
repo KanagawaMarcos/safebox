@@ -12,7 +12,7 @@ class TransferenceForm(BasicInfoForm):
 
     origin = forms.ModelChoiceField(Box.objects.all())
     destination = forms.ModelChoiceField(Box.objects.all())
-
+    
     class Meta:
         model = Transference
         fields = ('value','origin','destination')
