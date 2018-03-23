@@ -23,15 +23,12 @@ def deposito(request):
             # Clean the cached data from the event subscription form
             monthly_deposit = MonthlyDepositForm()
         elif 'monthly-submit' in request.POST:
-
             # Bind the form data to a Model Form
             monthly_deposit = MonthlyDepositForm(request.POST)
 
             if monthly_deposit.is_valid():
                 monthly_deposit.save()
-                HttpResponseRedirect('/historico/')
-            else:
-                print(monthly_deposit.errors)
+                return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the normal deposit form
             deposit = DepositForm()
