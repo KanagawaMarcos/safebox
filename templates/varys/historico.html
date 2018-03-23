@@ -4,13 +4,20 @@
 
   {% for transaction in transactions reversed %}
   <li>
+    <!-- ========= CABEÇALHO ========= -->
     <div class="collapsible-header ">
-      {% if transaction.its_type == 'Saque' %}
-        <i class="material-icons red-text">money_off</i>
-      {% elif transaction.its_type == 'Deposito' %}
-        <i class="material-icons green-text">attach_money</i>
-      {% elif transaction.its_type == 'Transferencia' %}
+
+      <!--A definição do icone usado verifica as caracteristicas da transação -->
+      {% if transaction.origin and transaction.destination %}
+        <!--Se a transação tem origem e destino ela é uma transferência -->
         <i class="material-icons blue-text">swap_horiz</i>
+      {% elif transaction.origin %}
+        <!--Se a transação tem somente origem ela é um saque -->
+        <i class="material-icons red-text">money_off</i>
+      {% elif transaction.destination %}
+        <!--Se a transação tem somente destino ela é um saque -->
+        <i class="material-icons green-text">attach_money</i>
+        
       {% endif %}
 
 
@@ -21,8 +28,8 @@
             Justificativa não foi informada.
           {% endif %}
         </span>
-
     </div>
+    <!-- ========= FIM CABEÇALHO ========= -->
 
     <div class="collapsible-body">
       <span class="row">
@@ -35,8 +42,6 @@
               Justificativa não informada.
             {% endif %}
           </blockquote>
-
-
 
         <div class="row s12">
 
