@@ -62,6 +62,20 @@ class SingleTransaction (Info):
 		verbose_name = 'Transação'
 		verbose_name_plural = 'Transações'
 
+	def save(self,*args,**kwargs):
+		boxes = Box.objects.filter(id=self.origin.id)
+		for box in boxes:
+			box.value = box.value - self.value
+			box.save()
+		super().save(*args, **kwargs)  # Call the "real" save() method.
+
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(id=self.origin.id)
+		for box in boxes:
+			box.value = box.value + self.value
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
+
 # An abstract class containing info about a Transaction made by multiple users
 class MultipleTransaction (Info):
 	# All users that paid the the monthly bill
