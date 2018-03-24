@@ -6,7 +6,7 @@
   <li>
     <!-- ========= CABEÇALHO ========= -->
     <div class="collapsible-header ">
-
+      {{ transaction.id }}
       <!--A definição do icone usado verifica as caracteristicas da transação -->
       {% if transaction.origin and transaction.destination %}
       <!--Se a transação tem origem e destino ela é uma transferência -->
