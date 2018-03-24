@@ -45,16 +45,16 @@ class EventSubscription (MultipleTransaction):
 		verbose_name_plural = 'Inscrições em eventos'
 
 	def save(self,*args,**kwargs):
-		boxes = Box.objects.filter(id=1)
-		count = 0
+		boxes = Box.objects.filter(name='Geral') #BAD PRATICE
 
 		for box in boxes:
 			super().save(*args, **kwargs)  # the transaction must be save before!
-			box.value = box.value - (self.value*self.users.count())
+			box.value = box.value - (self.value * self.users.count())
 			box.save()
 
+
 	def delete(self, *args, **kwargs):
-		boxes = Box.objects.filter(id=1)
+		boxes = Box.objects.filter(name='Geral') #BAD PRATICE
 		for box in boxes:
 			box.value = box.value + (self.value*self.users.count())
 			box.save()
