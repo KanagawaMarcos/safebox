@@ -62,6 +62,7 @@ class SingleTransaction (Info):
 		verbose_name = 'Transação'
 		verbose_name_plural = 'Transações'
 
+
 # An abstract class containing info about a Transaction made by multiple users
 class MultipleTransaction (Info):
 	# All users that paid the the monthly bill

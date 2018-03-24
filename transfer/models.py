@@ -23,4 +23,12 @@ class Transference (SingleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Transferência'
 		verbose_name_plural = 'Transferências'
-		
+
+	def save(self,*args,**kwargs):
+		#
+		super().save(*args, **kwargs)  # the transaction must be save before!
+
+
+	def delete(self, *args, **kwargs):
+		#
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
