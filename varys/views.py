@@ -12,31 +12,33 @@ from deposit.models import Deposit,MonthlyDeposit
 #Import all types of trasnference transactions
 from transfer.models import Transference
 
-from varys.models import SingleTransaction,MultipleTransaction
 from django.shortcuts import get_object_or_404
 
-#It needs to be ADMIN as well
-@login_required
-def deletar(request, id):
-    singleTransactions = SingleTransaction.objects.get(id=id)
-    multipleTransactions = MultipleTransaction.objects.get(id=id)
+from withdraw.models import Withdraw,EventSubscription
+from deposit.models import Deposit,MonthlyDeposit
+from transfer.models import Transference
 
-    if request.user.is_superuser:
+from django.views.generic.edit import DeleteView
 
-        if singleTransaction:
+class DepositDelete (DeleteView):
+    model = Deposit
+    success_url = '/historico/'
 
-            for transaction in singleTransactions:
-                transaction.delete()
-        elif multipleTransaction:
+class TransferenceDelete (DeleteView):
+    model = Transference
+    success_url = '/historico/'
 
-            for transaction in multipleTransactions:
-                transaction.delete()
-        else:
-            print('Object does not exist!')
-    else:
-        print('User is not a superuser. Object not deleted!')
+class MonthlyDepositDelete (DeleteView):
+    model = MonthlyDeposit
+    success_url = '/historico/'
 
-    return HttpResponseRedirect('/historico/')
+class WithdrawDelete (DeleteView):
+    model = Withdraw
+    success_url = '/historico/'
+
+class EventSubscriptionDelete (DeleteView):
+    model = EventSubscription
+    success_url = '/historico/'
 
 @login_required
 def admin(request):

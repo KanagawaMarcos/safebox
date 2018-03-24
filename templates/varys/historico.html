@@ -6,14 +6,13 @@
   <li>
     <!-- ========= CABEÇALHO ========= -->
     <div class="collapsible-header ">
-
       <!--A definição do icone usado verifica as caracteristicas da transação -->
       {% if transaction.origin and transaction.destination %}
       <!--Se a transação tem origem e destino ela é uma transferência -->
       <i class="material-icons blue-text">swap_horiz</i> {% elif transaction.origin %}
       <!--Se a transação tem somente origem ela é um saque -->
       <i class="material-icons red-text">money_off</i> {% elif transaction.destination %}
-      <!--Se a transação tem somente destino ela é um saque -->
+      <!--Se a transação tem somente destino ela é um depósito -->
       <i class="material-icons green-text">attach_money</i> {% elif transaction.name %}
       <!--Se a transação tem um nome ela é uma inscrição em evento -->
       <i class="material-icons blue-text">event</i>{% else %}
@@ -139,7 +138,19 @@
         </div>
       </span>
       <div class="row col s2 offset-s10 center-align">
-        <a href="#" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a>
+        <!--A definição do icone usado verifica as caracteristicas da transação -->
+        {% if transaction.origin and transaction.destination %}
+        <!--Se a transação tem origem e destino ela é uma transferência -->
+        <a href="/historico/transferencia/{{transaction.id}}/deletar" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a> {% elif transaction.origin %}
+        <!--Se a transação tem somente origem ela é um saque -->
+        <a href="/historico/saque/{{transaction.id}}/deletar" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a> {% elif transaction.destination %}
+        <!--Se a transação tem somente destino ela é um depósito -->
+        <a href="/historico/deposito/{{transaction.id}}/deletar" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a>{% elif transaction.name %}
+        <!--Se a transação tem um nome ela é uma inscrição em evento -->
+        <a href="/historico/evento/{{transaction.id}}/deletar" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a>{% else %}
+        <!--Se não é nenhuma das anteriores, é um depósito mensal -->
+        <a href="/historico/mensal/{{transaction.id}}/deletar" class="btn-floating"><i class="material-icons red lighten-1 left-align">delete</i></a>{% endif %}
+
       </div>
     </span>
 
