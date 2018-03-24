@@ -14,13 +14,30 @@ from transfer.models import Transference
 
 from django.shortcuts import get_object_or_404
 
-from withdraw.models import Withdraw
+from withdraw.models import Withdraw,EventSubscription
+from deposit.models import Deposit,MonthlyDeposit
+from transfer.models import Transference
 
 from django.views.generic.edit import DeleteView
 
+class DepositDelete (DeleteView):
+    model = Deposit
+    success_url = '/historico/'
+
+class TransferenceDelete (DeleteView):
+    model = Transference
+    success_url = '/historico/'
+
+class MonthlyDepositDelete (DeleteView):
+    model = MonthlyDeposit
+    success_url = '/historico/'
 
 class WithdrawDelete (DeleteView):
     model = Withdraw
+    success_url = '/historico/'
+
+class EventSubscriptionDelete (DeleteView):
+    model = EventSubscription
     success_url = '/historico/'
 
 @login_required
