@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
 from deposit.forms import DepositForm,MonthlyDepositForm
+from varys.models import Box
 
 # Create your views here.
 @login_required
@@ -18,6 +19,12 @@ def deposito(request):
 
             if deposit.is_valid():
                 deposit.save()
+
+                #add  money from the box
+                boxes = Box.objects.filter(name=deposit.cleaned_data['destination'].name)
+                for box in boxes:
+                    box.value = box.value + deposit.cleaned_data['value']
+                    box.save()
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the event subscription form
@@ -28,6 +35,13 @@ def deposito(request):
 
             if monthly_deposit.is_valid():
                 monthly_deposit.save()
+
+                #add the money from the box
+                boxes = Box.objects.filter(name='Geral')#Bad Pratice!!!!
+                for box in boxes:
+                    total = monthly_deposit.cleaned_data['value']*monthly_deposit.cleaned_data['users'].count()
+                    box.value = box.value + total
+                    box.save()
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the normal deposit form

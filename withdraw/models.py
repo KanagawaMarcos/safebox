@@ -15,19 +15,6 @@ class Withdraw (SingleTransaction):
 		verbose_name = 'Saque'
 		verbose_name_plural = 'Saques'
 
-	def save(self,*args,**kwargs):
-		boxes = Box.objects.filter(id=self.origin.id)
-		for box in boxes:
-			box.value = box.value - self.value
-			box.save()
-		super().save(*args, **kwargs)  # Call the "real" save() method.
-
-	def delete(self, *args, **kwargs):
-		boxes = Box.objects.filter(id=self.origin.id)
-		for box in boxes:
-			box.value = box.value + self.value
-			box.save()
-		super().delete(*args, **kwargs)  # Call the "real" save() method.
 
 
 # Model for every time there's a group subscription in some event

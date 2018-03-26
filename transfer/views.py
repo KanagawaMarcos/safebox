@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 
 from transfer.forms import TransferenceForm
+from varys.models import Box
 
 # Create your views here.
 @login_required
@@ -13,9 +14,19 @@ def transferencia(request):
         transference = TransferenceForm(request.POST)
         if transference.is_valid():
             transference.save()
+
+            #Transfer money between boxes
+            origins = Box.objects.filter(name=transference.cleaned_data['origin'].name)
+            destinations = Box.objects.filter(name=transference.cleaned_data['destination'].name)
+
+            for destination,origin in zip(destinations,origins):
+
+                origin.value = origin.value - transference.cleaned_data['value']
+                destination.value = destination.value + transference.cleaned_data['value']
+                origin.save()
+                destination.save()
             return HttpResponseRedirect('/historico/')
-        else:
-            print(transference.errors)
+
     else:
         transference = TransferenceForm()
 
