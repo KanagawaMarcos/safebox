@@ -20,7 +20,7 @@ def deposito(request):
             if deposit.is_valid():
                 deposit.save()
 
-                #Removes the money from the box
+                #add  money from the box
                 boxes = Box.objects.filter(name=deposit.cleaned_data['destination'].name)
                 for box in boxes:
                     box.value = box.value + deposit.cleaned_data['value']
@@ -36,7 +36,7 @@ def deposito(request):
             if monthly_deposit.is_valid():
                 monthly_deposit.save()
 
-                #Removes the money from the box
+                #add the money from the box
                 boxes = Box.objects.filter(name='Geral')#Bad Pratice!!!!
                 for box in boxes:
                     total = monthly_deposit.cleaned_data['value']*monthly_deposit.cleaned_data['users'].count()
