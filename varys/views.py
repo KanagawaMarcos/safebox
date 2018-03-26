@@ -33,10 +33,7 @@ class MonthlyDepositDelete (DeleteView):
     success_url = '/historico/'
 
 class WithdrawDelete (DeleteView):
-
-
     model = Withdraw
-
     success_url = '/historico/'
 
 class EventSubscriptionDelete (DeleteView):
