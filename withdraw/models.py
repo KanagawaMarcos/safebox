@@ -36,3 +36,10 @@ class EventSubscription (MultipleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Inscrição em evento'
 		verbose_name_plural = 'Inscrições em eventos'
+
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(name='Geral')
+		for box in boxes:
+			box.value = box.value + self.value*self.users.count()
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.

@@ -35,3 +35,10 @@ class MonthlyDeposit (MultipleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Pagamento Mensal Obrigatório'
 		verbose_name_plural = 'Pagamentos Mensais Obrigatórios'
+
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(name='Geral')
+		for box in boxes:
+			box.value = box.value - self.value*self.users.count()
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
