@@ -13,11 +13,18 @@ class Deposit (SingleTransaction):
 
 	def __str__(self):
 		return "%s no valor de R$%s" % (self.justification, self.value)
-		
+
 	class Meta:
 		# Human friendly singular and plural name
 		verbose_name = 'Depósito'
 		verbose_name_plural = 'Depósitos'
+
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(id=self.destination.id)
+		for box in boxes:
+			box.value = box.value - self.value
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
 
 # An payment that every user should make every month
 class MonthlyDeposit (MultipleTransaction):
