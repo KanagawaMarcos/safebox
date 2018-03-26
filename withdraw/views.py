@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
+
+from varys.models import Box
 from withdraw.forms import WithdrawForm,EventSubscriptionForm
 
 
@@ -17,8 +19,15 @@ def saque(request):
             withdraw = WithdrawForm(request.POST, request.FILES)
 
             if withdraw.is_valid():
-                print('Foi!')
+                #Save the action in the database
                 withdraw.save()
+
+                #Removes the money from the box
+                boxes = Box.objects.filter(name=withdraw.cleaned_data['origin'].name)
+                for box in boxes:
+                    box.value = box.value - withdraw.cleaned_data['value']
+                    box.save()
+
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the event subscription form
@@ -31,6 +40,14 @@ def saque(request):
 
             if event_subscription.is_valid():
                 event_subscription.save()
+
+                #Removes the money from the box
+                boxes = Box.objects.filter(name='Geral')#Bad Pratice!!!!
+                for box in boxes:
+                    total = event_subscription.cleaned_data['value']*event_subscription.cleaned_data['users'].count()
+                    box.value = box.value - total
+                    box.save()
+
                 return HttpResponseRedirect('/historico/')
 
             # Clean the cached data from the withdraw form
