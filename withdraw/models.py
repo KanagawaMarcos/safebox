@@ -15,6 +15,12 @@ class Withdraw (SingleTransaction):
 		verbose_name = 'Saque'
 		verbose_name_plural = 'Saques'
 
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(id=self.origin.id)
+		for box in boxes:
+			box.value = box.value + self.value
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
 
 
 # Model for every time there's a group subscription in some event
@@ -30,3 +36,10 @@ class EventSubscription (MultipleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Inscrição em evento'
 		verbose_name_plural = 'Inscrições em eventos'
+
+	def delete(self, *args, **kwargs):
+		boxes = Box.objects.filter(name='Geral')
+		for box in boxes:
+			box.value = box.value + self.value*self.users.count()
+			box.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.

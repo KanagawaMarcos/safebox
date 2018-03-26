@@ -23,4 +23,15 @@ class Transference (SingleTransaction):
 		# Human friendly singular and plural name
 		verbose_name = 'Transferência'
 		verbose_name_plural = 'Transferências'
-		
+
+	def delete(self, *args, **kwargs):
+		origins = Box.objects.filter(id=self.origin.id)
+		destinations = Box.objects.filter(id=self.destination.id)
+
+		for origin, destination in zip(origins,destinations):
+			origin.value = origin.value + self.value
+			destination.value = destination.value - self.value
+
+			origin.save()
+			destination.save()
+		super().delete(*args, **kwargs)  # Call the "real" save() method.
