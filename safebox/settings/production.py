@@ -1,6 +1,9 @@
 from .base import *
 
+#200.137.132.90 port 22
+
 DEBUG = False
+
 ALLOWED_HOSTS = [
     'pet.ufma.br/safebox',
     'pet.ufma.br/petbox',
@@ -12,11 +15,14 @@ ALLOWED_HOSTS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql_cymysql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'safebox',
         'USER': 'petbox',
         'PASSWORD': 'QMwzv5yGnYuCLtEt',
-        'HOST': 'pet.ufma.br',   # Or an IP Address that your DB is hosted on
-        'PORT': '',
+#	'HOST':'pet.ufma.br',
+#	'HOST':'/var/run/mysqld',
+	'HOST':'pet.ufma.br',	
+#	'PORT':'80',
+	'PORT':'3306',
     }
 }
