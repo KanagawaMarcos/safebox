@@ -9,3 +9,14 @@ ALLOWED_HOSTS = [
     'pet.ufma.br/comp/safebox',
     'pet.ufma.br/comp/box',
 ]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'mysql_cymysql',
+        'NAME': 'safebox',
+        'USER': 'petbox',
+        'PASSWORD': 'QMwzv5yGnYuCLtEt',
+        'HOST': 'pet.ufma.br',   # Or an IP Address that your DB is hosted on
+        'PORT': '',
+    }
+}
