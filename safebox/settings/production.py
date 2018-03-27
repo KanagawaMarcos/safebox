@@ -21,8 +21,8 @@ DATABASES = {
         'PASSWORD': 'QMwzv5yGnYuCLtEt',
 #	'HOST':'pet.ufma.br',
 #	'HOST':'/var/run/mysqld',
-	'HOST':'200.137.132.90',	
+	'HOST':'pet.ufma.br',	
 #	'PORT':'80',
-	'PORT':'22',
+	'PORT':'3306',
     }
 }
