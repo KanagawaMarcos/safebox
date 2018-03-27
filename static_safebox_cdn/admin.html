@@ -1,0 +1,193 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <!-- Favicon do safebox-->
+      <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
+      <!-- Esconde a barra de url-->
+      <meta name="mobile-web-app-capable" content="yes">
+      
+    </head>
+
+    <body>
+
+      <!--======== Barra de navegação no topo da tela ========-->
+      <nav class="nav-extended blue">
+
+        <!-- Logo do safebox -->
+        <div class="nav-wrapper">
+
+          <!-- Botão de abrir menu-->
+          <a href="#!" class="brand-logo left"><i class="material-icons button-collapse" data-activates="barra-navegacao-esquerda">menu</i></a>
+          <!-- Título da página -->
+          <a href="#!" class="brand-logo light center">Painel Admin</a>
+        </div>
+
+        <div class="nav-content">
+
+        </div>
+      </nav>
+      <!--====================================================-->
+
+      <!--======Coloque aqui o conteúdo da =======-->
+      <div class="row">
+        <div class="col s12">
+          <div class="card grey lighten-3 grey-text text-darken-1">
+            <div class="card-content">
+              <span class="card-title center">P3TC0M9</span>
+
+              <p>Esse token é gerado pelo tutor para cadastrar
+              novos petianos ao sistema box do pet. O código
+              gerado é válido por 48 horas. Para o petiano efetuar
+              seu cadastro é necessário possuir um token válido
+              durante o cadastro..</p>
+            </div>
+            <div class="card-action center">
+              <a href="#">Gerar Novo Token</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--====================================================-->
+
+      <!--============= Botão de ação flutuante ==============-->
+      <div class="fixed-action-btn vertical">
+        <a class="btn-floating btn-large blue waves-effect">
+          <i class="material-icons">add</i>
+        </a>
+
+        <ul>
+          <li><a class="btn-floating yellow darken-1"><i class="material-icons red">money_off</i></a></li>
+          <li><a class="btn-floating green"><i class="material-icons red darken-3">delete</i></a></li>
+          <li><a class="btn-floating red"><i class="material-icons green">attach_money</i></a></li>
+          <li><a class="btn-floating blue"><i class="material-icons blue">swap_horiz</i></a></li>
+        </ul>
+      </div>
+      <!--====================================================-->
+
+
+      <!--====== Barra de navegação à esquerda da tela ======-->
+      <ul id="barra-navegacao-esquerda" class="side-nav grey lighten-4 collapsible" data-collapsible="accordion">
+
+                     <!--  Perfil usuário resumido  -->
+
+        <li>
+          <div class="user-view">
+            <!-- Background -->
+            <div class="background" >
+              <img src="watermark.png" alt="PETComp watermark">
+            </div>
+
+            <!-- Informações do usuário -->
+            <a href="#!user"><img class="circle" src="profile-pictures/marcos.png"></a>
+            <a href="#!name"><span class="black-text name">Marcos Costa</span></a>
+            <a href="#!email"><span class="black-text email">Mcs1901@outlook.com</span></a>
+
+          </div>
+        </li>
+                     <!--  Barra de pesquisa  -->
+        <li class="search">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">Pesquisar</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+              <!--  Opções válidas  -->
+        <!-- Histórico de movimentações financeiras -->
+        <li>
+          <a href="historico.html" class="waves-effect">
+            <i class="material-icons ">history</i>
+            Histórico
+          </a>
+        </li>
+
+        <!-- Remoção de dinheiro de alguma caixinha -->
+        <li>
+          <a href="saque.html" class="waves-effect">
+            <i class="material-icons red-text text-darken-4">money_off</i>
+            Saque
+          </a>
+        </li>
+
+        <!-- Adição de dinheiro à alguma caixinha -->
+        <li>
+          <a href="deposito.html" class="waves-effect">
+            <i class="material-icons green-text">attach_money</i>
+            Depósito
+          </a>
+        </li>
+
+        <!-- Transferência de dinheiro entre duas caixinhas -->
+        <li>
+          <a href="transferencia.html" class="waves-effect">
+            <i class="material-icons blue-text">compare_arrows</i>
+            Transferência
+          </a>
+        </li>
+
+        <!-- Pet Metas -->
+        <li>
+          <a href="metas.html" class="waves-effect">
+            <i class="material-icons amber-text text-darken-2">content_paste</i>
+            Metas
+          </a>
+        </li>
+
+        <!-- Painel de tutor -->
+        <li>
+          <a href="admin.html" class="waves-effect">
+            <i class="material-icons grey-text">create</i>
+            Painel de Administrador
+          </a>
+        </li>
+        <!-- =========================================== -->
+      </ul>
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+      <script type="text/javascript">
+        //Botão sandwich para abrir menu do lado esquerdo da tela.
+        $(".button-collapse").sideNav();
+
+        //Ativa collapsibles do histórico que foram adicionados dinamicamente.
+        $(document).ready(function(){
+          $('.collapsible').collapsible();
+        });
+
+      </script>
+
+      <style media="screen">
+        .justificativa-header{
+            margin: 0 .2em 0 .5em;
+        }
+
+        .justificativa-texto{
+          margin: 1em 1em 0 1em;
+        }
+
+        .valor-texto{
+          margin-right: .2em;
+        }
+      </style>
+    </body>
+  </html>
