@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = '/var/www/safebox/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -122,20 +123,20 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_URL = '/static/'
-
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/historico'
+LOGIN_REDIRECT_URL = '/safebox/historico'
 LOGIN_URL = '/contas/login'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    #'/var/www/static/',
+#    '/var/www/safebox/static/',
 ]
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_safebox_cdn")
+#STATIC_ROOT = '/var/www/safebox/static_safebox_cdn/'
+STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_safebox_cdn")
 MEDIA_URL = '/media/'
+
