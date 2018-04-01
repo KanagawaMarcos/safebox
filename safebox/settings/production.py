@@ -2,16 +2,12 @@ from .base import *
 
 #200.137.132.90 port 22
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    'pet.ufma.br/safebox',
-    'pet.ufma.br/petbox',
-    'pet.ufma.br/box',
-    'pet.ufma.br/comp/petbox',
-    'pet.ufma.br/comp/safebox',
-    'pet.ufma.br/comp/box',
+    'pet.ufma.br',
 ]
+
 
 DATABASES = {
     'default': {
