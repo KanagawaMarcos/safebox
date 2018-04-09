@@ -25,7 +25,7 @@ def deposito(request):
                 for box in boxes:
                     box.value = box.value + deposit.cleaned_data['value']
                     box.save()
-                return HttpResponseRedirect('/historico/')
+                return HttpResponseRedirect('/box/historico/')
 
             # Clean the cached data from the event subscription form
             monthly_deposit = MonthlyDepositForm()
@@ -42,7 +42,7 @@ def deposito(request):
                     total = monthly_deposit.cleaned_data['value']*monthly_deposit.cleaned_data['users'].count()
                     box.value = box.value + total
                     box.save()
-                return HttpResponseRedirect('/historico/')
+                return HttpResponseRedirect('/box/historico/')
 
             # Clean the cached data from the normal deposit form
             deposit = DepositForm()

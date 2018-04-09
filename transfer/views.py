@@ -25,7 +25,7 @@ def transferencia(request):
                 destination.value = destination.value + transference.cleaned_data['value']
                 origin.save()
                 destination.save()
-            return HttpResponseRedirect('/historico/')
+            return HttpResponseRedirect('/box/historico/')
 
     else:
         transference = TransferenceForm()

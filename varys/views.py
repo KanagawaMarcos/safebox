@@ -22,23 +22,23 @@ from django.views.generic.edit import DeleteView
 
 class DepositDelete (DeleteView):
     model = Deposit
-    success_url = '/historico/'
+    success_url = '/box/historico/'
 
 class TransferenceDelete (DeleteView):
     model = Transference
-    success_url = '/historico/'
+    success_url = '/box/historico/'
 
 class MonthlyDepositDelete (DeleteView):
     model = MonthlyDeposit
-    success_url = '/historico/'
+    success_url = '/box/historico/'
 
 class WithdrawDelete (DeleteView):
     model = Withdraw
-    success_url = '/historico/'
+    success_url = '/box/historico/'
 
 class EventSubscriptionDelete (DeleteView):
     model = EventSubscription
-    success_url = '/historico/'
+    success_url = '/box/historico/'
 
 @login_required
 def admin(request):
