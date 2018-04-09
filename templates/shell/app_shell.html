@@ -1,0 +1,265 @@
+{% load staticfiles %}
+<!DOCTYPE html lang="pt-br">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'materialize/css/materialize.min.css'%}"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Favicon do safebox-->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'login/img/favicon.png' %}" />
+    <!-- Esconde a barra de url-->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>Safebox - {{ title }}</title>
+  </head>
+
+  <body>
+
+    <!--======== Barra de navegação no topo da tela ========-->
+    <header>
+      <nav class="nav-extended blue">
+        <div class="nav-wrapper">
+          <!-- Página atual do safebox -->
+          <a href="#!" class="brand-logo center light">
+            {{ title }}
+          </a>
+          <!-- Botão de abrir menu-->
+          <a href="#!" data-activates="barra-navegacao-esquerda" class="button-collapse">
+            <i class="material-icons">
+              menu
+            </i>
+          </a>
+        </div>
+        {% if is_withdraw %}
+          {% include 'withdraw/navbar_tabs.html'%}
+        {% elif is_deposit %}
+          {% include 'deposit/navbar_tabs.html'%}
+        {% endif %}
+      </nav>
+
+    </header>
+    <!--====================================================-->
+
+    <!--======Coloque aqui o conteúdo da página=======-->
+    <main>
+      {% if is_varys %}
+        {% include 'varys/historico.html' %}
+      {% elif is_withdraw %}
+        {% include 'withdraw/saque.html'%}
+      {% elif is_deposit %}
+        {% include 'deposit/deposito.html'%}
+      {% elif is_transfer %}
+        {% include 'transfer/transferencia.html'%}
+      {% endif %}
+    </main>
+    <!--====================================================-->
+
+    <!--====== Barra de navegação à esquerda da tela ======-->
+    <ul id="barra-navegacao-esquerda" class="fixed side-nav grey lighten-4 collapsible" data-collapsible="accordion">
+
+                   <!--  Perfil usuário resumido  -->
+
+      <li>
+        <div class="user-view">
+          <!-- Background -->
+          <div class="background" >
+            <img src="{% static 'pattern.png'%}" alt="PETComp watermark">
+          </div>
+
+          <!-- Informações do usuário -->
+          {% if user.is_authenticated %}
+            <a href="#!user"><img class="circle" src="{% static 'profile-pictures/marcos.png' %}"></a>
+            <a href="#!name"><span class="black-text name">{{ user.get_full_name }}</span></a>
+            <a href="#!email"><span class="black-text email">{{ user.email }}</span></a>
+          {% else %}
+            <a href="#!user"><img class="circle" src="{% static 'profile-pictures/PetLogo.png' %}"></a>
+            <a href="#!name"><span class="black-text name">Visitante</span></a>
+          {% endif %}
+
+        </div>
+      </li>
+                   <!--  Barra de pesquisa  -->
+      <!-- <li class="search">
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Pesquisar</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li> -->
+
+            <!--  Opções válidas  -->
+
+      <!-- Histórico de movimentações financeiras -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'historico'%}">Histórico<i class="material-icons">history</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Remoção de dinheiro de alguma caixinha -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header" >Saque<i class="material-icons red-text text-darken-4">money_off</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{% url 'saque' %}">Pagamento</a></li>
+                <!-- Como redirecionar ele para à aba correta? -->
+                <li><a href="#!">Inscrição em Evento</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Adição de dinheiro à alguma caixinha -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header" >Depósito<i class="material-icons green-text">attach_money</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="{% url 'deposito' %}">Avulso</a></li>
+                <!-- Como redirecionar ele para à aba correta? -->
+                <li><a href="#!">Mensal</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Transferência de dinheiro entre duas caixinhas -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'transferencia' %}">Transferência<i class="material-icons blue-text">compare_arrows</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+      <!-- Pet Metas -->
+      <!--
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'metas' %}">Metas<i class="material-icons amber-text text-darken-2">content_paste</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+    -->
+
+      <!-- Painel de tutor -->
+      {% if user.is_superuser %}
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'admin-redirect'%}">Painel de Administrador<i class="material-icons grey-text">dashboard</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+      {% endif %}
+      <!-- Sair -->
+      <li>
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect" href="{% url 'sair'%}">Sair<i class="material-icons red-text">exit_to_app</i></a>
+            <div class="collapsible-body"></div>
+          </li>
+        </ul>
+      </li>
+      <!-- =========================================== -->
+    </ul>
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'materialize/js/materialize.min.js'%}"></script>
+
+    <script type="text/javascript">
+
+
+
+      //Botão sandwich para abrir menu do lado esquerdo da tela.
+      $(".button-collapse").sideNav();
+
+      //Ativa collapsibles do histórico que foram adicionados dinamicamente.
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+
+      //Ativa os selects dos tipos de saques e depósito
+      $(document).ready(function() {
+        $('select').material_select();
+      });
+
+      //Ativa a seleção de data do saque
+      $('.datepicker').pickadate({
+         selectMonths: true, // Creates a dropdown to control month
+         selectYears: 10, // Creates a dropdown of 15 years to control year,
+         today: 'Hoje',
+         clear: 'Limpar',
+         close: 'Fechar',
+         closeOnSelect: false // Close upon selecting a date,
+       });
+       //Ativa autocomplete do local do evento
+       $('input.autocomplete').autocomplete({
+         data: {
+           "Marapet": null,
+           "Enepet": null,
+           "Anapet": null
+         },
+         limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+         onAutocomplete: function(val) {
+           // Callback function when value is autcompleted.
+         },
+         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+       });
+
+    </script>
+
+    <style media="screen">
+      .justificativa-header{
+          margin: 0 .2em 0 .5em;
+      }
+
+      .justificativa-texto{
+        margin: 1em 1em 0 1em;
+      }
+
+      .valor-texto{
+        margin-right: .2em;
+      }
+
+      /*
+      Faz com que o conteúdo tenha o compensamento
+      para telas grande já que a barra lateral fica aberta
+      */
+      header, main, footer {
+        padding-left: 300px;
+      }
+
+      @media only screen and (max-width : 992px) {
+        header, main, footer {
+          padding-left: 0;
+        }
+      }
+    </style>
+  </body>
+</html>
