@@ -22,7 +22,6 @@ from django.views.generic.edit import DeleteView
 
 class DepositDelete (DeleteView):
     model = Deposit
-    
     success_url = '/historico/'
 
 class TransferenceDelete (DeleteView):
