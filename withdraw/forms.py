@@ -30,6 +30,7 @@ class WithdrawForm(BasicInfoForm):
 class EventSubscriptionForm(MultipleTransactionForm):
     name = forms.CharField(max_length=46)
 
+
     class Meta:
         model = EventSubscription
         fields = ('name','value','justification', 'date','users','receipt')

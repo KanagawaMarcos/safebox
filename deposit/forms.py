@@ -13,6 +13,11 @@ class DepositForm(BasicInfoForm):
     user = forms.ModelChoiceField(User.objects.all())
     destination = forms.ModelChoiceField(Box.objects.all())
 
+    def clean(self):
+
+        # Don't allow withdraw if there isn't money available.
+        if self.cleaned_data['value'] <= 0 :
+            raise ValidationError(_('Valor do depósito inválido.'))
 
     class Meta:
         model = Deposit
