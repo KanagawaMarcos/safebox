@@ -125,11 +125,9 @@
 
             <!-- Se não existirem anexos, uma mensagem informativa é mostrada -->
             {% if transaction.receipt %}
-              {% for receipt in transaction.receipt %}
                 <a href="{{ transaction.receipt.url }}">
                   Comprovante da {{ transaction.justification }}
                 </a>
-              {% endfor %}
             {% else %}
               <span class="red-text text-lighten-3">Nenhum comprovante foi anexado.</span>
             {% endif %}
