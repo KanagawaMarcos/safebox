@@ -124,7 +124,7 @@ USE_TZ = True
 
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/safebox/historico'
+LOGIN_REDIRECT_URL = '/box/historico'
 LOGIN_URL = '/contas/login'
 
 STATICFILES_DIRS = [
