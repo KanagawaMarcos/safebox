@@ -29,7 +29,7 @@
 
   <main>
     <center>
-      
+
       <div class="container">
 
         <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
@@ -37,7 +37,7 @@
           <!-- Imagem do logo do pet (irá ser mudada para logo do safebox) -->
           <img class="responsive-img" src="{% static 'login/img/PetLogo.png' %}" />
           <div class="section"></div>
-          
+
           <form class="col s12 login-form" action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <div class='row'>
@@ -79,18 +79,18 @@
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Entrar</button>
               </div>
             </center>
-            <a href="#!">Criar Conta</a>
+            <!-- <a href="#!">Criar Conta</a> -->
           </form>
         </div>
       </div>
-      
+
     </center>
 
     <div class="section"></div>
     <div class="section"></div>
   </main>
 
-    
+
     {% block footer %}
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
