@@ -1,0 +1,57 @@
+{% load staticfiles%}
+      <!--====== Dados sobre transferencia entre caixas =======-->
+      <div class="row col s12">
+        <form class="col s12" action="" method="POST">
+          {% csrf_token %}
+          {{ transaction.its_type }}
+          <div class="row"></div>
+
+          <!-- Valor da transferência -->
+          <div class="input-field col s8 offset-s2">
+            <!-- <input id="valor" type="number" min="0.05" max="16000" step="0.1" class="validate" required> -->
+            {{ transaction.value }}
+            <label for="valor" data-error="Valor inválido">Valor da transferência</label>
+          </div>
+
+          <div class="row"></div>
+          <div class="row"></div>
+          <div class="row"></div>
+
+          <!-- Caixa de Origem -->
+          <div class="input-field col s12">
+            {{ transaction.origin }}
+            <label>Caixa de Origem</label>
+          </div>
+
+          <div class="row"></div>
+          <div class="row"></div>
+          <div class="row"></div>
+
+          <!-- Caixa de Destino -->
+          <div class="input-field col s12">
+            {{ transaction.destination }}
+            <label>Caixa de Destino</label>
+          </div>
+
+          <!-- Justificativa -->
+          <div class="row">
+            <div class="input-field col s12">
+              {{ transaction.justification }}
+              <label for="textarea1">Justificativa para o saque</label>
+            </div>
+          </div>
+
+          <div class="row"></div>
+          <div class="row"></div>
+          <div class="row"></div>
+
+          <!-- Registrar transferência -->
+          <div class="row">
+            <button class="btn waves-effect waves-light col s6 m3 offset-s6 offset-m9 blue" type="submit" name="action">Transferir
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+
+        </form>
+      </div>
+      <!--====================================================-->
