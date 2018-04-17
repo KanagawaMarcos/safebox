@@ -66,6 +66,7 @@ def saque(request):
             'is_withdraw': True,
             'title': 'Saque',
             'transaction' : withdraw,
+            'boxes':Box.objects.all(),
             'groupTransaction' : event_subscription,
             'users' : User.objects.all()
         }

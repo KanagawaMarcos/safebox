@@ -59,6 +59,7 @@ def deposito(request):
         {
             'is_deposit' : True,
             'title' : 'Depósito',
+            'boxes': Box.objects.all(),
             'transaction' : deposit,
             'groupTransaction' : monthly_deposit,
             'users': User.objects.all(),
