@@ -84,10 +84,11 @@
 
         </div>
       </li>
-      <div class="row">
+
+      <div class="row col s12">
           <div class="collection">
             {% for box in boxes %}
-              <a href="#!" class="collection-item grey lighten-4"><span class="badge">{{box.value}}</span>{{box.name}}</a>
+              <a href="#!" class="collection-item grey lighten-4"><span class="badge valign-wrapper">{{box.value}}</span>{{box.name}}</a>
             {% endfor %}
           </div>
       </div>
@@ -117,7 +118,7 @@
           </li>
         </ul>
       </li>
-
+      {% if user.is_superuser %}
       <!-- Remoção de dinheiro de alguma caixinha -->
       <li>
         <ul class="collapsible collapsible-accordion">
@@ -172,7 +173,7 @@
     -->
 
       <!-- Painel de tutor -->
-      {% if user.is_superuser %}
+
       <li>
         <ul class="collapsible collapsible-accordion">
           <li>
