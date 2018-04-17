@@ -35,6 +35,7 @@ def transferencia(request):
         'shell/app_shell.html',
         {
             'title' : 'Transferência',
+            'boxes':Box.objects.all(),
             'is_transfer' : True,
             'transaction' : transference
         }
