@@ -34,9 +34,7 @@
       <span class="hide-on-small-only badge">
         {% if transaction.users %}
           {% if transaction.value %}
-            {% with total=transaction.value*transaction.users.all.count %}
-            R${{ total }}
-            {% endwith %}
+            R${{ transaction.calculate_total_value }}
           {% endif %}
         {% else %}
           {% if transaction.value %}
