@@ -88,7 +88,8 @@
       <div class="row col s12">
           <div class="collection">
             {% for box in boxes %}
-              <a href="#!" class="collection-item grey lighten-4"><span class="badge valign-wrapper">{{box.value}}</span>{{box.name}}</a>
+            <!-- CSS GAMBIARRA AHEAD -->
+              <a href="#!" class="collection-item grey lighten-4"><span style="margin-top: auto !important;" class="badge valign-wrapper">{{box.value}}</span>{{box.name}}</a>
             {% endfor %}
           </div>
       </div>
