@@ -64,9 +64,9 @@ def historico(request):
         key=lambda instance: instance.created_at
     )
 
-    # Get all boxes to show their values
+    # Get all boxes to show their values in interface
     boxes = Box.objects.all()
-    
+
     return render(
         request,
         'shell/app_shell.html',

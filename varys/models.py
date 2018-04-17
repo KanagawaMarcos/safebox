@@ -75,6 +75,9 @@ class MultipleTransaction (Info):
 		null=True
 	)
 
+	def calculate_total_value(self):
+		return self.value * self.users.count()
+		
 	class Meta:
 		# Make this class an Abstract class
 		abstract = True
