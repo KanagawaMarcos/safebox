@@ -25,11 +25,11 @@
       <span class="truncate justificativa-header">
 
         <!-- Caso não haja uma justificativa informada, um erro é mostrado -->
-          {% if transaction.justification %}
-            {{ transaction.justification }}
-          {% else %}
-            Justificativa não foi informada.
-          {% endif %}
+        {% if transaction.justification %}
+          {{ transaction.justification }}
+        {% else %}
+          Justificativa não foi informada.
+        {% endif %}
       </span>
       <span class="hide-on-small-only badge">
         {% if transaction.value %}

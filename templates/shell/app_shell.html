@@ -84,6 +84,14 @@
 
         </div>
       </li>
+      <div class="row">
+          <div class="collection">
+            {% for box in boxes %}
+              <a href="#!" class="collection-item grey lighten-4"><span class="badge">{{box.value}}</span>{{box.name}}</a>
+            {% endfor %}
+          </div>
+      </div>
+
                    <!--  Barra de pesquisa  -->
       <!-- <li class="search">
         <div class="row">
@@ -93,7 +101,7 @@
                 <input id="icon_prefix" type="text" class="validate">
                 <label for="icon_prefix">Pesquisar</label>
               </div>
-            </div>
+
           </form>
         </div>
       </li> -->
