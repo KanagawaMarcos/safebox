@@ -139,4 +139,3 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_safebox_cdn")
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_safebox_cdn")
 MEDIA_URL = '/media/'
-

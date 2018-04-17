@@ -11,6 +11,8 @@ from withdraw.models import Withdraw,EventSubscription
 from deposit.models import Deposit,MonthlyDeposit
 #Import all types of trasnference transactions
 from transfer.models import Transference
+#Import all boxes
+from varys.models import Box
 
 from django.shortcuts import get_object_or_404
 
@@ -62,12 +64,16 @@ def historico(request):
         key=lambda instance: instance.created_at
     )
 
+    # Get all boxes to show their values
+    boxes = Box.objects.all()
+    
     return render(
         request,
         'shell/app_shell.html',
         {
             'is_varys': True,
             'transactions': transactions,
+            'boxes':boxes,
             'title': 'Histórico'
         }
     )
