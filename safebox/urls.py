@@ -29,7 +29,6 @@ import withdraw.views   #Página Saque
 
 urlpatterns = [
     path('', varys.views.redirect_login, name='home'),
-    path('box/', varys.views.redirect_login, name='home'),
     path('contas/', include('django.contrib.auth.urls'), name='login'),
     path('admin/', admin.site.urls, name='admin'),
     path('admin/', varys.views.admin, name='admin-redirect'),
