@@ -32,8 +32,16 @@
         {% endif %}
       </span>
       <span class="hide-on-small-only badge">
-        {% if transaction.value %}
-          R${{ transaction.value }}
+        {% if transaction.users %}
+          {% if transaction.value %}
+            {% with total=transaction.value*transaction.users.all.count %}
+            R${{ total }}
+            {% endwith %}
+          {% endif %}
+        {% else %}
+          {% if transaction.value %}
+            R${{ transaction.value }}
+          {% endif %}
         {% endif %}
       </span>
     </div>
