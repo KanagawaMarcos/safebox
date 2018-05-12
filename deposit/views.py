@@ -8,7 +8,7 @@ from varys.models import Box
 
 # Create your views here.
 @login_required
-def deposito(request):
+def deposito(request, is_monthly=False):
     # Check if the form is being submited by the user
     if request.method == 'POST':
         # If the submit button was the one from deposit form
@@ -63,5 +63,10 @@ def deposito(request):
             'transaction' : deposit,
             'groupTransaction' : monthly_deposit,
             'users': User.objects.all(),
+            'is_monthly':is_monthly,
         }
     )
+
+@login_required
+def deposito_mensal(request):
+    deposito(request, is_monthly=True)
