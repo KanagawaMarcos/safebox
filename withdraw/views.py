@@ -9,7 +9,7 @@ from withdraw.forms import WithdrawForm,EventSubscriptionForm
 
 
 @login_required
-def saque(request):
+def saque(request, evento=False):
     # Check if the form is being submited by the user
     if request.method == 'POST':
         # If the submit button was the one from withdraw form
@@ -68,6 +68,10 @@ def saque(request):
             'transaction' : withdraw,
             'boxes':Box.objects.all(),
             'groupTransaction' : event_subscription,
-            'users' : User.objects.all()
+            'users' : User.objects.all(),
+            'is_event': evento,
         }
     )
+@login_required
+def inscricao(request):
+    return saque(request, evento=True)

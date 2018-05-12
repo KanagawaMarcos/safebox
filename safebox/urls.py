@@ -43,6 +43,7 @@ urlpatterns = [
     path('deposito/', deposit.views.deposito, name='deposito'),
     path('deposito/mensal/', deposit.views.deposito_mensal, name='deposito_mensal'),
     path('saque/', withdraw.views.saque, name='saque'),
+    path('saque/evento', withdraw.views.evento, name='evento'),
     path('metas/', metas.views.metas, name='metas'),
     path('transferencia/', transfer.views.transferencia, name='transferencia'),
 ]
