@@ -73,5 +73,5 @@ def saque(request, evento=False):
         }
     )
 @login_required
-def inscricao(request):
+def evento(request):
     return saque(request, evento=True)
