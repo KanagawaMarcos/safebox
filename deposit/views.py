@@ -69,4 +69,4 @@ def deposito(request, is_monthly=False):
 
 @login_required
 def deposito_mensal(request):
-    deposito(request, is_monthly=True)
+    return deposito(request, is_monthly=True)
