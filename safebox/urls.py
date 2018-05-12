@@ -41,6 +41,7 @@ urlpatterns = [
     path('historico/mensal/<int:pk>/deletar', varys.views.MonthlyDepositDelete.as_view(), name='mensal-deletar'),
     path('varys/', varys.views.historico, name='varys'),
     path('deposito/', deposit.views.deposito, name='deposito'),
+    path('deposito/mensal/', deposit.views.deposito_mensal, name='deposito_mensal'),
     path('saque/', withdraw.views.saque, name='saque'),
     path('metas/', metas.views.metas, name='metas'),
     path('transferencia/', transfer.views.transferencia, name='transferencia'),
