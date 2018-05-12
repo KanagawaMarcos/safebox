@@ -48,13 +48,6 @@ urlpatterns = [
     path('transferencia/', transfer.views.transferencia, name='transferencia'),
 ]
 
-<<<<<<< HEAD
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-=======
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> 6516b5b0d70bff16225684beb872e9c78c2d3a66
-
-
-if settings.DEBUG:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
