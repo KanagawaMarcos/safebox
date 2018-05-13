@@ -5,6 +5,7 @@ Seu objetivo é manter de forma simples um gerenciamento sobre entrada e saída 
 <p align="center">
   <img src="https://github.com/Marcos-Costa/safebox/blob/master/MVP-files/imgonline-com-ua-twotoone-suWIRxNgx0.jpg"/>
 </p>
+<p align="center"><a href="https://github.com/Marcos-Costa/safebox/blob/master/MVP-files/desktop.png">Veja também a versão Desktop</a></p>
 
 ## Como rodar localmente
 
