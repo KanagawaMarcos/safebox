@@ -1,7 +1,10 @@
 # Safebox
-
 Um webapp de gerenciamento financeiro do grupo PETComp (UFMA).
 Seu objetivo é manter de forma simples um gerenciamento sobre entrada e saída de recurso financeiro do grupo de Ensino e Extensão.
+
+<p align="center">
+  <img src="https://github.com/Marcos-Costa/safebox/blob/master/MVP-files/imgonline-com-ua-twotoone-suWIRxNgx0.jpg"/>
+</p>
 
 ## Como rodar localmente
 
