@@ -14,11 +14,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'safebox',
         'USER': 'petbox',
-        'PASSWORD': 'QMwzv5yGnYuCLtEt',
-#	'HOST':'pet.ufma.br',
-#	'HOST':'/var/run/mysqld',
+        'PASSWORD': 'look_at_other_place',
 	'HOST':'pet.ufma.br',
-#	'PORT':'80',
 	'PORT':'3306',
     }
 }
